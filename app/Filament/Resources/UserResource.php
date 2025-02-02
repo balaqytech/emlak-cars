@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\BrancheResource\Pages;
-use App\Filament\Resources\BrancheResource\RelationManagers;
-use App\Models\Branche;
+use App\Filament\Resources\UserResource\Pages;
+use App\Filament\Resources\UserResource\RelationManagers;
+use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,11 +13,11 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class BrancheResource extends Resource
+class UserResource extends Resource
 {
-    protected static ?string $model = Branche::class;
+    protected static ?string $model = User::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-building-office-2';
+    protected static ?string $navigationIcon = 'heroicon-o-users';
 
     public static function form(Form $form): Form
     {
@@ -26,23 +26,14 @@ class BrancheResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('address')
+                Forms\Components\TextInput::make('email')
+                    ->email()
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('working_hours')
+                Forms\Components\TextInput::make('password')
+                    ->password()
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('contact_mobile')
-                    ->maxLength(255)
-                    ->default(null),
-                Forms\Components\TextInput::make('lat')
-                    ->maxLength(255)
-                    ->default(null),
-                Forms\Components\TextInput::make('lag')
-                    ->maxLength(255)
-                    ->default(null),
-                Forms\Components\Toggle::make('is_active')
-                    ->required(),
             ]);
     }
 
@@ -52,18 +43,9 @@ class BrancheResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('address')
+                Tables\Columns\TextColumn::make('email')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('working_hours')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('contact_mobile')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('lat')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('lag')
-                    ->searchable(),
-                Tables\Columns\IconColumn::make('is_active')
-                    ->boolean(),
+                
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -96,9 +78,9 @@ class BrancheResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListBranches::route('/'),
-            'create' => Pages\CreateBranche::route('/create'),
-            'edit' => Pages\EditBranche::route('/{record}/edit'),
+            'index' => Pages\ListUsers::route('/'),
+            'create' => Pages\CreateUser::route('/create'),
+            'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
     }
 }
