@@ -34,4 +34,9 @@ class Vehicle extends Model
     {
         return $this->belongsTo(VehicleBrand::class, 'vehicle_brand_id');
     }
+
+    public function models()
+    {
+        return $this->hasMany(VehicleModel::class, 'vehicle_id');
+    }
 }
