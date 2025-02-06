@@ -4,16 +4,16 @@ namespace App\Filament\Resources\BankResource\Pages;
 
 use App\Filament\Resources\BankResource;
 use Filament\Actions;
-use Filament\Resources\Pages\EditRecord;
+use Filament\Resources\Pages\ManageRecords;
 
-class EditBank extends EditRecord
+class ManageBanks extends ManageRecords
 {
     protected static string $resource = BankResource::class;
 
     protected function getHeaderActions(): array
     {
         return [
-            Actions\DeleteAction::make(),
+            Actions\CreateAction::make(),
         ];
     }
 }
