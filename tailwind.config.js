@@ -10,10 +10,17 @@ export default {
         './resources/**/*.vue',
     ],
     theme: {
+        container: {
+            center: true,
+            padding: '2rem',
+        },
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                'primary': '#af1f23',
+            }
         },
     },
     plugins: [],
