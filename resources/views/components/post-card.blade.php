@@ -11,6 +11,6 @@
             <time datetime="{{ $post->published_at }}">{{ $post->published_at->format('d/m/Y') }}</time>
         </p>
         <p class="mt-2 text-gray-800">{{ $post->excerpt ?? \Illuminate\Support\Str::words($post->content, 15, '...') }}</p>
-        <a href="/posts/{{ $post->slug }}" class="text-primary hover:underline mt-2 inline-block">Read more</a>
+        <a href="/posts/{{ $post->slug }}" class="text-primary hover:underline mt-2 inline-block">{{ __('frontend.read_more') }}</a>
     </div>
 </article>
