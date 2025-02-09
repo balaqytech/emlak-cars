@@ -9,9 +9,11 @@
         {{ $offer->title }}
     </x-slot>
 
-    <section class="w-full h-[80dvh] overflow-hidden bg-center bg-cover">
-        <img src="{{ asset('storage/' . $offer->image) }}" alt="{{ $offer->title }}"
-            class="w-full h-full object-cover object-center">
+    <section class="">
+        <div class="wrapper">
+            <img src="{{ asset('storage/' . $offer->image) }}" alt="{{ $offer->title }}"
+            class="">
+        </div>
     </section>
 
     <article class="max-w-4xl mx-auto p-6">
