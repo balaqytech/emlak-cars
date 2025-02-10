@@ -42,7 +42,7 @@ class PostResource extends Resource
                             ->required()
                             ->columnSpanFull()
                             ->maxLength(255),
-                        Forms\Components\RichEditor::make('content')
+                        Forms\Components\MarkdownEditor::make('content')
                             ->required()
                             ->columnSpanFull(),
                     ]),
