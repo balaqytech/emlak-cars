@@ -10,17 +10,25 @@ use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
 use Filament\Resources\Resource;
+use Illuminate\Validation\Rules\Unique;
+use Filament\Navigation\NavigationGroup;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\PostResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\PostResource\RelationManagers;
-use Illuminate\Validation\Rules\Unique;
-
+use Filament\Panel;
 class PostResource extends Resource
 {
+//     Adding a badge to a navigation item and return the content of the badge
+    public static function getNavigationBadge(): ?string
+{
+    return static::getModel()::count();
+}
+protected static ?string $navigationGroup = 'Content Managment';
+
     protected static ?string $model = Post::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-folder-plus';
 
     public static function form(Form $form): Form
     {
@@ -72,7 +80,7 @@ class PostResource extends Resource
 
             ]);
     }
-
+    
     public static function table(Table $table): Table
     {
         return $table
