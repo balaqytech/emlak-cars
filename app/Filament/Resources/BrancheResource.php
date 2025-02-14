@@ -15,6 +15,8 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class BrancheResource extends Resource
 {
+    protected static ?string $navigationGroup = 'Settings';
+
     protected static ?string $model = Branche::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-building-office-2';
@@ -51,8 +53,10 @@ class BrancheResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
+                    ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('address')
+                    ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('working_hours')
                     ->searchable(),
@@ -63,6 +67,7 @@ class BrancheResource extends Resource
                 Tables\Columns\TextColumn::make('lag')
                     ->searchable(),
                 Tables\Columns\IconColumn::make('is_active')
+                    ->sortable()
                     ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()

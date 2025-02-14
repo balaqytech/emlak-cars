@@ -6,6 +6,7 @@ use App\Filament\Resources\BankResource\Pages;
 use App\Filament\Resources\BankResource\RelationManagers;
 use App\Models\Bank;
 use Filament\Forms;
+use Filament\Forms\Components\Tabs\Tab;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -29,6 +30,15 @@ class BankResource extends Resource
                 Forms\Components\TextInput::make('percentage')
                     ->required()
                     ->numeric(),
+                Forms\Components\TextInput::make('benefits')
+                    ->required()
+                    ->numeric(),
+                Forms\Components\TextInput::make('insurance')
+                    ->required(),
+                Forms\Components\TextInput::make('management_fees')
+                    ->required(),
+                Forms\Components\TextInput::make('period')
+                    ->required(),
                 Forms\Components\Toggle::make('is_active')
                     ->required(),
             ]);
@@ -39,14 +49,36 @@ class BankResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
+                    ->sortable()
+                    ->toggleable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('percentage')
                     ->numeric()
+                    ->toggleable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('benefits')
+                    ->numeric()
+                    ->toggleable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('insurance')
+                    ->numeric()
+                    ->toggleable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('management_fees')
+                    ->numeric()
+                    ->toggleable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('period')
+                    ->numeric()
+                    ->toggleable()
                     ->sortable(),
                 Tables\Columns\IconColumn::make('is_active')
+                    ->sortable()
+                    ->toggleable()
                     ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
+                    ->toggleable()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')

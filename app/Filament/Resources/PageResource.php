@@ -17,9 +17,11 @@ use App\Filament\Resources\PageResource\RelationManagers;
 
 class PageResource extends Resource
 {
+    protected static ?string $navigationGroup = 'Content Managment';
+
     protected static ?string $model = Page::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-folder';
 
     public static function form(Form $form): Form
     {
@@ -71,15 +73,19 @@ class PageResource extends Resource
         return $table
         ->columns([
             Tables\Columns\TextColumn::make('title')
+                ->sortable()
                 ->searchable(),
             Tables\Columns\TextColumn::make('slug')
+                ->sortable()
                 ->searchable(),
             Tables\Columns\TextColumn::make('excerpt')
                 ->searchable(),
             Tables\Columns\ImageColumn::make('image'),
             Tables\Columns\IconColumn::make('is_active')
+                ->sortable()
                 ->boolean(),
             Tables\Columns\IconColumn::make('is_published')
+                ->sortable()
                 ->boolean(),
             Tables\Columns\TextColumn::make('published_at')
                 ->dateTime()
