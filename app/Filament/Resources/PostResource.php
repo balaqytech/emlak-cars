@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\PostResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\PostResource\RelationManagers;
+use DeepCopy\Filter\Filter;
 use Filament\Panel;
 class PostResource extends Resource
 {
@@ -127,7 +128,11 @@ protected static ?string $navigationGroup = 'Content Managment';
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                Tables\Filters\Filter::make('Published Posts')
+                    ->query(
+                        function (Builder $query): Builder {
+                          return  $query->where('is_published' , true);
+                        })
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
