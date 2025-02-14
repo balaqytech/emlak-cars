@@ -71,15 +71,19 @@ class PageResource extends Resource
         return $table
         ->columns([
             Tables\Columns\TextColumn::make('title')
+                ->sortable()
                 ->searchable(),
             Tables\Columns\TextColumn::make('slug')
+                ->sortable()
                 ->searchable(),
             Tables\Columns\TextColumn::make('excerpt')
                 ->searchable(),
             Tables\Columns\ImageColumn::make('image'),
             Tables\Columns\IconColumn::make('is_active')
+                ->sortable()
                 ->boolean(),
             Tables\Columns\IconColumn::make('is_published')
+                ->sortable()
                 ->boolean(),
             Tables\Columns\TextColumn::make('published_at')
                 ->dateTime()

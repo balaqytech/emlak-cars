@@ -15,6 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->decimal('percentage', 8, 2);
+            $table->decimal('benefits', 8, 2);
+            $table->decimal('insurance', 8, 2);
+            $table->decimal('management_fees', 8, 2);
+            $table->integer('period');
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
