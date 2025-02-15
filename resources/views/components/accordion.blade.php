@@ -1,26 +1,24 @@
-<div x-data="{ isExpanded: false }">
-    <button id="controlsAccordionItemOne" type="button"
-        class="flex w-full items-center justify-between gap-4 bg-white p-4 underline-offset-2 "
-        aria-controls="accordionItemOne" x-on:click="isExpanded = ! isExpanded"
-        x-bind:class="isExpanded ? 'font-bold' : 'font-medium'"
-        x-bind:aria-expanded="isExpanded ? 'true' : 'false'">
+<div class="hs-accordion bg-white border -mt-px first:rounded-t-lg last:rounded-b-lg" id="hs-heading-{{ $index }}">
+    <button
+        class="hs-accordion-toggle hs-accordion-active:text-primary px-6 py-4 inline-flex items-center justify-between gap-x-3 w-full font-semibold text-start text-gray-800 hover:text-gray-500 rounded-lg disabled:opacity-50 disabled:pointer-events-none"
+        aria-expanded="false" aria-controls="hs-collapse-{{ $index }}">
         {{ $title }}
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2"
-            stroke="currentColor" class="size-5 shrink-0 transition" aria-hidden="true"
-            x-bind:class="isExpanded ? 'rotate-180' : ''">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+        <svg class="hs-accordion-active:hidden block size-4" xmlns="http://www.w3.org/2000/svg" width="24"
+            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="m6 9 6 6 6-6"></path>
+        </svg>
+        <svg class="hs-accordion-active:block hidden size-4" xmlns="http://www.w3.org/2000/svg" width="24"
+            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="m18 15-6-6-6 6"></path>
         </svg>
     </button>
-    <div x-cloak x-show="isExpanded" role="region"
-        aria-labelledby="controlsAccordionItemOne" x-collapse
-        x-transition:enter="transition ease-out duration-300"
-        x-transition:enter-start="opacity-0 scale-90"
-        x-transition:enter-end="opacity-100 scale-100"
-        x-transition:leave="transition ease-in duration-300"
-        x-transition:leave-start="opacity-100 scale-100"
-        x-transition:leave-end="opacity-0 scale-90">
-        <div class="p-4 text-sm sm:text-base text-pretty">
-            {{ $slot }}
-        </div>
+    <div id="hs-collapse-{{ $index }}"
+        class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 px-6 py-3" role="region"
+        aria-labelledby="hs-heading-{{ $index }}">
+        <p class="text-gray-800 dark:text-neutral-200">
+            {!! $slot !!}
+        </p>
     </div>
 </div>
