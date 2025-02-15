@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b194aea5e4c0998259ce2f6c5f8b98af",
+    "content-hash": "c7b55f1519c1daeefb00f825963737b5",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -3872,6 +3872,87 @@
             "time": "2025-01-07T11:48:34+00:00"
         },
         {
+            "name": "panakour/filament-flat-page",
+            "version": "v0.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/panakour/filament-flat-page.git",
+                "reference": "67db44e9b8f8bef157ee836eeb98604ee231f9bd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/panakour/filament-flat-page/zipball/67db44e9b8f8bef157ee836eeb98604ee231f9bd",
+                "reference": "67db44e9b8f8bef157ee836eeb98604ee231f9bd",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^3.0",
+                "php": "^8.2",
+                "spatie/laravel-package-tools": "^1.15.0",
+                "spatie/valuestore": "^1.3"
+            },
+            "require-dev": {
+                "larastan/larastan": "^2.0",
+                "laravel/pint": "^1.0",
+                "nunomaduro/collision": "^7.9|^8.0",
+                "orchestra/testbench": "^8.0|^9.0",
+                "pestphp/pest": "^3.2",
+                "pestphp/pest-plugin-arch": "^v3.0.0",
+                "pestphp/pest-plugin-laravel": "^v3.0.0",
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan-deprecation-rules": "^1.0",
+                "phpstan/phpstan-phpunit": "^1.0",
+                "spatie/laravel-ray": "^1.26"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "FilamentFlatPage": "Panakour\\FilamentFlatPage\\Facades\\FilamentFlatPage"
+                    },
+                    "providers": [
+                        "Panakour\\FilamentFlatPage\\FilamentFlatPageServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Panakour\\FilamentFlatPage\\": "src/",
+                    "Panakour\\FilamentFlatPage\\Database\\Factories\\": "database/factories/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Panagiotis Koursaris",
+                    "email": "panakourweb@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "This is my package filament-flat-page",
+            "homepage": "https://github.com/panakour/filament-flat-page",
+            "keywords": [
+                "filament-flat-page",
+                "filamentphp",
+                "laravel",
+                "panakour"
+            ],
+            "support": {
+                "issues": "https://github.com/panakour/filament-flat-page/issues",
+                "source": "https://github.com/panakour/filament-flat-page"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/panakour",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-10-03T11:29:33+00:00"
+        },
+        {
             "name": "phpoption/phpoption",
             "version": "1.9.3",
             "source": {
@@ -4966,6 +5047,73 @@
                 }
             ],
             "time": "2025-01-22T08:51:18+00:00"
+        },
+        {
+            "name": "spatie/valuestore",
+            "version": "1.3.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/valuestore.git",
+                "reference": "e9134c30faaf820e1f04f1dd27542b72b8effb09"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/valuestore/zipball/e9134c30faaf820e1f04f1dd27542b72b8effb09",
+                "reference": "e9134c30faaf820e1f04f1dd27542b72b8effb09",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.0|^8.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\Valuestore\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Jolita Grazyte",
+                    "email": "jolita@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Easily store some values",
+            "homepage": "https://github.com/spatie/valuestore",
+            "keywords": [
+                "json",
+                "spatie",
+                "valuestore"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/valuestore/issues",
+                "source": "https://github.com/spatie/valuestore/tree/1.3.3"
+            },
+            "funding": [
+                {
+                    "url": "https://spatie.be/open-source/support-us",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-02-14T13:01:27+00:00"
         },
         {
             "name": "symfony/clock",
