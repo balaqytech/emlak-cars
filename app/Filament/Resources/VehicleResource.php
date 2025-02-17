@@ -21,6 +21,11 @@ class VehicleResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    public static function getNavigationGroup(): ?string
+    {
+        return 'Vehicles';
+    }
+
     public static function form(Form $form): Form
     {
         return $form
@@ -58,20 +63,6 @@ class VehicleResource extends Resource
                             Forms\Components\Toggle::make('is_active')
                                 ->required(),
                         ]),
-                    Forms\Components\Wizard\Step::make('Car Colors')
-                        ->schema([
-                            Forms\Components\Repeater::make('colors')
-                                ->columns(2)
-                                ->schema([
-                                    Forms\Components\ColorPicker::make('color')
-                                        ->required(),
-                                    Forms\Components\TextInput::make('name')
-                                        ->required(),
-                                    Forms\Components\FileUpload::make('image')
-                                        ->image()
-                                        ->required(),
-                                ]),
-                        ]),
                     Forms\Components\Wizard\Step::make('Car Features')
                         ->columns(2)
                         ->schema([
@@ -86,10 +77,6 @@ class VehicleResource extends Resource
                                         ->required(),
                                 ]),
                         ]),
-                    // Forms\Components\Wizard\Step::make('Car Models')
-                    //     ->schema([
-                    //         // ...
-                    //     ]),
                 ])
                     ->columnSpanFull(),
             ]);

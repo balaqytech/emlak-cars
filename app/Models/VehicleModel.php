@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Casts\ModelColorCast;
 use Illuminate\Database\Eloquent\Model;
 
 class VehicleModel extends Model
@@ -11,17 +12,17 @@ class VehicleModel extends Model
         'excerpt',
         'image',
         'overview',
-        'price',
+        'specifications',
+        'colors',
         'vehicle_id',
+    ];
+
+    protected $casts = [
+        'colors' => ModelColorCast::class,
     ];
 
     public function vehicle()
     {
         return $this->belongsTo(Vehicle::class);
-    }
-
-    public function features()
-    {
-        return $this->belongsToMany(Feature::class)->withPivot('value');
     }
 }

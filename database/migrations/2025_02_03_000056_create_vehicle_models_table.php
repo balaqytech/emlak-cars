@@ -17,7 +17,9 @@ return new class extends Migration
             $table->string('excerpt')->nullable();
             $table->string('image');
             $table->text('overview');
-            $table->decimal('price', 15, 2);
+            $table->text('specifications');
+            $table->json('colors');
+
             $table->foreignIdFor(\App\Models\Vehicle::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
         });

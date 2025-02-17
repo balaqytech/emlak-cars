@@ -13,7 +13,6 @@ class Vehicle extends Model
         'image',
         'banner',
         'overview',
-        'colors',
         'features',
         'is_active',
         'vehicle_category_id',
@@ -21,7 +20,6 @@ class Vehicle extends Model
     ];
 
     protected $casts = [
-        'colors' => 'array',
         'features' => 'array',
     ];
 

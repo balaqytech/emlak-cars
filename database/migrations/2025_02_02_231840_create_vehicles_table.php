@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('image');
             $table->string('banner')->nullable();
             $table->text('overview');
-            $table->json('colors');
             $table->json('features');
             $table->boolean('is_active')->default(true);
 
