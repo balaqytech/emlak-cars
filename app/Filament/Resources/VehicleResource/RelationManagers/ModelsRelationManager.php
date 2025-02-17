@@ -84,4 +84,9 @@ class ModelsRelationManager extends RelationManager
                 ]),
             ]);
     }
+
+    public function isReadOnly(): bool
+    {
+        return false;
+    }
 }
