@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\VehicleResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\VehicleResource\RelationManagers;
+use App\Filament\Resources\VehicleResource\RelationManagers\ModelsRelationManager;
 
 class VehicleResource extends Resource
 {
@@ -64,7 +65,6 @@ class VehicleResource extends Resource
                                 ->required(),
                         ]),
                     Forms\Components\Wizard\Step::make('Car Features')
-                        ->columns(2)
                         ->schema([
                             Forms\Components\Repeater::make('features')
                                 ->schema([
@@ -88,26 +88,15 @@ class VehicleResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('slug')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('excerpt')
-                    ->searchable(),
                 Tables\Columns\ImageColumn::make('image'),
-                Tables\Columns\TextColumn::make('banner')
-                    ->searchable(),
+                Tables\Columns\ImageColumn::make('banner'),
+                Tables\Columns\TextColumn::make('category.name')
+                ->sortable(),
+                Tables\Columns\ImageColumn::make('brand.logo')
+                ->sortable(),
                 Tables\Columns\IconColumn::make('is_active')
                     ->boolean(),
-                Tables\Columns\TextColumn::make('vehicle_category_id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('vehicle_brand_id')
-                    ->numeric()
-                    ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -128,7 +117,7 @@ class VehicleResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            ModelsRelationManager::class
         ];
     }
 
