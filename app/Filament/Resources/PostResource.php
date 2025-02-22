@@ -18,14 +18,15 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\PostResource\RelationManagers;
 use DeepCopy\Filter\Filter;
 use Filament\Panel;
+
 class PostResource extends Resource
 {
-//     Adding a badge to a navigation item and return the content of the badge
+    //     Adding a badge to a navigation item and return the content of the badge
     public static function getNavigationBadge(): ?string
-{
-    return static::getModel()::count();
-}
-protected static ?string $navigationGroup = 'Content Managment';
+    {
+        return static::getModel()::count();
+    }
+    protected static ?string $navigationGroup = 'Content Managment';
 
     protected static ?string $model = Post::class;
 
@@ -55,9 +56,15 @@ protected static ?string $navigationGroup = 'Content Managment';
                             ->required()
                             ->columnSpanFull()
                             ->maxLength(255),
-                        Forms\Components\MarkdownEditor::make('content')
+                        Forms\Components\RichEditor::make('content')
                             ->required()
                             ->columnSpanFull(),
+                        Forms\Components\TextInput::make('video')
+                            ->label('Video URL')
+                            ->helperText('Enter a valid video URL')
+                            ->url()
+                            ->columnSpanFull()
+                            ->maxLength(255),
                     ]),
 
                 Forms\Components\Section::make('Additional Information')
@@ -67,42 +74,32 @@ protected static ?string $navigationGroup = 'Content Managment';
                             ->image()
                             ->required(),
                         Forms\Components\Toggle::make('is_active')
-                            ->required(),
-                        Forms\Components\Toggle::make('is_published')
+                            ->label('Publish')
+                            ->required()
+                            ->default(true),
+                        Forms\Components\Toggle::make('is_featured')
                             ->required(),
                         Forms\Components\DateTimePicker::make('published_at'),
                         Forms\Components\Select::make('post_category_id')
                             ->relationship(name: 'category', titleAttribute: 'name')
                             ->required(),
-                        Forms\Components\Select::make('user_id')
-                            ->label('Author')
-                            ->relationship(name: 'user', titleAttribute: 'name'),
                     ])
 
             ]);
     }
-    
+
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
+                Tables\Columns\ImageColumn::make('image'),
                 Tables\Columns\TextColumn::make('title')
                     ->searchable()
                     ->toggleable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('slug')
-                    ->searchable()
-                    ->toggleable()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('excerpt')
-                    ->searchable()
-                    ->toggleable(),
-                Tables\Columns\ImageColumn::make('image'),
                 Tables\Columns\IconColumn::make('is_active')
-                    ->searchable()
-                    ->toggleable()
-                    ->sortable(),
-                Tables\Columns\IconColumn::make('is_published')
+                    ->label('Published'),
+                Tables\Columns\IconColumn::make('is_featured')
                     ->sortable()
                     ->toggleable(),
                 Tables\Columns\TextColumn::make('published_at')
@@ -110,10 +107,6 @@ protected static ?string $navigationGroup = 'Content Managment';
                     ->toggleable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('category.name')
-                    ->searchable()
-                    ->toggleable()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('user.name')
                     ->searchable()
                     ->toggleable()
                     ->sortable(),
@@ -131,8 +124,9 @@ protected static ?string $navigationGroup = 'Content Managment';
                 Tables\Filters\Filter::make('Published Posts')
                     ->query(
                         function (Builder $query): Builder {
-                          return  $query->where('is_published' , true);
-                        })
+                            return  $query->where('is_active', true);
+                        }
+                    )
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

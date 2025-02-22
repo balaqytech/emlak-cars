@@ -17,13 +17,13 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('excerpt');
             $table->text('content');
+            $table->string('video')->nullable();
             $table->string('image');
             $table->boolean('is_active')->default(true);
-            $table->boolean('is_published')->default(false);
+            $table->boolean('is_featured')->default(false);
             $table->timestamp('published_at')->nullable();
 
             $table->foreignIdFor(\App\Models\PostCategory::class)->constrained();
-            $table->foreignIdFor(\App\Models\User::class)->constrained();
             $table->timestamps();
         });
     }
