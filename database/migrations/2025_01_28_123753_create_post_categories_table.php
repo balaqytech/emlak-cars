@@ -14,9 +14,6 @@ return new class extends Migration
         Schema::create('post_categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('slug')->unique();
-            $table->foreignId('parent_id')->nullable()->constrained('post_categories', 'id')->nullOnDelete();
-            $table->integer('order_column')->nullable();
             $table->boolean('is_active')->default(true);            
             $table->timestamps();
         });

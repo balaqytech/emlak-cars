@@ -28,15 +28,10 @@ class PostCategoryResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('slug')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\Select::make('parent_id')
-                    ->relationship(name: 'parent', titleAttribute: 'name', ignoreRecord: true),
-                Forms\Components\TextInput::make('order_column')
-                    ->numeric(),
                 Forms\Components\Toggle::make('is_active')
-                    ->required(),
+                    ->required()
+                    ->default(true)
+                    ->inline(false),
             ]);
     }
 
@@ -46,13 +41,6 @@ class PostCategoryResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('slug')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('parent.name')
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('order_column')
-                    ->numeric()
-                    ->sortable(),
                 Tables\Columns\IconColumn::make('is_active')
                     ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
