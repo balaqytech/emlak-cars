@@ -57,12 +57,6 @@ class PageResource extends Resource
                         ->required(),
                     Forms\Components\Toggle::make('is_active')
                         ->required(),
-                    Forms\Components\Toggle::make('is_published')
-                        ->required(),
-                    Forms\Components\DateTimePicker::make('published_at'),
-                    Forms\Components\Select::make('user_id')
-                        ->label('Author')
-                        ->relationship(name: 'user', titleAttribute: 'name')->required(),
                 ])
 
         ]);
@@ -84,19 +78,7 @@ class PageResource extends Resource
             Tables\Columns\IconColumn::make('is_active')
                 ->sortable()
                 ->boolean(),
-            Tables\Columns\IconColumn::make('is_published')
-                ->sortable()
-                ->boolean(),
-            Tables\Columns\TextColumn::make('published_at')
-                ->dateTime()
-                ->sortable(),
-            Tables\Columns\TextColumn::make('user.name')
-                ->sortable(),
             Tables\Columns\TextColumn::make('created_at')
-                ->dateTime()
-                ->sortable()
-                ->toggleable(isToggledHiddenByDefault: true),
-            Tables\Columns\TextColumn::make('updated_at')
                 ->dateTime()
                 ->sortable()
                 ->toggleable(isToggledHiddenByDefault: true),

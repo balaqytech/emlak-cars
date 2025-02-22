@@ -19,9 +19,6 @@ return new class extends Migration
             $table->text('content');
             $table->string('image');
             $table->boolean('is_active')->default(true);
-            $table->boolean('is_published')->default(false);
-            $table->timestamp('published_at')->nullable();
-            $table->foreignIdFor(\App\Models\User::class)->constrained();
             $table->timestamps();
         });
     }
