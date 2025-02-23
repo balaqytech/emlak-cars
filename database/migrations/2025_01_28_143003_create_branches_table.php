@@ -15,10 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('address');
-            $table->string('working_hours');
+            $table->text('working_hours')->nullable();
             $table->string('contact_mobile')->nullable();
+            $table->string('contact_whatsapp')->nullable();
             $table->string('lat')->nullable();
             $table->string('lag')->nullable();
+            $table->text('map_embed')->nullable();
             $table->boolean('is_active')->default(true);            
             $table->timestamps();
         });

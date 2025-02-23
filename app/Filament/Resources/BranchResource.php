@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\BrancheResource\Pages;
-use App\Filament\Resources\BrancheResource\RelationManagers;
-use App\Models\Branche;
+use App\Filament\Resources\BranchResource\Pages;
+use App\Filament\Resources\BranchResource\RelationManagers;
+use App\Models\Branch;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,13 +13,13 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class BrancheResource extends Resource
+class BranchResource extends Resource
 {
-    protected static ?string $navigationGroup = 'Settings';
-
-    protected static ?string $model = Branche::class;
+    protected static ?string $model = Branch::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-building-office-2';
+
+    protected static ?string $navigationGroup = 'Content Managment';
 
     public static function form(Form $form): Form
     {
@@ -31,20 +31,20 @@ class BrancheResource extends Resource
                 Forms\Components\TextInput::make('address')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('working_hours')
-                    ->required()
-                    ->maxLength(255),
                 Forms\Components\TextInput::make('contact_mobile')
-                    ->maxLength(255)
-                    ->default(null),
-                Forms\Components\TextInput::make('lat')
-                    ->maxLength(255)
-                    ->default(null),
-                Forms\Components\TextInput::make('lag')
-                    ->maxLength(255)
-                    ->default(null),
+                    ->tel()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('contact_whatsapp')
+                    ->helperText('Please enter the phone number with the country code.')
+                    ->tel()
+                    ->maxLength(255),
+                Forms\Components\Textarea::make('map_embed')
+                    ->columnSpanFull(),
+                Forms\Components\Textarea::make('working_hours')
+                    ->columnSpanFull(),
                 Forms\Components\Toggle::make('is_active')
-                    ->required(),
+                    ->required()
+                    ->default(true),
             ]);
     }
 
@@ -53,27 +53,16 @@ class BrancheResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('address')
-                    ->sortable()
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('working_hours')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('contact_mobile')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('lat')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('lag')
+                Tables\Columns\TextColumn::make('contact_whatsapp')
                     ->searchable(),
                 Tables\Columns\IconColumn::make('is_active')
-                    ->sortable()
                     ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -83,6 +72,7 @@ class BrancheResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -91,19 +81,10 @@ class BrancheResource extends Resource
             ]);
     }
 
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
-    }
-
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListBranches::route('/'),
-            'create' => Pages\CreateBranche::route('/create'),
-            'edit' => Pages\EditBranche::route('/{record}/edit'),
+            'index' => Pages\ManageBranches::route('/'),
         ];
     }
 }
