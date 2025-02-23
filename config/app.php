@@ -123,4 +123,31 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Application Locale Configuration
+    |--------------------------------------------------------------------------
+    |
+    | The application locale determines the default locale that will be used
+    | by Laravel's translation / localization services.
+    |
+    */
+
+    'locales' => [
+        'ar', 'en',
+    ],
+
+    'locale_config' => [
+        'ar' => [
+            'name' => 'عربي',
+            'rtl' => true,
+            'prefix' => '',
+        ],
+        'en' => [
+            'name' => 'English',
+            'rtl' => false,
+            'prefix' => 'en',
+        ],
+    ],
+
 ];
