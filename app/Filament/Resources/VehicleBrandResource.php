@@ -11,12 +11,15 @@ use Illuminate\Support\Str;
 use App\Models\VehicleBrand;
 use Filament\Resources\Resource;
 use Illuminate\Database\Eloquent\Builder;
+use Filament\Resources\Concerns\Translatable;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\VehicleBrandResource\Pages;
 use App\Filament\Resources\VehicleBrandResource\RelationManagers;
 
 class VehicleBrandResource extends Resource
 {
+    use Translatable;
+
     protected static ?string $model = VehicleBrand::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';

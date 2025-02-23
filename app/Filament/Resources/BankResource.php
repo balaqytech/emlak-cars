@@ -13,9 +13,12 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Resources\Concerns\Translatable;
 
 class BankResource extends Resource
 {
+    use Translatable;
+
     protected static ?string $model = Bank::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-banknotes';

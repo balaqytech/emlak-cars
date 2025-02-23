@@ -15,9 +15,12 @@ use App\Filament\Resources\VehicleResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\VehicleResource\RelationManagers;
 use App\Filament\Resources\VehicleResource\RelationManagers\ModelsRelationManager;
+use Filament\Resources\Concerns\Translatable;
 
 class VehicleResource extends Resource
 {
+    use Translatable;
+
     protected static ?string $model = Vehicle::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
@@ -91,9 +94,9 @@ class VehicleResource extends Resource
                 Tables\Columns\ImageColumn::make('image'),
                 Tables\Columns\ImageColumn::make('banner'),
                 Tables\Columns\TextColumn::make('category.name')
-                ->sortable(),
+                    ->sortable(),
                 Tables\Columns\ImageColumn::make('brand.logo')
-                ->sortable(),
+                    ->sortable(),
                 Tables\Columns\IconColumn::make('is_active')
                     ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')

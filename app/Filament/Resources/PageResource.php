@@ -14,9 +14,12 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\PageResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\PageResource\RelationManagers;
+use Filament\Resources\Concerns\Translatable;
 
 class PageResource extends Resource
 {
+    use Translatable;
+
     protected static ?string $navigationGroup = 'Content Managment';
 
     protected static ?string $model = Page::class;

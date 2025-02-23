@@ -3,29 +3,27 @@
 namespace App\Filament\Resources;
 
 use Filament\Forms;
+use Filament\Panel;
 use App\Models\Post;
 use Filament\Tables;
 use Filament\Forms\Set;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
+use DeepCopy\Filter\Filter;
 use Illuminate\Support\Str;
 use Filament\Resources\Resource;
 use Illuminate\Validation\Rules\Unique;
 use Filament\Navigation\NavigationGroup;
 use Illuminate\Database\Eloquent\Builder;
+use Filament\Resources\Concerns\Translatable;
 use App\Filament\Resources\PostResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\PostResource\RelationManagers;
-use DeepCopy\Filter\Filter;
-use Filament\Panel;
 
 class PostResource extends Resource
 {
-    //     Adding a badge to a navigation item and return the content of the badge
-    public static function getNavigationBadge(): ?string
-    {
-        return static::getModel()::count();
-    }
+    use Translatable;
+
     protected static ?string $navigationGroup = 'Content Managment';
 
     protected static ?string $model = Post::class;

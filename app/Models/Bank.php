@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
 
 class Bank extends Model
 {
+    use HasTranslations;
+
     protected $fillable = [
         'name',
         'percentage',
@@ -16,5 +19,9 @@ class Bank extends Model
     ];
     protected $casts = [
         'is_active' => 'boolean',
+    ];
+
+    public $translatable = [
+        'name',
     ];
 }

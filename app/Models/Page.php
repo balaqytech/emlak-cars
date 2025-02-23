@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
 
 class Page extends Model
 {
+    use HasTranslations;
+
     protected $fillable = [
         'title',
         'slug',
@@ -17,5 +20,11 @@ class Page extends Model
 
     protected $casts = [
         'is_active' => 'boolean',
+    ];
+
+    public $translatable = [
+        'title',
+        'excerpt',
+        'content',
     ];
 }

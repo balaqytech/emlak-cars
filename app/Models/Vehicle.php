@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
 
 class Vehicle extends Model
 {
+    use HasTranslations;
+
     protected $fillable = [
         'name',
         'slug',
@@ -21,6 +24,13 @@ class Vehicle extends Model
 
     protected $casts = [
         'features' => 'array',
+    ];
+
+    public $translatable = [
+        'name',
+        'excerpt',
+        'overview',
+        'features',
     ];
 
     public function category()

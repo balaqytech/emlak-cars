@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
 
 class Post extends Model
 {
+    use HasTranslations;
+
     protected $fillable = [
         'title',
         'slug',
@@ -23,6 +26,12 @@ class Post extends Model
         'is_active' => 'boolean',
         'is_featured' => 'boolean',
         'published_at' => 'datetime',
+    ];
+
+    public $translatable = [
+        'title',
+        'excerpt',
+        'content',
     ];
 
     public function category()

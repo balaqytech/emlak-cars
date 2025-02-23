@@ -4,9 +4,12 @@ namespace App\Models;
 
 use App\Casts\ModelColorCast;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
 
 class VehicleModel extends Model
 {
+    use HasTranslations;
+
     protected $fillable = [
         'name',
         'excerpt',
@@ -19,6 +22,13 @@ class VehicleModel extends Model
 
     protected $casts = [
         'colors' => ModelColorCast::class,
+    ];
+
+    public $translatable = [
+        'name',
+        'excerpt',
+        'overview',
+        'specifications',
     ];
 
     public function vehicle()

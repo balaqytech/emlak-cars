@@ -12,9 +12,12 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Resources\Concerns\Translatable;
 
 class PostCategoryResource extends Resource
 {
+    use Translatable;
+
     protected static ?string $navigationGroup = 'Content Managment';
 
     protected static ?string $model = PostCategory::class;
