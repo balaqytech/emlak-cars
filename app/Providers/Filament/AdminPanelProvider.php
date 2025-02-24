@@ -53,10 +53,10 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-            ])->plugin(
+            ])->plugins([
                 SpatieLaravelTranslatablePlugin::make()
                     ->defaultLocales(config('app.locales')),
                 \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make(),
-            );
+            ]);
     }
 }
