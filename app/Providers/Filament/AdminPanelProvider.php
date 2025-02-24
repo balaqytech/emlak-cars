@@ -56,7 +56,7 @@ class AdminPanelProvider extends PanelProvider
             ])->plugin(
                 SpatieLaravelTranslatablePlugin::make()
                     ->defaultLocales(config('app.locales')),
+                \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make(),
             );
-            
     }
 }
