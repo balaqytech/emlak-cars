@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\PurchaseApplicationResource\Pages;
 use App\Models\PurchaseApplication;
+use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
 use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -11,7 +12,7 @@ use Filament\Infolists;
 use Filament\Tables\Table;
 use Illuminate\Console\View\Components\Info;
 
-class PurchaseApplicationResource extends Resource
+class PurchaseApplicationResource extends Resource implements HasShieldPermissions
 {
     protected static ?string $model = PurchaseApplication::class;
 
@@ -102,6 +103,14 @@ class PurchaseApplicationResource extends Resource
         return [
             'index' => Pages\ListPurchaseApplications::route('/'),
             'view' => Pages\ViewPurchaseApplication::route('/{record}'),
+        ];
+    }
+
+    public static function getPermissionPrefixes(): array
+    {
+        return [
+            'view',
+            'view_any',
         ];
     }
 }

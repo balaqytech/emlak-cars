@@ -4,13 +4,14 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ContactSubmissionResource\Pages;
 use App\Models\ContactSubmission;
+use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
 use Filament\Infolists;
 use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 
-class ContactSubmissionResource extends Resource
+class ContactSubmissionResource extends Resource implements HasShieldPermissions
 {
     protected static ?string $model = ContactSubmission::class;
 
@@ -63,6 +64,14 @@ class ContactSubmissionResource extends Resource
         return [
             'index' => Pages\ListContactSubmissions::route('/'),
             'view' => Pages\ViewContactSubmission::route('/{record}'),
+        ];
+    }
+
+    public static function getPermissionPrefixes(): array
+    {
+        return [
+            'view',
+            'view_any',
         ];
     }
 }
