@@ -4,10 +4,13 @@ namespace App\Filament\Pages\Settings;
 
 use Filament\Forms;
 use Panakour\FilamentFlatPage\Pages\FlatPage;
+use BezhanSalleh\FilamentShield\Traits\HasPageShield;
 use Panakour\FilamentFlatPage\Facades\FilamentFlatPage;
 
 class FAQSettings extends FlatPage
 {
+    use HasPageShield;
+
     protected static ?string $navigationIcon = 'heroicon-o-question-mark-circle';
     protected static ?string $navigationGroup = 'Settings';
     protected static ?string $title = 'FAQs Settings';

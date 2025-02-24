@@ -4,9 +4,12 @@ namespace App\Filament\Pages\Settings;
 
 use Filament\Forms;
 use Panakour\FilamentFlatPage\Pages\FlatPage;
+use BezhanSalleh\FilamentShield\Traits\HasPageShield;
 
 class ContactPage extends FlatPage
 {
+    use HasPageShield;
+
     protected static ?string $navigationIcon = 'heroicon-o-envelope';
     protected static ?string $navigationGroup = 'Settings';
     protected static ?string $title = 'Manage Contact Page';

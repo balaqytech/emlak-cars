@@ -2,15 +2,18 @@
 
 namespace App\Filament\Pages\Settings;
 
-use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\FileUpload;
 use Panakour\FilamentFlatPage\Pages\FlatPage;
+use BezhanSalleh\FilamentShield\Traits\HasPageShield;
 
 class GeneralSettings extends FlatPage
 {
+    use HasPageShield;
+
     protected static ?string $navigationIcon = 'heroicon-o-cog-6-tooth';
     protected static ?string $navigationGroup = 'Settings';
     protected static ?string $title = 'General Settings';
