@@ -4,10 +4,12 @@ namespace App\Models;
 
 use App\Casts\ModelColorCast;
 use Illuminate\Database\Eloquent\Model;
+use OwenIt\Auditing\Contracts\Auditable;
 use Spatie\Translatable\HasTranslations;
 
-class VehicleModel extends Model
+class VehicleModel extends Model implements Auditable
 {
+    use \OwenIt\Auditing\Auditable;
     use HasTranslations;
 
     protected $fillable = [

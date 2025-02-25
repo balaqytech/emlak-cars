@@ -4,12 +4,14 @@ namespace App\Models;
 
 use App\Models\Scopes\PublishedScope;
 use Illuminate\Database\Eloquent\Model;
+use OwenIt\Auditing\Contracts\Auditable;
 use Spatie\Translatable\HasTranslations;
 use Illuminate\Database\Eloquent\Attributes\ScopedBy;
 
 #[ScopedBy(PublishedScope::class)]
-class Vehicle extends Model
+class Vehicle extends Model implements Auditable
 {
+    use \OwenIt\Auditing\Auditable;
     use HasTranslations;
 
     protected $fillable = [

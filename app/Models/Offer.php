@@ -3,11 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use OwenIt\Auditing\Contracts\Auditable;
 use Spatie\Translatable\HasTranslations;
 use Illuminate\Database\Eloquent\Builder;
 
-class Offer extends Model
+class Offer extends Model implements Auditable
 {
+    use \OwenIt\Auditing\Auditable;
     use HasTranslations;
 
     protected $fillable = [
