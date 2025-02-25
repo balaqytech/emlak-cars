@@ -46,7 +46,7 @@ return [
     ],
     'contact_submissions' => [
         'label' => 'تقديمات نموذج تواصل معنا',
-        'singular_label' => 'تقديم',
+        'singular_label' => 'تقديم تواصل',
         'name' => 'الاسم',
         'phone' => 'الهاتف',
         'email' => 'البريد الإلكتروني',
@@ -56,7 +56,7 @@ return [
     ],
     'purchase_applications' => [
         'label' => 'تقديمات الشراء',
-        'singular_label' => 'تقديم',
+        'singular_label' => 'تقديم شراء',
         'payment_method' => 'طريقة الدفع',
         'contact_details' => 'بيانات التواصل',
         'name' => 'الاسم',
