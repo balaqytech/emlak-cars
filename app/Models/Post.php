@@ -2,9 +2,12 @@
 
 namespace App\Models;
 
+use App\Models\Scopes\PublishedScope;
+use Illuminate\Database\Eloquent\Attributes\ScopedBy;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 
+#[ScopedBy(PublishedScope::class)]
 class Post extends Model
 {
     use HasTranslations;

@@ -2,9 +2,12 @@
 
 namespace App\Models;
 
+use App\Models\Scopes\PublishedScope;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
+use Illuminate\Database\Eloquent\Attributes\ScopedBy;
 
+#[ScopedBy(PublishedScope::class)]
 class Bank extends Model
 {
     use HasTranslations;
@@ -16,6 +19,7 @@ class Bank extends Model
         'insurance',
         'management_fees',
         'period',
+        'is_active'
     ];
     protected $casts = [
         'is_active' => 'boolean',
