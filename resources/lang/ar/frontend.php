@@ -1,6 +1,20 @@
 <?php
 
 return [
+    'about' => [
+        'page_title' => 'عن الشركة',
+    ],
+    'offers' => [
+        'page_title' => 'العروض',
+        'heading' => 'عروضنا',
+        'subheading' => 'اكتشف عروضنا الحصرية',
+        'due_date' => 'تاريخ الانتهاء',
+        'due_date_left' => 'تبقى :date',
+        'read_more' => 'اقرأ المزيد',
+        'more_info' => 'المزيد',
+        'no_offers' => 'لا توجد عروض حاليًا',
+        'faqs' => 'الأسئلة الشائعة حول العرض',
+    ],
     'branches' => [
         'page_title' => 'الفروع',
         'heading' => 'فروعنا متاحة وجاهزة لخدمتك',
