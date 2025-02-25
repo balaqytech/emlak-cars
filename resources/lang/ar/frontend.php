@@ -1,6 +1,17 @@
 <?php
 
 return [
+    'branches' => [
+        'page_title' => 'الفروع',
+        'heading' => 'فروعنا متاحة وجاهزة لخدمتك',
+        'subheading' => 'تعرف على فروعنا',
+        'more_info' => 'المزيد',
+        'no_branches' => 'لا توجد فروع حاليًا',
+        'address' => 'العنوان',
+        'working_hours' => 'ساعات العمل',
+        'contact_mobile' => 'رقم الهاتف',
+        'contact_whatsapp' => 'واتساب',
+    ],
     'faqs' => [
         'page_title' => 'الأسئلة الشائعة',
     ],
