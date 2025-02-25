@@ -4,13 +4,13 @@
     </a>
     <div class="p-10 flex flex-col gap-2">
         <h3 class="text-xl font-bold text-slate-700">
-            <a href="/posts/{{ $post->slug }}" class="hover:underline hover:text-primary">Post Title</a>
+            <a href="/posts/{{ $post->slug }}" class="hover:underline hover:text-primary">{{ $post->title }}</a>
         </h3>
-        <p class="text-gray-600 text-sm flex items-center gap-2">
+        <p class="text-slate-500 text-sm flex items-center gap-2">
             <x-icons.calendar class="w-4 h-4 inline-block text-primary"></x-icons.calendar>
             <time datetime="{{ $post->published_at }}">{{ $post->published_at->format('d/m/Y') }}</time>
         </p>
-        <p class="mt-2 text-gray-800">{{ $post->excerpt ?? \Illuminate\Support\Str::words($post->content, 15, '...') }}</p>
-        <a href="/posts/{{ $post->slug }}" class="text-primary hover:underline mt-2 inline-block">{{ __('frontend.read_more') }}</a>
+        <p class="mt-2 text-slate-600 text-sm">{{ $post->excerpt ?? \Illuminate\Support\Str::words($post->content, 15, '...') }}</p>
+        <a href="/posts/{{ $post->slug }}" class="text-primary hover:underline mt-2 inline-block">{{ __('frontend.posts.read_more') }}</a>
     </div>
 </article>

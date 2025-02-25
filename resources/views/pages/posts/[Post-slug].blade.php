@@ -18,11 +18,15 @@
         <header
             class="flex flex-col items-center justify-center gap-4 mb-24 -mt-36 relative bg-white p-20 text-center shadow-3xl rounded-lg">
             <div>
-                <a href="#" class="bg-primary hover:bg-slate-700 text-white rounded px-5 py-2 transition-all duration-500">{{ $post->category->name }}</a>
+                <span
+                    class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-primary text-white">
+                    <x-icons.tag class="size-4" />
+                    {{ $post->category->name }}
+                </span>
             </div>
             <h1 class="text-5xl font-bold text-slate-800">{{ $post->title }}</h1>
             <div class="text-sm mt-2">
-                <p>{{ __('frontend.published_at') }} <time
+                <p>{{ __('frontend.posts.published_at') }} <time
                         datetime="{{ $post->published_at }}">{{ $post->published_at->format('d/m/Y') }}</time></p>
             </div>
         </header>
@@ -30,6 +34,17 @@
         <section class="prose max-w-none">
             {!! $post->content !!}
         </section>
+
+        @if ($post->video)
+            <section class="mt-12">
+                <div class="wrapper">
+                    <div class="aspect-w-16 aspect-h-9">
+                        <iframe src="{{ $post->video }}" frameborder="0" allowfullscreen
+                            class="w-full h-full"></iframe>
+                    </div>
+                </div>
+            </section>
+        @endif
     </article>
 
 </x-app-layout>

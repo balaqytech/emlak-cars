@@ -4,6 +4,12 @@ return [
     'about' => [
         'page_title' => 'عن الشركة',
     ],
+    'posts' => [
+        'page_title' => 'احدث المقالات والاخبار',
+        'read_more' => 'اقرأ المزيد',
+        'published_at' => 'نشر في',
+        'no_posts' => 'لا توجد أي أخبار حاليًا',
+    ],
     'offers' => [
         'page_title' => 'العروض',
         'heading' => 'عروضنا',
