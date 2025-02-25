@@ -3,9 +3,10 @@
         {{ $title }}
     </x-slot>
 
-    <section class="min-h-[60vh] flex items-center justify-center bg-primary text-white" style="background-image: url('https://placehold.co/1920x600/af1f23/ff575c'); background-size: cover; background-position: center;">
-        <div class="wrapper">
-            <h1 class="text-3xl font-bold text-center">{{ $title }}</h1>
+    <section class="relative min-h-[60vh] flex items-center justify-center bg-primary text-white bg-cover bg-center after:content-[''] after:absolute after:inset-0 after:bg-slate-950 after:opacity-15" style="background-image: url({{ asset('storage/' . general_settings('site_banner')) }});">
+        <div class="wrapper relative z-10">
+            <h1 class="text-5xl font-bold text-center">{{ $title }}</h1>
+            <p class="text-center mt-4">{{ $excerpt ?? '' }}</p>
         </div>
     </section>
 

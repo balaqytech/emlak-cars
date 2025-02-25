@@ -133,7 +133,7 @@
                         <x-icons.locations class="shrink-0 size-6 mt-1.5 text-slate-800" />
                         <div class="grow">
                             <h3 class="font-semibold text-slate-800">{{ __('frontend.contact.more_info.branches.heading') }}</h3>
-                            <p class="mt-1 text-sm text-slate-500">{{ __('frontend.contact.more_info.email.description') }}</p>
+                            <p class="mt-1 text-sm text-slate-500">{{ __('frontend.contact.more_info.branches.description') }}</p>
                             <a class="mt-2 inline-flex items-center gap-x-2 text-sm font-medium  hover:text-slate-800 focus:outline-none focus:text-slate-800"
                                 href="/branches">
                                 {{ __('frontend.contact.more_info.branches.button') }}
