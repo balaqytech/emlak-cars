@@ -51,6 +51,7 @@ class OfferResource extends Resource
                 Forms\Components\TextInput::make('slug')
                     ->label(__('backend.offers.slug'))
                     ->required()
+                    ->unique(ignoreRecord: true)
                     ->maxLength(255),
                 Forms\Components\FileUpload::make('image')
                     ->label(__('backend.offers.image'))

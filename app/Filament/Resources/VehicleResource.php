@@ -58,6 +58,7 @@ class VehicleResource extends Resource
                             Forms\Components\TextInput::make('slug')
                                 ->label(__('backend.vehicles.slug'))
                                 ->required()
+                                ->unique(ignoreRecord: true)
                                 ->maxLength(255),
                             Forms\Components\Textarea::make('excerpt')
                                 ->label(__('backend.vehicles.excerpt'))

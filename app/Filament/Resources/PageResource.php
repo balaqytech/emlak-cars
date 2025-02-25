@@ -58,6 +58,7 @@ class PageResource extends Resource
                         Forms\Components\TextInput::make('slug')
                             ->label(__('backend.pages.slug'))
                             ->required()
+                            ->unique(ignoreRecord: true)
                             ->maxLength(255),
                         Forms\Components\Textarea::make('excerpt')
                             ->label(__('backend.pages.excerpt'))

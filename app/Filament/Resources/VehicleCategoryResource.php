@@ -48,6 +48,7 @@ class VehicleCategoryResource extends Resource
                 Forms\Components\TextInput::make('slug')
                     ->label(__('backend.vehicle_categories.slug'))
                     ->required()
+                    ->unique(ignoreRecord: true)
                     ->maxLength(255),
                 Forms\Components\Textarea::make('description')
                     ->label(__('backend.vehicle_categories.description'))

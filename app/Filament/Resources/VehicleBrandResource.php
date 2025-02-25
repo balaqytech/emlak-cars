@@ -52,6 +52,7 @@ class VehicleBrandResource extends Resource
                 Forms\Components\TextInput::make('slug')
                     ->label(__('backend.vehicle_brands.slug'))
                     ->required()
+                    ->unique(ignoreRecord: true)
                     ->maxLength(255),
                 Forms\Components\FileUpload::make('logo')
                     ->label(__('backend.vehicle_brands.logo'))
