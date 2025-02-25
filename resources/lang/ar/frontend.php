@@ -1,6 +1,9 @@
 <?php
 
 return [
+    'faqs' => [
+        'page_title' => 'الأسئلة الشائعة',
+    ],
     'contact' => [
         'page_title' => 'تواصل معنا',
         'heading' => 'تواصل معنا',
