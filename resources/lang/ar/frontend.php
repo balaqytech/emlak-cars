@@ -1,6 +1,16 @@
 <?php
 
 return [
+    'navigation' => [
+        'home' => 'الرئيسية',
+        'about' => 'عن الشركة',
+        'posts' => 'المقالات',
+        'offers' => 'العروض',
+        'branches' => 'الفروع',
+        'faqs' => 'الأسئلة الشائعة',
+        'contact' => 'تواصل معنا',
+        'installment_calculator' => 'حاسبة التقسيط',
+    ],
     'about' => [
         'page_title' => 'عن الشركة',
     ],
