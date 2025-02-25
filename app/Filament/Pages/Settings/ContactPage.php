@@ -11,8 +11,22 @@ class ContactPage extends FlatPage
     use HasPageShield;
 
     protected static ?string $navigationIcon = 'heroicon-o-envelope';
-    protected static ?string $navigationGroup = 'Settings';
-    protected static ?string $title = 'Manage Contact Page';
+    protected static ?int $navigationSort = 3;
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('backend.navigation_groups.settings');
+    }
+
+    public function getTitle(): string
+    {
+        return __('backend.contact_page.title');
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('backend.contact_page.title');
+    }
 
     public function getFileName(): string
     {
@@ -30,15 +44,15 @@ class ContactPage extends FlatPage
     protected function getFlatFilePageForm(): array
     {
         return [
-            Forms\Components\Tabs::make('Settings')
+            Forms\Components\Tabs::make(__('backend.contact_page.contact_information'))
                 ->tabs([
-                    Forms\Components\Tabs\Tab::make('Contact Information')
+                    Forms\Components\Tabs\Tab::make(__('backend.contact_page.contact_information'))
                         ->schema([
                             Forms\Components\RichEditor::make('opening_hours')
                                 ->required()
-                                ->hint('Translatable field.')
+                                ->hint(__('backend.translatable_field'))
                                 ->hintIcon('heroicon-o-language')
-                                ->label('Opening Hours')
+                                ->label(__('backend.contact_page.opening_hours'))
                                 ->toolbarButtons([
                                     'bold',
                                     'bulletList',
@@ -53,24 +67,25 @@ class ContactPage extends FlatPage
                             Forms\Components\TextInput::make('contact_email')
                                 ->email()
                                 ->required()
-                                ->label('Contact Email'),
+                                ->label(__('backend.contact_page.contact_email')),
                             Forms\Components\TextInput::make('contact_phone')
                                 ->tel()
-                                ->label('Contact Phone'),
+                                ->label(__('backend.contact_page.contact_phone')),
                             Forms\Components\FileUpload::make('image')
+                                ->label(__('backend.contact_page.image'))
                                 ->image()
                                 ->required()
                         ]),
 
-                    Forms\Components\Tabs\Tab::make('Contact Form Settings')
+                    Forms\Components\Tabs\Tab::make(__('backend.contact_page.contact_form_settings'))
                         ->schema([
                             Forms\Components\TextInput::make('contact_form_title')
-                                ->hint('Translatable field.')
+                                ->hint(__('backend.translatable_field'))
                                 ->hintIcon('heroicon-o-language')
-                                ->label('Contact Form Title'),
+                                ->label(__('backend.contact_page.contact_form_title')),
                             Forms\Components\TextInput::make('contact_form_email')
-                                ->label('Contact Form Email')
-                                ->helperText('This is the email that recieves the forms submissions')
+                                ->label(__('backend.contact_page.contact_form_email'))
+                                ->helperText(__('backend.contact_page.contact_form_email_helper'))
                                 ->email()
                                 ->required(),
                         ]),

@@ -14,25 +14,41 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class UserResource extends Resource
-{
-    protected static ?string $navigationGroup = 'Settings';
-    
+{    
     protected static ?string $model = User::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-users';
+
+    public static function getModelLabel(): string
+    {
+        return __('backend.users.singular_label');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('backend.users.label');
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('backend.navigation_groups.roles_and_permissions');
+    }
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
+                    ->label(__('backend.users.name'))
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('email')
+                    ->label(__('backend.users.email'))
                     ->email()
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('password')
+                    ->label(__('backend.users.password'))
                     ->password()
                     ->required()
                     ->maxLength(255),
@@ -44,15 +60,12 @@ class UserResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
+                    ->label(__('backend.users.name'))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
-                    ->searchable(),
-                
+                    ->label(__('backend.users.email'))
+                    ->searchable(),                
                 Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

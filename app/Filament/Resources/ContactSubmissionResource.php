@@ -17,20 +17,42 @@ class ContactSubmissionResource extends Resource implements HasShieldPermissions
 
     protected static ?string $navigationIcon = 'heroicon-o-envelope-open';
 
+    public static function getModelLabel(): string
+    {
+        return __('backend.contact_submissions.singular_label');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('backend.contact_submissions.label');
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('backend.navigation_groups.submissions');
+    }
+
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
+                    ->label(__('backend.contact_submissions.name'))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('phone')
+                    ->label(__('backend.contact_submissions.phone'))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
+                    ->label(__('backend.contact_submissions.email'))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label(__('backend.contact_submissions.created_at'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+            ])
+            ->actions([
+                Tables\Actions\ViewAction::make(),
             ])
             ->filters([
                 //
@@ -41,20 +63,20 @@ class ContactSubmissionResource extends Resource implements HasShieldPermissions
     {
         return $infolist
             ->schema([
-                Infolists\Components\Section::make('details')
+                Infolists\Components\Section::make(__('backend.contact_submissions.details'))
                     ->columns(2)
                     ->schema([
                         Infolists\Components\TextEntry::make('name')
-                            ->label('Name'),
+                            ->label(__('backend.contact_submissions.name')),
                         Infolists\Components\TextEntry::make('phone')
-                            ->label('Phone'),
+                            ->label(__('backend.contact_submissions.phone')),
                         Infolists\Components\TextEntry::make('email')
-                            ->label('Email'),
+                            ->label(__('backend.contact_submissions.email')),
                         Infolists\Components\TextEntry::make('created_at')
-                            ->label('Created At')
+                            ->label(__('backend.contact_submissions.created_at'))
                             ->dateTime(),
                         Infolists\Components\TextEntry::make('message')
-                            ->label('Message'),
+                            ->label(__('backend.contact_submissions.message')),
                     ]),
             ]);
     }

@@ -22,11 +22,21 @@ class VehicleBrandResource extends Resource
 
     protected static ?string $model = VehicleBrand::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?int $navigationSort = 2;
+
+    public static function getModelLabel(): string
+    {
+        return __('backend.vehicle_brands.singular_label');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('backend.vehicle_brands.label');
+    }
 
     public static function getNavigationGroup(): ?string
     {
-        return 'Vehicles';
+        return __('backend.navigation_groups.vehicles');
     }
 
     public static function form(Form $form): Form
@@ -34,22 +44,28 @@ class VehicleBrandResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
+                    ->label(__('backend.vehicle_brands.name'))
                     ->required()
                     ->maxLength(255)
                     ->live(onBlur: true)
                     ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state))),
                 Forms\Components\TextInput::make('slug')
+                    ->label(__('backend.vehicle_brands.slug'))
                     ->required()
                     ->maxLength(255),
                 Forms\Components\FileUpload::make('logo')
+                    ->label(__('backend.vehicle_brands.logo'))
                     ->required()
                     ->image()
                     ->imageCropAspectRatio('1:1')
                     ->disk('public')
                     ->directory('vehicle-brands'),
-                Forms\Components\Textarea::make('description'),
+                Forms\Components\Textarea::make('description')
+                    ->label(__('backend.vehicle_brands.description')),
                 Forms\Components\Toggle::make('is_active')
-                    ->required(),
+                    ->label(__('backend.vehicle_brands.is_active'))
+                    ->required()
+                    ->default(true),
             ]);
     }
 
@@ -57,20 +73,15 @@ class VehicleBrandResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\ImageColumn::make('logo'),
+                Tables\Columns\ImageColumn::make('logo')
+                    ->label(__('backend.vehicle_brands.logo')),
                 Tables\Columns\TextColumn::make('name')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('slug')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('description')
+                    ->label(__('backend.vehicle_brands.name'))
                     ->searchable(),
                 Tables\Columns\IconColumn::make('is_active')
+                    ->label(__('backend.vehicle_brands.is_active'))
                     ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

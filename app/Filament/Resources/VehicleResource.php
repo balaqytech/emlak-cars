@@ -23,11 +23,21 @@ class VehicleResource extends Resource
 
     protected static ?string $model = Vehicle::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?int $navigationSort = 1;
+
+    public static function getModelLabel(): string
+    {
+        return __('backend.vehicles.singular_label');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('backend.vehicles.label');
+    }
 
     public static function getNavigationGroup(): ?string
     {
-        return 'Vehicles';
+        return __('backend.navigation_groups.vehicles');
     }
 
     public static function form(Form $form): Form
@@ -36,46 +46,62 @@ class VehicleResource extends Resource
             ->schema([
                 Forms\Components\Wizard::make([
                     Forms\Components\Wizard\Step::make('Car Details')
+                        ->label(__('backend.vehicles.car_details'))
                         ->columns(2)
                         ->schema([
                             Forms\Components\TextInput::make('name')
+                                ->label(__('backend.vehicles.name'))
                                 ->required()
                                 ->maxLength(255)
                                 ->live(onBlur: true)
                                 ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state))),
                             Forms\Components\TextInput::make('slug')
+                                ->label(__('backend.vehicles.slug'))
                                 ->required()
                                 ->maxLength(255),
                             Forms\Components\Textarea::make('excerpt')
+                                ->label(__('backend.vehicles.excerpt'))
                                 ->maxLength(255)
                                 ->columnSpanFull(),
                             Forms\Components\FileUpload::make('image')
+                                ->label(__('backend.vehicles.image'))
                                 ->image()
                                 ->required(),
                             Forms\Components\FileUpload::make('banner')
+                                ->label(__('backend.vehicles.banner'))
                                 ->image()
                                 ->required(),
                             Forms\Components\RichEditor::make('overview')
+                                ->label(__('backend.vehicles.overview'))
                                 ->required()
                                 ->columnSpanFull(),
                             Forms\Components\Select::make('vehicle_category_id')
+                                ->label(__('backend.vehicles.category'))
                                 ->relationship('category', 'name')
                                 ->required(),
                             Forms\Components\Select::make('vehicle_brand_id')
+                                ->label(__('backend.vehicles.brand'))
                                 ->relationship('brand', 'name')
                                 ->required(),
                             Forms\Components\Toggle::make('is_active')
-                                ->required(),
+                                ->label(__('backend.vehicles.is_active'))
+                                ->required()
+                                ->default(true),
                         ]),
                     Forms\Components\Wizard\Step::make('Car Features')
+                        ->label(__('backend.vehicles.features'))
                         ->schema([
                             Forms\Components\Repeater::make('features')
+                                ->label(__('backend.vehicles.features'))
                                 ->schema([
                                     Forms\Components\TextInput::make('title')
+                                        ->label(__('backend.vehicles.feature_title'))
                                         ->required(),
                                     Forms\Components\Textarea::make('description')
+                                        ->label(__('backend.vehicles.feature_description'))
                                         ->required(),
                                     Forms\Components\FileUpload::make('image')
+                                        ->label(__('backend.vehicles.feature_image'))
                                         ->image()
                                         ->required(),
                                 ]),
@@ -90,14 +116,18 @@ class VehicleResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
+                    ->label(__('backend.vehicles.name'))
                     ->searchable(),
-                Tables\Columns\ImageColumn::make('image'),
-                Tables\Columns\ImageColumn::make('banner'),
+                Tables\Columns\ImageColumn::make('image')
+                    ->label(__('backend.vehicles.image')),
                 Tables\Columns\TextColumn::make('category.name')
+                    ->label(__('backend.vehicles.category'))
                     ->sortable(),
                 Tables\Columns\ImageColumn::make('brand.logo')
+                    ->label(__('backend.vehicles.brand'))
                     ->sortable(),
                 Tables\Columns\IconColumn::make('is_active')
+                    ->label(__('backend.vehicles.is_active'))
                     ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()

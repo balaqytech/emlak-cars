@@ -7,6 +7,7 @@ use Filament\Panel;
 use Filament\Widgets;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
+use Filament\Navigation\NavigationGroup;
 use Filament\Http\Middleware\Authenticate;
 use Filament\SpatieLaravelTranslatablePlugin;
 use Illuminate\Session\Middleware\StartSession;
@@ -29,7 +30,9 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->login()
             ->colors([
-                'primary' => '#af1f23',
+                'primary' => Color::Rose,
+                'gray' => Color::Slate,
+                'danger' => Color::Fuchsia,
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
@@ -53,7 +56,22 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-            ])->plugins([
+            ])
+            ->navigationGroups([
+                NavigationGroup::make()
+                    ->label(__('backend.navigation_groups.content_management')),
+                NavigationGroup::make()
+                    ->label(__('backend.navigation_groups.vehicles')),
+                NavigationGroup::make()
+                    ->label(__('backend.navigation_groups.submissions')),
+                NavigationGroup::make()
+                    ->label(__('backend.navigation_groups.installment_calculator')),
+                NavigationGroup::make()
+                    ->label(__('backend.navigation_groups.roles_and_permissions')),
+                NavigationGroup::make()
+                    ->label(__('backend.navigation_groups.settings')),
+            ])
+            ->plugins([
                 SpatieLaravelTranslatablePlugin::make()
                     ->defaultLocales(config('app.locales')),
                 \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make(),

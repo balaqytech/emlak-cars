@@ -22,30 +22,56 @@ class BranchResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-building-office-2';
 
-    protected static ?string $navigationGroup = 'Content Managment';
+    protected static ?int $navigationSort = 3;
+
+    public static function getModelLabel(): string
+    {
+        return __('backend.branches.singular_label');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('backend.branches.label');
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('backend.navigation_groups.content_management');
+    }
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
+                    ->label(__('backend.branches.name'))
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('address')
+                    ->label(__('backend.branches.address'))
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('contact_mobile')
+                    ->label(__('backend.branches.contact_mobile'))
                     ->tel()
+                    ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('contact_whatsapp')
-                    ->helperText('Please enter the phone number with the country code.')
+                    ->label(__('backend.branches.contact_whatsapp'))
+                    ->helperText(__('backend.branches.contact_whatsapp_helper'))
                     ->tel()
+                    ->required()
                     ->maxLength(255),
                 Forms\Components\Textarea::make('map_embed')
+                    ->label(__('backend.branches.map_embed'))
+                    ->required()
                     ->columnSpanFull(),
                 Forms\Components\Textarea::make('working_hours')
+                    ->label(__('backend.branches.opening_hours'))
+                    ->required()
                     ->columnSpanFull(),
                 Forms\Components\Toggle::make('is_active')
+                    ->label(__('backend.branches.is_active'))
                     ->required()
                     ->default(true),
             ]);
@@ -56,14 +82,19 @@ class BranchResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
+                    ->label(__('backend.branches.name'))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('address')
+                    ->label(__('backend.branches.address'))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('contact_mobile')
+                    ->label(__('backend.branches.contact_mobile'))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('contact_whatsapp')
+                    ->label(__('backend.branches.contact_whatsapp'))
                     ->searchable(),
                 Tables\Columns\IconColumn::make('is_active')
+                    ->label(__('backend.branches.is_active'))
                     ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()

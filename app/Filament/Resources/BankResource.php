@@ -23,27 +23,59 @@ class BankResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-banknotes';
 
+    public static function getModelLabel(): string
+    {
+        return __('backend.banks.singular_label');
+    }
+
+    public static function getPluralModelLabel(): string
+    {
+        return __('backend.banks.label');
+    }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('backend.navigation_groups.installment_calculator');
+    }
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
+                    ->label(__('backend.banks.name'))
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('percentage')
+                    ->label(__('backend.banks.percentage'))
                     ->required()
-                    ->numeric(),
+                    ->numeric()
+                    ->rule('min:1'),
                 Forms\Components\TextInput::make('benefits')
+                    ->label(__('backend.banks.benefits'))
                     ->required()
-                    ->numeric(),
+                    ->numeric()
+                    ->rule('min:1'),
                 Forms\Components\TextInput::make('insurance')
-                    ->required(),
+                    ->label(__('backend.banks.insurance'))
+                    ->required()
+                    ->numeric()
+                    ->rule('min:1'),
                 Forms\Components\TextInput::make('management_fees')
-                    ->required(),
+                    ->label(__('backend.banks.management_fees'))
+                    ->required()
+                    ->numeric()
+                    ->rule('min:1'),
                 Forms\Components\TextInput::make('period')
-                    ->required(),
+                    ->label(__('backend.banks.period'))
+                    ->helperText(__('backend.banks.period_helper'))
+                    ->required()
+                    ->numeric()
+                    ->rule('min:1'),
                 Forms\Components\Toggle::make('is_active')
-                    ->required(),
+                    ->label(__('backend.banks.is_active'))
+                    ->required()
+                    ->default(true),
             ]);
     }
 
@@ -52,40 +84,38 @@ class BankResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
+                    ->label(__('backend.banks.name'))
                     ->sortable()
                     ->toggleable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('percentage')
-                    ->numeric()
+                    ->label(__('backend.banks.percentage'))
                     ->toggleable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('benefits')
-                    ->numeric()
+                    ->label(__('backend.banks.benefits'))
                     ->toggleable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('insurance')
-                    ->numeric()
+                    ->label(__('backend.banks.insurance'))
                     ->toggleable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('management_fees')
-                    ->numeric()
+                    ->label(__('backend.banks.management_fees'))
                     ->toggleable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('period')
-                    ->numeric()
+                    ->label(__('backend.banks.period'))
                     ->toggleable()
                     ->sortable(),
                 Tables\Columns\IconColumn::make('is_active')
+                    ->label(__('backend.banks.is_active'))
                     ->sortable()
                     ->toggleable()
                     ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->toggleable()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
