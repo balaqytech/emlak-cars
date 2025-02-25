@@ -94,62 +94,7 @@
                         {{ __('frontend.contact.form_heading') }}
                     </h2>
 
-                    <form>
-                        <div class="grid gap-4">
-                            <!-- Grid -->
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div>
-                                    <label for="hs-firstname-contacts-1" class="sr-only">First Name</label>
-                                    <input type="text" name="hs-firstname-contacts-1" id="hs-firstname-contacts-1"
-                                        class="py-3 px-4 block w-full border-slate-200 border rounded-lg text-sm focus:border-primary focus:ring-primary disabled:opacity-50 disabled:pointer-events-none"
-                                        placeholder="First Name">
-                                </div>
-
-                                <div>
-                                    <label for="hs-lastname-contacts-1" class="sr-only">Last Name</label>
-                                    <input type="text" name="hs-lastname-contacts-1" id="hs-lastname-contacts-1"
-                                        class="py-3 px-4 block w-full border-slate-200 border  border rounded-lg text-sm focus:border-primary focus:ring-primary disabled:opacity-50 disabled:pointer-events-none"
-                                        placeholder="Last Name">
-                                </div>
-                            </div>
-                            <!-- End Grid -->
-
-                            <div>
-                                <label for="hs-email-contacts-1" class="sr-only">Email</label>
-                                <input type="email" name="hs-email-contacts-1" id="hs-email-contacts-1"
-                                    autocomplete="email"
-                                    class="py-3 px-4 block w-full border-slate-200 border rounded-lg text-sm focus:border-primary focus:ring-primary disabled:opacity-50 disabled:pointer-events-none"
-                                    placeholder="Email">
-                            </div>
-
-                            <div>
-                                <label for="hs-phone-number-1" class="sr-only">Phone Number</label>
-                                <input type="text" name="hs-phone-number-1" id="hs-phone-number-1"
-                                    class="py-3 px-4 block w-full border-slate-200 border rounded-lg text-sm focus:border-primary focus:ring-primary disabled:opacity-50 disabled:pointer-events-none"
-                                    placeholder="Phone Number">
-                            </div>
-
-                            <div>
-                                <label for="hs-about-contacts-1" class="sr-only">Details</label>
-                                <textarea id="hs-about-contacts-1" name="hs-about-contacts-1" rows="4"
-                                    class="py-3 px-4 block w-full border-slate-200 border rounded-lg text-sm focus:border-primary focus:ring-primary disabled:opacity-50 disabled:pointer-events-none"
-                                    placeholder="Details"></textarea>
-                            </div>
-                        </div>
-                        <!-- End Grid -->
-
-                        <div class="mt-4 grid">
-                            <button type="submit"
-                                class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-primary text-white hover:bg-rose-700 focus:outline-none focus:bg-primary disabled:opacity-50 disabled:pointer-events-none">Send
-                                inquiry</button>
-                        </div>
-
-                        <div class="mt-3 text-center">
-                            <p class="text-sm text-slate-500">
-                                We'll get back to you in 1-2 business days.
-                            </p>
-                        </div>
-                    </form>
+                    @livewire('contact-form')
                 </div>
 
                 <div class="divide-y divide-slate-200">
@@ -162,7 +107,7 @@
                             <a class="mt-2 inline-flex items-center gap-x-2 text-sm font-medium  hover:text-slate-800 focus:outline-none focus:text-slate-800"
                                 href="/about">
                                 {{ __('frontend.contact.more_info.about.button') }}
-                                <x-icons.arrow-left class="shrink-0 size-2.5 transition ease-in-out group-hover:translate-x-1 group-focus:translate-x-1" />
+                                <x-icons.arrow-left class="shrink-0 size-2.5 transition ease-in-out group-hover:translate-x-1 group-focus:translate-x-1 rtl:rotate-180" />
                             </a>
                         </div>
                     </div>
@@ -177,7 +122,7 @@
                             <a class="mt-2 inline-flex items-center gap-x-2 text-sm font-medium  hover:text-slate-800 focus:outline-none focus:text-slate-800"
                                 href="/faqs">
                                 {{ __('frontend.contact.more_info.faqs.button') }}
-                                <x-icons.arrow-left class="shrink-0 size-2.5 transition ease-in-out group-hover:translate-x-1 group-focus:translate-x-1" />
+                                <x-icons.arrow-left class="shrink-0 size-2.5 transition ease-in-out group-hover:translate-x-1 group-focus:translate-x-1 rtl:rotate-180" />
                             </a>
                         </div>
                     </div>
@@ -187,12 +132,12 @@
                     <div class=" flex gap-x-7 py-6">
                         <x-icons.locations class="shrink-0 size-6 mt-1.5 text-slate-800" />
                         <div class="grow">
-                            <h3 class="font-semibold text-slate-800">{{ __('frontend.contact.more_info.email.heading') }}</h3>
+                            <h3 class="font-semibold text-slate-800">{{ __('frontend.contact.more_info.branches.heading') }}</h3>
                             <p class="mt-1 text-sm text-slate-500">{{ __('frontend.contact.more_info.email.description') }}</p>
                             <a class="mt-2 inline-flex items-center gap-x-2 text-sm font-medium  hover:text-slate-800 focus:outline-none focus:text-slate-800"
                                 href="/branches">
                                 {{ __('frontend.contact.more_info.branches.button') }}
-                                <x-icons.arrow-left class="shrink-0 size-2.5 transition ease-in-out group-hover:translate-x-1 group-focus:translate-x-1" />
+                                <x-icons.arrow-left class="shrink-0 size-2.5 transition ease-in-out group-hover:translate-x-1 group-focus:translate-x-1 rtl:rotate-180" />
                             </a>
                         </div>
                     </div>
