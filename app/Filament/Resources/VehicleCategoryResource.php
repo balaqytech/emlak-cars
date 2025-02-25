@@ -8,6 +8,7 @@ use Filament\Forms\Form;
 use Filament\Tables\Table;
 use App\Models\VehicleCategory;
 use Filament\Resources\Resource;
+use App\Traits\DisablesGlobalScopes;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Resources\Concerns\Translatable;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -16,7 +17,7 @@ use App\Filament\Resources\VehicleCategoryResource\RelationManagers;
 
 class VehicleCategoryResource extends Resource
 {
-    use Translatable;
+    use Translatable, DisablesGlobalScopes;
 
     protected static ?string $model = VehicleCategory::class;
 

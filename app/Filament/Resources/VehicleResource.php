@@ -10,16 +10,17 @@ use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
 use Filament\Resources\Resource;
+use App\Traits\DisablesGlobalScopes;
 use Illuminate\Database\Eloquent\Builder;
+use Filament\Resources\Concerns\Translatable;
 use App\Filament\Resources\VehicleResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\VehicleResource\RelationManagers;
 use App\Filament\Resources\VehicleResource\RelationManagers\ModelsRelationManager;
-use Filament\Resources\Concerns\Translatable;
 
 class VehicleResource extends Resource
 {
-    use Translatable;
+    use Translatable, DisablesGlobalScopes;
 
     protected static ?string $model = Vehicle::class;
 

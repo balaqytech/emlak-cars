@@ -2,21 +2,22 @@
 
 namespace App\Filament\Resources;
 
+use Filament\Forms;
+use Filament\Tables;
+use Filament\Forms\Form;
+use Filament\Tables\Table;
+use App\Models\PostCategory;
+use Filament\Resources\Resource;
+use App\Traits\DisablesGlobalScopes;
+use Illuminate\Database\Eloquent\Builder;
+use Filament\Resources\Concerns\Translatable;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\PostCategoryResource\Pages;
 use App\Filament\Resources\PostCategoryResource\RelationManagers;
-use App\Models\PostCategory;
-use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
-use Filament\Tables;
-use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Filament\Resources\Concerns\Translatable;
 
 class PostCategoryResource extends Resource
 {
-    use Translatable;
+    use Translatable, DisablesGlobalScopes;
 
     protected static ?string $navigationGroup = 'Content Managment';
 

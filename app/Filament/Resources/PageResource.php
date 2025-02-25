@@ -10,15 +10,16 @@ use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
 use Filament\Resources\Resource;
+use App\Traits\DisablesGlobalScopes;
 use Illuminate\Database\Eloquent\Builder;
+use Filament\Resources\Concerns\Translatable;
 use App\Filament\Resources\PageResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\PageResource\RelationManagers;
-use Filament\Resources\Concerns\Translatable;
 
 class PageResource extends Resource
 {
-    use Translatable;
+    use Translatable, DisablesGlobalScopes;
 
     protected static ?string $model = Page::class;
 

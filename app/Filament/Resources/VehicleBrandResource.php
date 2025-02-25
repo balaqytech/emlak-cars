@@ -10,6 +10,7 @@ use Filament\Tables\Table;
 use Illuminate\Support\Str;
 use App\Models\VehicleBrand;
 use Filament\Resources\Resource;
+use App\Traits\DisablesGlobalScopes;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Resources\Concerns\Translatable;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -18,7 +19,7 @@ use App\Filament\Resources\VehicleBrandResource\RelationManagers;
 
 class VehicleBrandResource extends Resource
 {
-    use Translatable;
+    use Translatable, DisablesGlobalScopes;
 
     protected static ?string $model = VehicleBrand::class;
 
