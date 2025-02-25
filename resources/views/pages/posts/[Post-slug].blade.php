@@ -38,8 +38,8 @@
         @if ($post->video)
             <section class="mt-12">
                 <div class="wrapper">
-                    <div class="aspect-w-16 aspect-h-9">
-                        <iframe src="{{ $post->video }}" frameborder="0" allowfullscreen
+                    <div class="h-[60vh]">
+                        <iframe src="{{ str_replace('watch?v=', 'embed/', $post->video) }}" frameborder="0" allowfullscreen
                             class="w-full h-full"></iframe>
                     </div>
                 </div>
