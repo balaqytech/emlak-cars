@@ -20,6 +20,8 @@
         {{ $slot }}
     </main>
 
+    @include('partials.footer')
+
     {{ $scripts ?? '' }}
 </body>
 

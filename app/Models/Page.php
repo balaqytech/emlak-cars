@@ -32,4 +32,13 @@ class Page extends Model implements Auditable
         'excerpt',
         'content',
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::created(function () {
+            cache()->forget('pages');
+        });
+    }
 }

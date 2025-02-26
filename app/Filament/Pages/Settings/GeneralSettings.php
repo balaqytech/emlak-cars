@@ -89,22 +89,25 @@ class GeneralSettings extends FlatPage
                             Section::make(__('backend.general_settings.social_networks'))
                                 ->icon('heroicon-o-heart')
                                 ->schema([
-                                    TextInput::make('social.facebook')
+                                    TextInput::make('facebook')
                                         ->label(__('backend.social.facebook'))
                                         ->url(),
-                                    TextInput::make('social.twitter')
+                                    TextInput::make('snapchat')
+                                        ->label(__('backend.social.snapchat'))
+                                        ->url(),
+                                    TextInput::make('twitter')
                                         ->url()
                                         ->label(__('backend.social.twitter')),
-                                    TextInput::make('social.instagram')
+                                    TextInput::make('instagram')
                                         ->url()
                                         ->label(__('backend.social.instagram')),
-                                    TextInput::make('social.linkedin')
+                                    TextInput::make('linkedin')
                                         ->url()
                                         ->label(__('backend.social.linkedin')),
-                                    TextInput::make('social.youtube')
+                                    TextInput::make('youtube')
                                         ->url()
                                         ->label(__('backend.social.youtube')),
-                                    TextInput::make('social.whatsapp')
+                                    TextInput::make('whatsapp')
                                         ->url()
                                         ->label(__('backend.social.whatsapp')),
                                 ]),

@@ -117,6 +117,7 @@ return [
     ],
     'social' => [
         'facebook' => 'فيسبوك',
+        'snapchat' => 'سناب شات',
         'twitter' => 'تويتر',
         'instagram' => 'إنستغرام',
         'linkedin' => 'لينكد إن',

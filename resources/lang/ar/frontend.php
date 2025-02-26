@@ -11,6 +11,12 @@ return [
         'contact' => 'تواصل معنا',
         'installment_calculator' => 'حاسبة التقسيط',
     ],
+    'footer' => [
+        'copyrights_reserved' => 'جميع الحقوق محفوظة.',
+        'company_title' => 'عن الشركة',
+        'quick_links' => 'روابط هامة',
+        'contact_us' => 'تواصل معنا',
+    ],
     'about' => [
         'page_title' => 'عن الشركة',
     ],
