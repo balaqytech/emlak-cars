@@ -18,7 +18,12 @@ return [
         'contact_us' => 'تواصل معنا',
     ],
     'about' => [
-        'page_title' => 'عن الشركة',
+        'page_title' => 'نبذة عنا',
+        'vision' => 'رؤيتنا',
+        'mission' => 'رسالتنا',
+        'values' => 'قيمنا',
+        'partners_heading' => 'شركاء النجاح',
+        'watch_video' => 'شاهد الفيديو',
     ],
     'posts' => [
         'page_title' => 'احدث المقالات والاخبار',
