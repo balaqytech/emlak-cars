@@ -209,6 +209,4 @@
         </div>
     </section>
     {{-- end video section --}}
-
-    @vite(['resources/js/animation.js'])
 </x-page-layout>
