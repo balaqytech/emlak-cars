@@ -32,17 +32,14 @@
     "src": "public/fonts/ExpoArabic-Medium.woff2"
   },
   "resources/css/app.css": {
-    "file": "assets/app-CJUBhZ-a.css",
+    "file": "assets/app-BiQVe-Ok.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-8oU_5j1P.js",
+    "file": "assets/app-xWj-B9BL.js",
     "name": "app",
     "src": "resources/js/app.js",
-    "isEntry": true,
-    "css": [
-      "assets/app-CJ-KzOvo.css"
-    ]
+    "isEntry": true
   }
 }
