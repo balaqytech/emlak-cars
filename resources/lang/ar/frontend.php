@@ -3,6 +3,7 @@
 return [
     'navigation' => [
         'home' => 'الرئيسية',
+        'vehicles' => 'المركبات',
         'about' => 'عن الشركة',
         'posts' => 'الأخبار',
         'offers' => 'العروض',

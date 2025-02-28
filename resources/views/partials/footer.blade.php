@@ -30,6 +30,7 @@
                 </h4>
                 <div class="mt-3 grid space-y-3 text-sm">
                     <x-footer-nav-link link="/about" title="{{ __('frontend.navigation.about') }}" />
+                    <x-footer-nav-link link="/vehicles" title="{{ __('frontend.navigation.vehicles') }}" />
                     <x-footer-nav-link link="/branches" title="{{ __('frontend.navigation.branches') }}" />
                     <x-footer-nav-link link="/offers" title="{{ __('frontend.navigation.offers') }}" />
                     <x-footer-nav-link link="/posts" title="{{ __('frontend.navigation.posts') }}" />
@@ -40,8 +41,10 @@
             <div>
                 <h4 class="text-md font-semibold text-slate-900 uppercase">{{ __('frontend.footer.quick_links') }}</h4>
                 <div class="mt-3 grid space-y-3 text-sm">
+                    <x-footer-nav-link link="/installment-calculator" title="{{ __('frontend.navigation.installment_calculator') }}" />
+                    <x-footer-nav-link link="/faqs" title="{{ __('frontend.navigation.faqs') }}" />
                     @foreach ($pages as $page)
-                        <x-footer-nav-link link="/page/{{ $page->slug }}" title="{{ $page->title }}" />
+                    <x-footer-nav-link link="/page/{{ $page->slug }}" title="{{ $page->title }}" />
                     @endforeach
                 </div>
             </div>

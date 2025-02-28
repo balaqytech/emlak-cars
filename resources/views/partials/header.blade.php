@@ -32,10 +32,11 @@
             aria-labelledby="hs-navbar-example-collapse">
             <nav class="flex flex-col gap-5 text-base mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:ps-5">
                 <x-nav-link link="/" title="{{ __('frontend.navigation.home') }}" />
-                <x-nav-link link="/about" title="{{ __('frontend.navigation.about') }}" />
+                <x-nav-link link="/vehicles" title="{{ __('frontend.navigation.vehicles') }}" />
                 <x-nav-link link="/offers" title="{{ __('frontend.navigation.offers') }}" />
                 <x-nav-link link="/posts" title="{{ __('frontend.navigation.posts') }}" />
-                <x-nav-link link="/installment-calculator" title="{{ __('frontend.navigation.installment_calculator') }}" />
+                <x-nav-link link="/branches" title="{{ __('frontend.navigation.branches') }}" />
+                <x-nav-link link="/about" title="{{ __('frontend.navigation.about') }}" />
                 <x-nav-link link="/contact" title="{{ __('frontend.navigation.contact') }}" />
             </nav>
         </div>

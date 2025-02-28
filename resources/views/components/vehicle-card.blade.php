@@ -7,11 +7,13 @@
             class="absolute z-10 top-4 start-4 inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-primary text-white">
             {{ $vehicle->category->name }}</div>
     </a>
-    <div class="flex flex-col gap-4 p-4">
-        <h2 class="text-xl font-semibold text-primary">
-            <a href="/vehicles/{{ $vehicle->slug }}" class="hover:underline">{{ $vehicle->name }}</a>
-        </h2>
-        <p class="text-sm text-slate-600">{{ $vehicle->excerpt }}</p>
+    <div class="flex flex-col justify-between grow gap-4 p-4">
+        <div>
+            <h2 class="text-xl font-semibold text-primary">
+                <a href="/vehicles/{{ $vehicle->slug }}" class="hover:underline">{{ $vehicle->name }}</a>
+            </h2>
+            <p class="text-sm text-slate-600">{{ $vehicle->excerpt }}</p>
+        </div>
         <div class="flex justify-between items-center">
             {{-- <span class="text-lg font-semibold text-primary">{{ $vehicle->price }}</span> --}}
             <x-primary-button href="/vehicles/{{ $vehicle->slug }}"
