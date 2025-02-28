@@ -14,6 +14,7 @@ class VehicleModel extends Model implements Auditable
 
     protected $fillable = [
         'name',
+        'slug',
         'excerpt',
         'image',
         'overview',
