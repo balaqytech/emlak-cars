@@ -57,6 +57,13 @@ return [
         'overview' => 'نظرة عامة',
         'features' => 'المميزات',
         'purchase' => 'طلب شراء',
+        'model_colors' => 'ألوان الموديل',
+        'cash_price' => 'السعر نقداً',
+        'installment_price' => 'السعر بالتقسيط',
+        'model_overview' => 'نظرة عامة على الموديل',
+        'model_specifications' => 'المواصفات',
+        'cash_purchase_apply' => 'تقديم طلب شراء نقداً',
+        'installment_apply' => 'تقديم طلب شراء بالتقسيط',
     ],
     'about' => [
         'page_title' => 'نبذة عنا',

@@ -63,7 +63,7 @@
             <div class="mt-3">
                 <div id="models" class="py-8" role="tabpanel" aria-labelledby="models-item">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        @foreach ($vehicle->models as $model)
+                        @foreach ($vehicle->vehicleModels as $model)
                             <x-vehicle-model-card :model="$model" />
                         @endforeach
                     </div>

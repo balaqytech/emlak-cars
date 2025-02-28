@@ -48,7 +48,7 @@ class Vehicle extends Model implements Auditable
         return $this->belongsTo(VehicleBrand::class, 'vehicle_brand_id');
     }
 
-    public function models()
+    public function vehicleModels()
     {
         return $this->hasMany(VehicleModel::class, 'vehicle_id');
     }
