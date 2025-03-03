@@ -56,7 +56,7 @@
                         class="inline-flex items-center gap-x-3.5 text-sm font-medium text-slate-800 hover:text-primary hover:underline">
                         <a href="tel:{{ $contact_phone }}" class="flex items-center gap-x-2">
                             <x-icons.phone class="w-5 h-5" />
-                            {{ $contact_phone }}
+                            <span dir="ltr">{{ $contact_phone }}</span>
                         </a>
                     </li>
                     <li

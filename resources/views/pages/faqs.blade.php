@@ -12,7 +12,7 @@
     <section>
         <div class="wrapper py-24">
             @foreach ($grouped_faqs as $name => $group)
-                <div class="grid md:grid-cols-5 gap-10">
+                <div class="grid md:grid-cols-5 gap-10 py-12">
                     <div class="md:col-span-2">
                         <div class="max-w-xs">
                             <h2 class="text-2xl font-bold md:text-4xl md:leading-tight text-slate-800">{{ $name }}</h2>

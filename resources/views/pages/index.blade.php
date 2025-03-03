@@ -27,8 +27,12 @@
                         <div
                             class="hs-carousel-slide relative h-screen w-full before:content-[''] before:absolute before:top-0 before:start-0 before:h-full before:w-1/2 rtl:before:bg-gradient-to-l ltr:before:bg-gradient-to-r before:from-black/60 before:to-transparent before:z-10">
                             <div class="w-full h-full absolute top-0 left-0 overflow-hidden">
-                                <img class="object-cover object-center w-full h-full"
-                                    src="{{ asset('storage/' . $slide['laptop_image']) }}" alt="{{ $slide['title'] }}">
+                                <picture>
+                                    <source media="(max-width: 768px)"
+                                        srcset="{{ asset('storage/' . $slide['mobile_image']) }}">
+                                    <img class="object-cover object-center w-full h-full" src="{{ asset('storage/' . $slide['laptop_image']) }}"
+                                        alt="{{ $slide['title'] }}">
+                                </picture>
                             </div>
                             <div
                                 class="wrapper relative z-20 flex flex-col items-start justify-center h-full text-white">
@@ -128,6 +132,31 @@
         </div>
     </section>
 
+    @if (\App\Models\Offer::exists())
+        <section id="offers" class="py-24">
+            <div class="wrapper flex flex-col items-center gap-8">
+                <div class="max-w-5xl text-center">
+                    <h2 class="mb-8 text-3xl font-semibold text-slate-800">
+                        {{ __('frontend.homepage.offers.heading') }}
+                    </h2>
+                    <p class="text-slate-500">
+                        {{ __('frontend.homepage.offers.description') }}
+                    </p>
+                </div>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full mt-12">
+                    @foreach (\App\Models\Offer::latest()->take(3)->get() as $offer)
+                        <x-offer-card :offer="$offer" />
+                    @endforeach
+                </div>
+                <div class="flex items-center">
+                    <x-primary-button href="/offers">
+                        {{ __('frontend.homepage.offers.button') }}
+                    </x-primary-button>
+                </div>
+            </div>
+        </section>
+    @endif
+
     <section id="contact" class="py-24 bg-slate-50">
         <div class="wrapper">
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 items-center gap-6">
@@ -204,12 +233,12 @@
                     {{ __('frontend.homepage.news.description') }}
                 </p>
             </div>
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
-                @foreach (\App\Models\Post::latest()->take(3)->get() as $post)
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full mt-12">
+                @foreach (\App\Models\Post::orderBy('is_featured', 'desc')->latest()->take(3)->get() as $post)
                     <x-post-card :post="$post" />
                 @endforeach
             </div>
-            <div>
+            <div class="flex items-center">
                 <x-primary-button href="/posts">
                     {{ __('frontend.homepage.news.button') }}
                 </x-primary-button>

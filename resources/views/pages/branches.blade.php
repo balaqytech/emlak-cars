@@ -37,7 +37,7 @@
                                             <x-icons.phone class="size-4" />
                                         </span>
                                         <a href="tel:{{ $branch->contact_mobile }}" class="text-slate-800 hover:underline">
-                                            {{ __('frontend.branches.contact_mobile') }}: {{ $branch->contact_mobile }}
+                                            {{ __('frontend.branches.contact_mobile') }}: <span dir="ltr">{{ $branch->contact_mobile }}</span>
                                         </a>
                                     </li>
                                     <li class="flex items-center gap-x-3">

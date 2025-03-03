@@ -73,7 +73,7 @@
                                 <p>
                                     <a class="relative inline-block font-medium text-black before:absolute before:bottom-0.5 before:start-0 before:-z-[1] before:w-full before:h-1 before:bg-primary hover:before:bg-black focus:outline-none focus:before:bg-black"
                                         href="tel:{{ $settings['contact_phone'] }}">
-                                        {{ $settings['contact_phone'] }}
+                                        <span dir="ltr">{{ $settings['contact_phone'] }}</span>
                                     </a>
                                 </p>
                             </div>

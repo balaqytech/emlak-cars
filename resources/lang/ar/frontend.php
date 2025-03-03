@@ -1,6 +1,9 @@
 <?php
 
 return [
+    'sar' => 'ر.س',
+    'currency' => 'ريال',
+    'select_option' => 'اختر',
     'navigation' => [
         'home' => 'الرئيسية',
         'vehicles' => 'المركبات',
@@ -24,6 +27,11 @@ return [
             'heading' => 'المركبات المميزة',
             'description' => 'تعرف على أحدث المركبات المميزة التي تمتلكها الشركة',
             'button' => 'عرض جميع المركبات',
+        ],
+        'offers' => [
+            'heading' => 'أحدث عروضنا',
+            'description' => 'تصفح احدث العروض',
+            'button' => 'عرض جميع العروض',
         ],
         'contact' => [
             'branches' => [

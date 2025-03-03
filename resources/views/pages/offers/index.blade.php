@@ -21,7 +21,7 @@
                 @forelse ($offers as $offer)
                     <x-offer-card :offer="$offer" />
                 @empty
-                    <div class="mt-8">
+                    <div class="mt-8 col-span-3">
                         <x-icons.question class="block mx-auto size-24 text-primary" />
                         <p class="text-center">{{ __('frontend.offers.no_offers') }}</p>
                     </div>

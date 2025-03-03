@@ -1,7 +1,7 @@
-<header class="sticky flex flex-wrap sm:justify-start sm:flex-nowrap w-full bg-white text-sm py-3">
-    <nav class="max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between">
+<header class="sticky flex flex-wrap sm:justify-start sm:flex-nowrap w-full bg-white text-sm py-3 border-b border-gray-200 z-50 shadow-3xl">
+    <nav class="wrapper px-4 sm:flex sm:items-center sm:justify-between">
         <div class="flex items-center justify-between">
-            <a class="flex-none text-xl font-semibold focus:outline-none focus:opacity-80" href="#"
+            <a class="flex-none text-xl font-semibold focus:outline-none focus:opacity-80" href="/"
                 aria-label="Brand">
                 <img class="h-16" src="{{ asset('storage/' . general_settings('site_logo')) }}" alt="{{ general_settings('site_name') }}">
             </a>
