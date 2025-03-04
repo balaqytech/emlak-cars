@@ -10,18 +10,21 @@
 
     <title>{{ $title ?? config('app.name', 'Laravel') }} - {{ general_settings('site_name') }}</title>
 
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    @vite(['resources/css/app.css'])
 </head>
 
 <body class="font-sans antialiased min-h-screen text-slate-600">
     @include('partials.header')
-
+    
     <main>
         {{ $slot }}
     </main>
-
+    
     @include('partials.footer')
-
+    
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    @vite('resources/js/app.js')
     {{ $scripts ?? '' }}
 </body>
 

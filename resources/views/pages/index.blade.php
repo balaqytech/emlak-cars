@@ -13,24 +13,36 @@
     </x-slot>
 
     <section id="slider" class="min-h-screen bg-slate-50">
-        <div data-hs-carousel='{
-            "loadingClasses": "opacity-0",
-            "dotsItemClasses": "hs-carousel-active:bg-primary hs-carousel-active:border-primary size-3 border border-gray-400 rounded-full cursor-pointer dark:border-neutral-600 dark:hs-carousel-active:bg-primary dark:hs-carousel-active:border-primary",
-            "isAutoPlay": true,
-            "isRTL": true
-          }'
-            class="relative">
-            <div class="hs-carousel relative overflow-hidden w-full min-h-screen">
-                <div
-                    class="hs-carousel-body absolute top-0 bottom-0 start-0 flex flex-nowrap transition-transform duration-700 opacity-0">
-                    @foreach ($slides as $slide)
+        <div class="swiper h-screen"
+            data-swiper-options="{
+                'loop': true,
+                'grabCursor': true,
+                'speed': 1000,
+                'effect': 'creative',
+                'creativeEffect': {
+                    'prev': {
+                        'shadow': true,
+                        'translate': ['20%', 0, -1]
+                    },
+                    'next': {
+                        'translate': ['-100%', 0, 0]
+                    }
+                },
+                'pagination': {
+                    'el': '.swiper-pagination'
+                }
+        }">
+            <div class="swiper-wrapper">
+                @foreach ($slides as $slide)
+                    <div class="swiper-slide">
                         <div
-                            class="hs-carousel-slide relative h-screen w-full before:content-[''] before:absolute before:top-0 before:start-0 before:h-full before:w-1/2 rtl:before:bg-gradient-to-l ltr:before:bg-gradient-to-r before:from-black/60 before:to-transparent before:z-10">
+                            class=" relative h-screen w-full before:content-[''] before:absolute before:top-0 before:start-0 before:h-full before:w-1/2 rtl:before:bg-gradient-to-l ltr:before:bg-gradient-to-r before:from-black/60 before:to-transparent before:z-10">
                             <div class="w-full h-full absolute top-0 left-0 overflow-hidden">
                                 <picture>
                                     <source media="(max-width: 768px)"
                                         srcset="{{ asset('storage/' . $slide['mobile_image']) }}">
-                                    <img class="object-cover object-center w-full h-full" src="{{ asset('storage/' . $slide['laptop_image']) }}"
+                                    <img class="object-cover object-center w-full h-full"
+                                        src="{{ asset('storage/' . $slide['laptop_image']) }}"
                                         alt="{{ $slide['title'] }}">
                                 </picture>
                             </div>
@@ -48,11 +60,10 @@
                                 </div>
                             </div>
                         </div>
-                    @endforeach
-                </div>
+                    </div>
+                @endforeach
             </div>
-
-            <div class="hs-carousel-pagination flex justify-center absolute bottom-3 start-0 end-0 gap-2"></div>
+            <div class="swiper-pagination"></div>
         </div>
     </section>
 
@@ -67,48 +78,23 @@
                 </p>
             </div>
             <div class="w-full bg-white rounded-lg shadow-md">
-                <div data-hs-carousel='{
-                    "isAutoHeight": true,
-                    "loadingClasses": "opacity-0",
-                    "dotsItemClasses": "hs-carousel-active:bg-primary hs-carousel-active:border-primary size-3 border border-gray-400 rounded-full cursor-pointer dark:border-neutral-600 dark:hs-carousel-active:bg-primary dark:hs-carousel-active:border-primary",
-                    "isAutoPlay": true,
-                    "isRTL": true
-                  }'
-                    class="relative">
-                    <div class="hs-carousel min-h-96 relative overflow-hidden w-full bg-white rounded-lg">
-                        <div
-                            class="hs-carousel-body absolute top-0 bottom-0 start-0 flex flex-nowrap transition-transform duration-700 opacity-0">
-                            @foreach (\App\Models\Vehicle::latest()->take(3)->get() as $vehicle)
-                                <x-featured-vehicle-card :vehicle="$vehicle" class="hs-carousel-slide h-auto" />
-                            @endforeach
-                        </div>
+                <div class="swiper w-full"
+                    data-swiper-options="{
+                    'loop': true,
+                    'autoplay': {
+                        'delay': 2500,
+                        'disableOnInteraction': false
+                    },
+                    'pagination': {
+                        'el': '.swiper-pagination2'
+                    }
+                }">
+                    <div class="swiper-wrapper">
+                        @foreach (\App\Models\Vehicle::latest()->take(3)->get() as $vehicle)
+                            <x-featured-vehicle-card :vehicle="$vehicle" class="swiper-slide h-auto" />
+                        @endforeach
                     </div>
-
-                    <button type="button"
-                        class="hs-carousel-prev hs-carousel-disabled:opacity-50 disabled:pointer-events-none absolute inset-y-0 start-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 hover:bg-gray-800/10 focus:outline-none focus:bg-gray-800/10 rounded-s-lg">
-                        <span class="text-2xl" aria-hidden="true">
-                            <svg class="shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="24"
-                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path d="m15 18-6-6 6-6"></path>
-                            </svg>
-                        </span>
-                        <span class="sr-only">Previous</span>
-                    </button>
-                    <button type="button"
-                        class="hs-carousel-next hs-carousel-disabled:opacity-50 disabled:pointer-events-none absolute inset-y-0 end-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 hover:bg-gray-800/10 focus:outline-none focus:bg-gray-800/10 rounded-e-lg">
-                        <span class="sr-only">Next</span>
-                        <span class="text-2xl" aria-hidden="true">
-                            <svg class="shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="24"
-                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path d="m9 18 6-6-6-6"></path>
-                            </svg>
-                        </span>
-                    </button>
-
-                    <div class="hs-carousel-pagination flex justify-center absolute bottom-3 start-0 end-0 gap-2">
-                    </div>
+                    <div class="swiper-pagination2 absolute bottom-0 start-4 z-10"></div>
                 </div>
             </div>
             <div>
