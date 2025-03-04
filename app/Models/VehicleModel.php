@@ -6,6 +6,7 @@ use App\Casts\ModelColorCast;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
 use Spatie\Translatable\HasTranslations;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class VehicleModel extends Model implements Auditable
 {
@@ -19,12 +20,7 @@ class VehicleModel extends Model implements Auditable
         'image',
         'overview',
         'specifications',
-        'colors',
         'vehicle_id',
-    ];
-
-    protected $casts = [
-        'colors' => ModelColorCast::class,
     ];
 
     public $translatable = [
@@ -37,5 +33,15 @@ class VehicleModel extends Model implements Auditable
     public function vehicle()
     {
         return $this->belongsTo(Vehicle::class);
+    }
+
+    public function colors(): HasMany
+    {
+        return $this->hasMany(Color::class);
+    }
+
+    public function lowestPrice()
+    {
+        return $this->colors()->min('cash_price');
     }
 }

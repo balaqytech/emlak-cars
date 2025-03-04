@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\VehicleModel;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,15 +12,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('vehicle_models', function (Blueprint $table) {
+        Schema::create('colors', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(VehicleModel::class)->constrained()->cascadeOnDelete();
             $table->string('name');
-            $table->string('excerpt')->nullable();
+            $table->string('hex');
             $table->string('image');
-            $table->text('overview');
-            $table->text('specifications');
-
-            $table->foreignIdFor(\App\Models\Vehicle::class)->constrained()->cascadeOnDelete();
+            $table->string('cash_price');
+            $table->string('installment_price');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('vehicle_models');
+        Schema::dropIfExists('colors');
     }
 };

@@ -55,6 +55,7 @@ class ModelsRelationManager extends RelationManager
                     Forms\Components\Wizard\Step::make('Model Colors')
                         ->schema([
                             Forms\Components\Repeater::make('colors')
+                                ->relationship()
                                 ->schema([
                                     Forms\Components\TextInput::make('name')
                                         ->required(),
