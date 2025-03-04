@@ -22,7 +22,7 @@
                                 @click="mapEmbed = '{{ $branch->map_embed }}'">
                                 <h3 class="text-xl font-bold text-slate-800">{{ $branch->name }}</h3>
                                 <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 text-sm text-slate-600">
-                                    <li class="flex items-center gap-x-3">
+                                    <li class="flex gap-x-3">
                                         <span
                                             class="size-8 flex justify-center items-center rounded-full bg-slate-50 text-primary border border-slate-200 dark:bg-blue-800/30 dark:text-blue-500">
                                             <x-icons.map-pin class="size-4" />
@@ -31,7 +31,7 @@
                                             {{ __('frontend.branches.address') }}: {{ $branch->address }}
                                         </span>
                                     </li>
-                                    <li class="flex items-center gap-x-3">
+                                    <li class="flex gap-x-3">
                                         <span
                                             class="size-8 flex justify-center items-center rounded-full bg-slate-50 text-primary border border-slate-200 dark:bg-blue-800/30 dark:text-blue-500">
                                             <x-icons.phone class="size-4" />
@@ -40,7 +40,7 @@
                                             {{ __('frontend.branches.contact_mobile') }}: <span dir="ltr">{{ $branch->contact_mobile }}</span>
                                         </a>
                                     </li>
-                                    <li class="flex items-center gap-x-3">
+                                    <li class="flex gap-x-3">
                                         <span
                                             class="size-8 flex justify-center items-center rounded-full bg-slate-50 text-primary border border-slate-200 dark:bg-blue-800/30 dark:text-blue-500">
                                             <x-icons.whatsapp class="size-4" />
@@ -49,9 +49,9 @@
                                             {{ __('frontend.branches.contact_whatsapp') }}: {{ $branch->contact_whatsapp }}
                                         </a>
                                     </li>
-                                    <li class="flex items-center gap-x-3">
+                                    <li class="flex gap-x-3">
                                         <span
-                                            class="size-8 flex justify-center items-center rounded-full bg-slate-50 text-primary border border-slate-200 dark:bg-blue-800/30 dark:text-blue-500">
+                                            class="size-8 shrink-0 inline-flex justify-center items-center rounded-full bg-slate-50 text-primary border border-slate-200 dark:bg-blue-800/30 dark:text-blue-500">
                                             <x-icons.clock class="size-4" />
                                         </span>
                                         <span class="text-slate-800 dark:text-neutral-400">
