@@ -13,7 +13,7 @@
 
     <section class="py-24">
         <div class="wrapper">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 @forelse ($vehicles as $vehicle)
                     <x-vehicle-card :vehicle="$vehicle" />
                 @empty

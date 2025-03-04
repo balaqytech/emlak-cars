@@ -2,9 +2,9 @@
     <div class="py-8 px-12 flex flex-col gap-4">
         <img src="{{ Storage::url($vehicle->brand->logo) }}" alt="{{ $vehicle->brand->name }}"
             class="w-24 h-24 object-contain">
-        <h2 class="font-bold text-2xl text-slate-800 hover:text-primary hover:underline">
+        <h3 class="font-bold text-2xl text-slate-800 hover:text-primary hover:underline">
             <a href="/vehicles/{{ $vehicle->slug }}">{{ $vehicle->name }}</a>
-        </h2>
+        </h3>
         <p class="text-slate-600 text-sm">{{ $vehicle->excerpt }}</p>
         <a href="/vehicles/{{ $vehicle->slug }}"
             class="inline-block self-start font-bold text-primary hover:underline mt-2">{{ __('frontend.vehicles.view_details') }}</a>

@@ -25,3 +25,7 @@
 .wrapper {
     @apply container max-w-7xl mx-auto px-4;
 }
+
+.swiper-pagination-bullet{
+    @apply bg-primary;
+}
