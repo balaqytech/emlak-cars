@@ -11,6 +11,7 @@
     <title>{{ $title ?? config('app.name', 'Laravel') }} - {{ general_settings('site_name') }}</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    @livewireStyles
     @vite(['resources/css/app.css'])
 </head>
 
@@ -24,6 +25,7 @@
     @include('partials.footer')
     
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    @livewireScripts
     @vite('resources/js/app.js')
     {{ $scripts ?? '' }}
 </body>

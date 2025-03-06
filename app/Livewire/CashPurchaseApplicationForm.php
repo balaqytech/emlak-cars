@@ -13,7 +13,7 @@ class CashPurchaseApplicationForm extends Component
     public $model;
     public $payment_method;
 
-    #[Rule(['required'])]
+    #[Rule(['required', 'exist:colors.id'])]
     public string $color;
 
     #[Rule(['required', 'string', 'max:255'])]
