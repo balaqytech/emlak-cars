@@ -4,6 +4,7 @@ return [
     'sar' => 'ر.س',
     'currency' => 'ريال',
     'select_option' => 'اختر',
+    'home' => 'الرئيسية',
     'navigation' => [
         'home' => 'الرئيسية',
         'vehicles' => 'المركبات',

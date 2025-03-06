@@ -22,6 +22,10 @@
                 <p><a href="#"
                         class="bg-primary inline-block hover:bg-slate-700 text-white rounded px-5 py-2 transition-all duration-500">{{ $vehicle->category->name }}</a>
                 </p>
+                <x-breadcrumb :items="[
+                    ['label' => __('frontend.navigation.vehicles'), 'url' => '/vehicles'],
+                    ['label' => $vehicle->name],
+                ]" color="slate-400" />
                 <h1 class="text-4xl font-bold text-slate-800">
                     {{ $vehicle->name }}
                 </h1>
@@ -55,7 +59,8 @@
                     x-bind:tabindex="selectedTab === 'overview' ? '0' : '-1'"
                     x-bind:class="selectedTab === 'overview' ? 'border-b-primary text-gray-900' : 'text-gray-500'"
                     class="relative min-w-0 flex-1 bg-white first:border-s-0 border-s border-b-2 py-4 px-4 hover:text-gray-700 text-sm font-medium text-center overflow-hidden hover:bg-gray-50 focus:z-10 focus:outline-none focus:text-primary disabled:opacity-50 disabled:pointer-events-none active"
-                    id="overview-item" aria-selected="true" data-hs-tab="#overview" aria-controls="overview" role="tab">
+                    id="overview-item" aria-selected="true" data-hs-tab="#overview" aria-controls="overview"
+                    role="tab">
                     {{ __('frontend.vehicles.overview') }}
                 </button>
                 <button type="button" x-on:click="selectedTab = 'features'"
@@ -63,25 +68,29 @@
                     x-bind:tabindex="selectedTab === 'features' ? '0' : '-1'"
                     x-bind:class="selectedTab === 'features' ? 'border-b-primary text-gray-900' : 'text-gray-500'"
                     class="relative min-w-0 flex-1 bg-white first:border-s-0 border-s border-b-2 py-4 px-4 hover:text-gray-700 text-sm font-medium text-center overflow-hidden hover:bg-gray-50 focus:z-10 focus:outline-none focus:text-primary disabled:opacity-50 disabled:pointer-events-none active"
-                    id="features-item" aria-selected="true" data-hs-tab="#features" aria-controls="features" role="tab">
+                    id="features-item" aria-selected="true" data-hs-tab="#features" aria-controls="features"
+                    role="tab">
                     {{ __('frontend.vehicles.features') }}
                 </button>
             </nav>
 
             <div class="mt-3">
-                <div x-cloak x-show="selectedTab === 'models'" id="tabpanelModels" role="tabpanel" aria-label="models" class="py-8" role="tabpanel" aria-labelledby="models-item">
+                <div x-cloak x-show="selectedTab === 'models'" id="tabpanelModels" role="tabpanel" aria-label="models"
+                    class="py-8" role="tabpanel" aria-labelledby="models-item">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         @foreach ($vehicle->vehicleModels as $model)
                             <x-vehicle-model-card :model="$model" />
                         @endforeach
                     </div>
                 </div>
-                <div x-cloak x-show="selectedTab === 'overview'" id="tabpanelOverview" role="tabpanel" aria-label="overview">
+                <div x-cloak x-show="selectedTab === 'overview'" id="tabpanelOverview" role="tabpanel"
+                    aria-label="overview">
                     <div class="prose max-w-3xl py-12 mx-auto">
                         {!! str($vehicle->overview)->sanitizeHtml() !!}
                     </div>
                 </div>
-                <div x-cloak x-show="selectedTab === 'features'" id="tabpanelFeatures" role="tabpanel" aria-label="features">
+                <div x-cloak x-show="selectedTab === 'features'" id="tabpanelFeatures" role="tabpanel"
+                    aria-label="features">
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         @foreach ($vehicle->features as $feature)
                             <x-vehicle-feature-card :image="$feature['image']" :title="$feature['title']" :description="$feature['description']" />

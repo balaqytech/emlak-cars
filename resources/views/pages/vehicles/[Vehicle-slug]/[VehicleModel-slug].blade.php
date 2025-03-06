@@ -7,6 +7,11 @@
         <div class="wrapper">
             <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-4">
                 <div class="order-2 md:order-1 flex flex-col gap-4">
+                    <x-breadcrumb :items="[
+                        ['label' => __('frontend.navigation.vehicles'), 'url' => '/vehicles'],
+                        ['label' => $vehicleModel->vehicle->name, 'url' => '/vehicle/' . $vehicleModel->vehicle->slug],
+                        ['label' => $vehicleModel->name]
+                    ]" color="slate-400" />
                     <h1 class="text-3xl font-bold text-slate-900">{{ $vehicleModel->name }}</h1>
                     <p class="mt-2 text-slate-500">{{ $vehicleModel->excerpt }}</p>
                     <div class="flex flex-col md:flex-row gap-4 items-center">
