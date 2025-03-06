@@ -22,7 +22,7 @@ class PurchaseApplication extends Model
     protected $casts = [
         'payment_method' => PurchaseMethod::class,
         'contact_via' => 'array',
-        'vehicle_details' => SchemalessAttributes::class,
+        'vehicle_details' => 'array',
         'installment_details' => SchemalessAttributes::class,
     ];
 

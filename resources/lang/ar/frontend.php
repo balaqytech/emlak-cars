@@ -74,6 +74,20 @@ return [
         'cash_purchase_apply' => 'تقديم طلب شراء نقداً',
         'installment_apply' => 'تقديم طلب شراء بالتقسيط',
     ],
+    'contact_methods' => [
+        'sms' => 'الرسائل النصية القصيرة',
+        'email' => 'البريد الالكتروني',
+        'whatsapp' => 'واتساب',
+        'call' => 'مكالمات هاتفية',
+    ],
+    'cash_purchase_form' => [
+        'name' => 'الاسم',
+        'phone' => 'رقم الهاتف',
+        'email' => 'البريد الالكتروني',
+        'contact_via' => 'أوافق على تلقي اتصالات رقمية من خلال:',
+        'choose_color' => 'أختر لون المركبة',
+        'form_successfully_sent' => 'تم ارسال طلبك بنجاح، سيتم التواصل معك في اقرب فرصه'
+    ],
     'about' => [
         'page_title' => 'نبذة عنا',
         'vision' => 'رؤيتنا',

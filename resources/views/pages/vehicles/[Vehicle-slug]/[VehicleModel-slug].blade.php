@@ -6,17 +6,16 @@
     <section class="py-24 bg-white">
         <div class="wrapper">
             <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-4">
-                <div class="flex flex-col gap-4">
+                <div class="order-2 md:order-1 flex flex-col gap-4">
                     <h1 class="text-3xl font-bold text-slate-900">{{ $vehicleModel->name }}</h1>
                     <p class="mt-2 text-slate-500">{{ $vehicleModel->excerpt }}</p>
                     <div class="flex flex-col md:flex-row gap-4 items-center">
-                        <x-primary-button
-                            href="#">{{ __('frontend.vehicles.cash_purchase_apply') }}</x-primary-button>
+                        <livewire:cash-purchase-application-form :model="$vehicleModel->id" paymentMethod="cash" />
                         <x-outline-button
                             href="/installment-calculator">{{ __('frontend.vehicles.installment_apply') }}</x-outline-button>
                     </div>
                 </div>
-                <div>
+                <div class="order-1 md:order-2">
                     <img class="w-full h-full object-contain object-center"
                         src="{{ asset('storage/' . $vehicleModel->image) }}" alt="{{ $vehicleModel->name }}">
                 </div>
@@ -25,30 +24,38 @@
     </section>
 
     <section>
-        <div class="wrapper">
-            <nav class="relative z-0 flex flex-col md:flex-row border rounded-xl overflow-hidden" aria-label="Tabs"
-                role="tablist" aria-orientation="horizontal">
-                <button type="button"
-                    class="hs-tab-active:border-b-primary hs-tab-active:text-slate-900 relative min-w-0 flex-1 bg-white first:border-s-0 border-s border-b-2 py-4 px-4 text-slate-500 hover:text-slate-700 text-sm font-medium text-center overflow-hidden hover:bg-slate-50 focus:z-10 focus:outline-none focus:text-primary disabled:opacity-50 disabled:pointer-events-none active"
+        <div x-data="{ selectedTab: 'colors' }" class="wrapper">
+            <nav x-on:keydown.right.prevent="$focus.wrap().next()" x-on:keydown.left.prevent="$focus.wrap().previous()"
+                class="relative z-0 flex flex-col md:flex-row border rounded-xl overflow-hidden"
+                aria-label="tab options">
+                <button type="button" x-on:click="selectedTab = 'colors'"
+                    x-bind:aria-selected="selectedTab === 'colors'"
+                    x-bind:tabindex="selectedTab === 'colors' ? '0' : '-1'"
+                    x-bind:class="selectedTab === 'colors' ? 'border-b-primary text-gray-900' : 'text-gray-500'"
+                    class="relative min-w-0 flex-1 bg-white first:border-s-0 border-s border-b-2 py-4 px-4 hover:text-gray-700 text-sm font-medium text-center overflow-hidden hover:bg-gray-50 focus:z-10 focus:outline-none focus:text-primary disabled:opacity-50 disabled:pointer-events-none active"
                     id="colors-item" aria-selected="true" data-hs-tab="#colors" aria-controls="colors" role="tab">
                     {{ __('frontend.vehicles.model_colors') }}
                 </button>
-                <button type="button"
-                    class="hs-tab-active:border-b-primary hs-tab-active:text-slate-900 relative min-w-0 flex-1 bg-white first:border-s-0 border-s border-b-2 py-4 px-4 text-slate-500 hover:text-slate-700 text-sm font-medium text-center overflow-hidden hover:bg-slate-50 focus:z-10 focus:outline-none focus:text-primary disabled:opacity-50 disabled:pointer-events-none"
-                    id="overview-item" aria-selected="false" data-hs-tab="#overview" aria-controls="overview"
-                    role="tab">
+                <button type="button" x-on:click="selectedTab = 'overview'"
+                    x-bind:aria-selected="selectedTab === 'overview'"
+                    x-bind:tabindex="selectedTab === 'overview' ? '0' : '-1'"
+                    x-bind:class="selectedTab === 'overview' ? 'border-b-primary text-gray-900' : 'text-gray-500'"
+                    class="relative min-w-0 flex-1 bg-white first:border-s-0 border-s border-b-2 py-4 px-4 hover:text-gray-700 text-sm font-medium text-center overflow-hidden hover:bg-gray-50 focus:z-10 focus:outline-none focus:text-primary disabled:opacity-50 disabled:pointer-events-none active"
+                    id="overview-item" aria-selected="true" data-hs-tab="#overview" aria-controls="overview" role="tab">
                     {{ __('frontend.vehicles.model_overview') }}
                 </button>
-                <button type="button"
-                    class="hs-tab-active:border-b-primary hs-tab-active:text-slate-900 relative min-w-0 flex-1 bg-white first:border-s-0 border-s border-b-2 py-4 px-4 text-slate-500 hover:text-slate-700 text-sm font-medium text-center overflow-hidden hover:bg-slate-50 focus:z-10 focus:outline-none focus:text-primary disabled:opacity-50 disabled:pointer-events-none"
-                    id="specifications-item" aria-selected="false" data-hs-tab="#specifications"
-                    aria-controls="specifications" role="tab">
+                <button type="button" x-on:click="selectedTab = 'specifications'"
+                    x-bind:aria-selected="selectedTab === 'specifications'"
+                    x-bind:tabindex="selectedTab === 'specifications' ? '0' : '-1'"
+                    x-bind:class="selectedTab === 'specifications' ? 'border-b-primary text-gray-900' : 'text-gray-500'"
+                    class="relative min-w-0 flex-1 bg-white first:border-s-0 border-s border-b-2 py-4 px-4 hover:text-gray-700 text-sm font-medium text-center overflow-hidden hover:bg-gray-50 focus:z-10 focus:outline-none focus:text-primary disabled:opacity-50 disabled:pointer-events-none active"
+                    id="specifications-item" aria-selected="true" data-hs-tab="#specifications" aria-controls="specifications" role="tab">
                     {{ __('frontend.vehicles.model_specifications') }}
                 </button>
             </nav>
 
             <div class="mt-3">
-                <div id="colors" class="py-8" role="tabpanel" aria-labelledby="colors-item">
+                <div  x-cloak x-show="selectedTab === 'colors'" id="tabpanelColors" role="tabpanel" aria-label="colors" class="py-8" role="tabpanel" aria-labelledby="colors-item">
                     <!-- Slider -->
                     <div data-hs-carousel='{
                                                 "loadingClasses": "opacity-0",
@@ -62,9 +69,9 @@
                                         <div
                                             class="hs-carousel-pagination-item shrink-0 border rounded-md overflow-hidden cursor-pointer w-[150px] h-[150px] hs-carousel-active:border-primary">
                                             <div class="flex justify-center h-full p-2"
-                                                style="background-color: {{ $color['hex'] }};">
+                                                style="background-color: {{ $color->hex }};">
                                                 <span class="self-center transition duration-700"
-                                                    style="color: {{ $color['hex'] }}; filter: grayscale(100%) invert(1);">{{ $color['name'] }}</span>
+                                                    style="color: {{ $color->hex }}; filter: grayscale(100%) invert(1);">{{ $color->name }}</span>
                                             </div>
                                         </div>
                                     @endforeach
@@ -77,15 +84,15 @@
                                     @foreach ($vehicleModel->colors as $color)
                                         <div class="hs-carousel-slide flex-none w-full h-full relative">
                                             <img class="w-full h-full object-contain object-center"
-                                                src="{{ asset('storage/' . $color['image']) }}"
-                                                alt="{{ $color['name'] }}">
-                                            <div class="absolute start-2 top-2 flex justify-start gap-2"> 
+                                                src="{{ asset('storage/' . $color->image) }}"
+                                                alt="{{ $color->name }}">
+                                            <div class="absolute start-2 top-2 flex justify-start gap-2">
                                                 <span
                                                     class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded bg-primary text-white">{{ __('frontend.vehicles.cash_price') }}
-                                                    {{ $color['cash_price'] }}</span>
+                                                    {{ $color->cash_price }}</span>
                                                 <span
                                                     class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded bg-slate-800 text-white">{{ __('frontend.vehicles.installment_price') }}
-                                                    {{ $color['installment_price'] }}</span>
+                                                    {{ $color->installment_price }}</span>
                                             </div>
                                         </div>
                                     @endforeach
@@ -118,12 +125,12 @@
                     </div>
                     <!-- End Slider -->
                 </div>
-                <div id="overview" class="hidden" role="tabpanel" aria-labelledby="overview-item">
+                <div  x-cloak x-show="selectedTab === 'overview'" id="tabpanelOverview" role="tabpanel" aria-label="overview" class="py-8" role="tabpanel" aria-labelledby="overview-item">
                     <div class="prose max-w-3xl py-12 mx-auto">
                         {!! str($vehicleModel->overview)->sanitizeHtml() !!}
                     </div>
                 </div>
-                <div id="specifications" class="hidden" role="tabpanel" aria-labelledby="specifications-item">
+                <div  x-cloak x-show="selectedTab === 'specifications'" id="tabpanelSpecifications" role="tabpanel" aria-label="specifications" class="py-8" role="tabpanel" aria-labelledby="specifications-item">
                     <div class="prose max-w-3xl py-12 mx-auto">
                         {!! str($vehicleModel->specifications)->sanitizeHtml() !!}
                     </div>
