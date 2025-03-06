@@ -74,6 +74,9 @@ return [
         'model_specifications' => 'المواصفات',
         'cash_purchase_apply' => 'تقديم طلب شراء نقداً',
         'installment_apply' => 'تقديم طلب شراء بالتقسيط',
+        'model_color' => 'لون الموديل',
+        'model_cash_price' => 'السعر نقداً',
+        'model_installment_price' => 'السعر بالتقسيط',
     ],
     'contact_methods' => [
         'sms' => 'الرسائل النصية القصيرة',
