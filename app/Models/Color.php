@@ -19,6 +19,6 @@ class Color extends Model
 
     public function model(): BelongsTo
     {
-        return $this->belongsTo(VehicleModel::class);
+        return $this->belongsTo(VehicleModel::class, 'vehicle_model_id');
     }
 }

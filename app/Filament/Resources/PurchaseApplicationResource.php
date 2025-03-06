@@ -2,15 +2,17 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\PurchaseApplicationResource\Pages;
-use App\Models\PurchaseApplication;
-use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
-use Filament\Infolists\Infolist;
-use Filament\Resources\Resource;
 use Filament\Tables;
+use App\Models\Color;
 use Filament\Infolists;
 use Filament\Tables\Table;
+use App\Enums\PurchaseMethod;
+use Filament\Infolists\Infolist;
+use Filament\Resources\Resource;
+use App\Models\PurchaseApplication;
 use Illuminate\Console\View\Components\Info;
+use App\Filament\Resources\PurchaseApplicationResource\Pages;
+use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
 
 class PurchaseApplicationResource extends Resource implements HasShieldPermissions
 {
@@ -92,18 +94,25 @@ class PurchaseApplicationResource extends Resource implements HasShieldPermissio
                             ->label(__('backend.purchase_applications.contact_via')),
                     ]),
                 Infolists\Components\Section::make(__('backend.purchase_applications.vehicle_details'))
-                    ->columns(2)
-                    ->schema(
-                        fn($record) => collect($record->vehicle_details)
-                            ->map(
-                                fn($value, $key) => Infolists\Components\TextEntry::make($key)
-                                    ->label(ucwords(str_replace('_', ' ', $key)))
-                                    ->state($value)
-                            )
-                            ->toArray()
-                    ),
+                    ->columns(3)
+                    ->schema(function ($record) {
+                        $color = Color::find($record->vehicle_details['id']);
+                        return [
+                            InfoLists\Components\TextEntry::make('vehicle')
+                                ->state(fn() => $color->model->vehicle->name),
+                            InfoLists\Components\TextEntry::make('model')
+                                ->state(fn() => $color->model->name),
+                            InfoLists\Components\TextEntry::make('name')
+                                ->state(fn() => $color->name),
+                            InfoLists\Components\TextEntry::make('price')
+                                ->state(fn($record) => $record->payment_method == PurchaseMethod::Cash ? $color->cash_price : $color->installment_price),
+                            InfoLists\Components\ImageEntry::make('image')
+                                ->state(fn() => $color->image),
+                        ];
+                    }),
                 Infolists\Components\Section::make(__('backend.purchase_applications.installment_details'))
                     ->columns(2)
+                    ->hidden(fn($record) => $record->payment_method == PurchaseMethod::Cash)
                     ->schema(
                         fn($record) => collect($record->installment_details)
                             ->map(

@@ -13,7 +13,7 @@ class CashPurchaseApplicationForm extends Component
     public $model;
     public $payment_method;
 
-    #[Rule(['required', 'exist:colors.id'])]
+    #[Rule(['required', 'exists:colors,id'])]
     public string $color;
 
     #[Rule(['required', 'string', 'max:255'])]
@@ -25,7 +25,7 @@ class CashPurchaseApplicationForm extends Component
     #[Rule(['required', 'string', 'max:255'])]
     public string $phone;
 
-    #[Rule(['required'])]
+    #[Rule(['required', 'array'])]
     public array $contact_methods;
 
     public function mount($model, $paymentMethod)
@@ -45,7 +45,7 @@ class CashPurchaseApplicationForm extends Component
             'phone' => $this->phone,
             'city' => 'test',
             'contact_via' => $this->contact_methods,
-            'vehicle_details' => Color::find($this->color)->all()->toArray(),
+            'vehicle_details' => Color::find($this->color)->toArray(),
         ]);
 
         $this->reset('name', 'email', 'phone', 'contact_methods');
