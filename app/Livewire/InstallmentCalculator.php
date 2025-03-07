@@ -2,40 +2,58 @@
 
 namespace App\Livewire;
 
+use App\Enums\PurchaseMethod;
 use App\Models\Bank;
 use App\Models\Vehicle;
-use App\Models\VehicleModel;
 use Livewire\Component;
+use App\Models\VehicleModel;
+use Livewire\Attributes\Rule;
+use App\Models\PurchaseApplication;
+use App\Livewire\Forms\CalculatorForm;
+use App\Models\Color;
 
 class InstallmentCalculator extends Component
 {
+    public CalculatorForm $form;
+
     public Bank $bank;
-    public $selectedBank = null;
-    public $selectedVehicle = null;
-    public $vehicleModels = [];
-    public $selectedModel = null;
-    public $colors = [];
-    public $price = 0;
+    public float $price;
+    public float $monthlyInstallment;
+    public bool $canApply = false;
 
-    // الدفعة الأولى
-    public $downPaymentPercentage = 0;
-    public $downPayment = 0;
+    //form fields
+    #[Rule(['required', 'string', 'max:255'])]
+    public string $name;
 
-    public float $monthlyInstallment = 0;
+    #[Rule(['required', 'email', 'max:255'])]
+    public string $email;
 
-    public function updatedSelectedVehicle($vehicleId)
+    #[Rule(['required', 'string', 'max:255'])]
+    public string $phone;
+
+    #[Rule(['required', 'string', 'max:255'])]
+    public string $city;
+
+    #[Rule(['required', 'array'])]
+    public array $contact_methods;
+
+    public function mount()
     {
-        $this->vehicleModels = VehicleModel::where('vehicle_id', $vehicleId)->get();
+        $model = VehicleModel::find(request()->query('model'));
+        $this->form->model_id = $model?->id;
+        $this->form->vehicleModels = $model?->vehicle->vehicleModels;
+        $this->form->colors = $model?->colors;
+        $this->form->vehicle_id = $model?->vehicle->id;
     }
 
-    public function updatedSelectedModel($modelId)
+    public function updatedFormVehicleId($vehicle_id)
     {
-        $this->colors = VehicleModel::find($modelId)->colors;
+        $this->form->vehicleModels = VehicleModel::where('vehicle_id', $vehicle_id)->get();
     }
 
-    public function updatedDownPaymentPercentage($percentage)
+    public function updatedFormModelId($modelId)
     {
-        $this->downPayment = ($percentage / 100) * $this->price;
+        $this->form->colors = VehicleModel::find($modelId)->colors;
     }
 
     public function render()
@@ -43,15 +61,21 @@ class InstallmentCalculator extends Component
         return view('livewire.installment-calculator', [
             'banks' => Bank::all(),
             'vehicles' => Vehicle::all(),
-        ]);
+        ])
+            ->layout('layouts.page')
+            ->title(__('frontend.navigation.installment_calculator'));
     }
 
     public function calculate()
     {
-        $this->bank = Bank::find($this->selectedBank);
-        $price = $this->price;
+        $this->form->validate();
+        $this->bank = Bank::find($this->form->bank);
+        $this->price = Color::find($this->form->color_id)->installment_price;
 
-        $this->monthlyInstallment = $this->calculateMonthlyInstallment($this->bank, $price);
+        $this->monthlyInstallment = $this->calculateMonthlyInstallment($this->bank, $this->price);
+        $this->canApply = $this->calculateCanApply();
+
+        $this->dispatch('scroll-to-top');
     }
 
     private function calculateMonthlyInstallment(Bank $bank, float $price): float
@@ -60,15 +84,51 @@ class InstallmentCalculator extends Component
         $lastPayment = $price * $bank->percentage / 100;
 
         // هامش الربح
-        $profitMargin = ($price - $this->downPayment) * ($bank->benefits / 100) * $bank->period;
+        $profitMargin = ($price - $this->form->down_payment) * ($bank->benefits / 100) * $bank->period;
 
         // التأمين
-        $insurance = $price * $bank->insurance / 100;
+        $insurance = $price * $bank->insurance / 100 * $bank->period;
 
-        $monthlyInstallment = (($price - $this->downPayment - $lastPayment) + $profitMargin + $insurance) / ($bank->period * 12);
-
-        dump($lastPayment, $profitMargin, $insurance, $monthlyInstallment);
+        $monthlyInstallment = (($price - $this->form->down_payment - $lastPayment) + $profitMargin + $insurance) / ($bank->period * 12);
 
         return $monthlyInstallment;
+    }
+
+    private function calculateCanApply(): bool
+    {
+        $salary = $this->form->salary;
+        $jobType = $this->form->job_type;
+        $obligations = $this->form->obligations;
+
+        $installment = $this->monthlyInstallment;
+        $availableSalary = $salary - $obligations - ($salary * $jobType / 100);
+
+        return $availableSalary >= $installment;
+    }
+
+    public function submit()
+    {
+        $this->validate();
+
+        PurchaseApplication::create([
+            'payment_method' => PurchaseMethod::Installment,
+            'name' => $this->name,
+            'email' => $this->email,
+            'phone' => $this->phone,
+            'city' => $this->city,
+            'contact_via' => $this->contact_methods,
+            'vehicle_details' => Color::find($this->form->color_id)->toArray(),
+            'installment_details' => [
+                'bank' => $this->bank->name,
+                'down_payment' => $this->form->down_payment,
+                'monthly_installment' => $this->monthlyInstallment,
+                'salary' => $this->form->salary,
+                'job_type' => $this->form->job_type,
+                'obligations' => $this->form->obligations,
+                'license_type' => $this->form->license_type,
+            ],
+        ]);
+
+        $this->dispatch('form-sent', message: __('frontend.cash_purchase_form.form_successfully_sent'));
     }
 }

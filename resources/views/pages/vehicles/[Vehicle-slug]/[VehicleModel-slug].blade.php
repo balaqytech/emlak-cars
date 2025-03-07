@@ -9,15 +9,20 @@
                 <div class="order-2 md:order-1 flex flex-col gap-4">
                     <x-breadcrumb :items="[
                         ['label' => __('frontend.navigation.vehicles'), 'url' => '/vehicles'],
-                        ['label' => $vehicleModel->vehicle->name, 'url' => '/vehicle/' . $vehicleModel->vehicle->slug],
+                        ['label' => $vehicleModel->vehicle->name, 'url' => '/vehicles/' . $vehicleModel->vehicle->slug],
                         ['label' => $vehicleModel->name],
                     ]" color="slate-400" />
                     <h1 class="text-3xl font-bold text-slate-900">{{ $vehicleModel->name }}</h1>
                     <p class="mt-2 text-slate-500">{{ $vehicleModel->excerpt }}</p>
                     <div class="flex flex-col md:flex-row gap-4 items-center">
-                        <livewire:cash-purchase-application-form :model="$vehicleModel->id" paymentMethod="cash" />
+                        <div x-data="{ modalIsOpen: false }">
+                            <x-primary-button x-on:click="modalIsOpen = true"
+                                class="cursor-pointer">{{ __('frontend.vehicles.cash_purchase_apply') }}</x-primary-button>
+                            <livewire:cash-purchase-application-form :model="$vehicleModel->id" paymentMethod="cash" />
+
+                        </div>
                         <x-outline-button
-                            href="/installment-calculator">{{ __('frontend.vehicles.installment_apply') }}</x-outline-button>
+                            href="/installment-calculator?model={{ $vehicleModel->id }}">{{ __('frontend.vehicles.installment_apply') }}</x-outline-button>
                     </div>
                 </div>
                 <div class="order-1 md:order-2">
@@ -88,34 +93,37 @@
                                                     <h3 class="text-slate-800 font-semibold dark:text-white">
                                                         {{ __('frontend.vehicles.model_color') }}
                                                     </h3>
-                                                    <p x-text="slide.name" class="text-sm text-slate-700 dark:text-neutral-400"></p>
+                                                    <p x-text="slide.name"
+                                                        class="text-sm text-slate-700 dark:text-neutral-400"></p>
                                                 </div>
                                             </div>
                                             <div class="flex p-8">
                                                 <div class="shrink-0">
-                                                    <x-icons.sar
-                                                        class="w-6 h-6 text-slate-700 dark:text-slate-300" />
+                                                    <x-icons.sar class="w-6 h-6 text-slate-700 dark:text-slate-300" />
                                                 </div>
                                                 <div class="flex flex-col ms-3 gap-2">
                                                     <h3 class="text-slate-800 font-semibold dark:text-white">
                                                         {{ __('frontend.vehicles.model_cash_price') }}
                                                     </h3>
                                                     <p class="text-sm text-slate-700 dark:text-neutral-400">
-                                                        <span x-text="new Intl.NumberFormat().format(slide.cash_price)"></span> {{ __('frontend.sar') }}
+                                                        <span
+                                                            x-text="new Intl.NumberFormat().format(slide.cash_price)"></span>
+                                                        {{ __('frontend.sar') }}
                                                     </p>
                                                 </div>
                                             </div>
                                             <div class="flex p-8">
                                                 <div class="shrink-0">
-                                                    <x-icons.sar
-                                                        class="w-6 h-6 text-slate-700 dark:text-slate-300" />
+                                                    <x-icons.sar class="w-6 h-6 text-slate-700 dark:text-slate-300" />
                                                 </div>
                                                 <div class="flex flex-col ms-3 gap-2">
                                                     <h3 class="text-slate-800 font-semibold dark:text-white">
                                                         {{ __('frontend.vehicles.model_installment_price') }}
                                                     </h3>
                                                     <p class="text-sm text-slate-700 dark:text-neutral-400">
-                                                        <span x-text="new Intl.NumberFormat().format(slide.installment_price)"></span> {{ __('frontend.sar') }}
+                                                        <span
+                                                            x-text="new Intl.NumberFormat().format(slide.installment_price)"></span>
+                                                        {{ __('frontend.sar') }}
                                                     </p>
                                                 </div>
                                             </div>
@@ -147,7 +155,8 @@
                     </div>
                 </div>
                 <div x-cloak x-show="selectedTab === 'specifications'" id="tabpanelSpecifications" role="tabpanel"
-                    aria-label="specifications" class="py-8" role="tabpanel" aria-labelledby="specifications-item">
+                    aria-label="specifications" class="py-8" role="tabpanel"
+                    aria-labelledby="specifications-item">
                     <div class="prose max-w-3xl py-12 mx-auto">
                         {!! str($vehicleModel->specifications)->sanitizeHtml() !!}
                     </div>
