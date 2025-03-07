@@ -1,12 +1,13 @@
 <section>
     <div class="wrapper py-24">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12" x-data x-on:scroll-to-top.window="window.scrollTo({ top: 0, behavior: 'smooth' })">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12" x-data
+            x-on:scroll-to-top.window="window.scrollTo({ top: 0, behavior: 'smooth' })">
             <form class="flex flex-col gap-4" wire:submit.prevent="calculate">
                 <h2 class="font-bold text-primary">{{ __('frontend.calculator.vehicle_details') }}</h2>
                 <div id="car-details"
                     class="grid grid-cols-1 md:grid-cols-2 items-center gap-4 p-8 border border-slate-200 rounded-lg">
                     <x-select name="vehicle_id" label="{{ __('frontend.calculator.vehicle') }}"
-                        wire:model.live="form.vehicle_id" :error="$errors->first('vehicle_id')">
+                        wire:model.live="form.vehicle_id" :error="$errors->first('form.vehicle_id')">
                         @foreach ($vehicles->pluck('name', 'id') as $value => $label)
                             <option value="{{ $value }}">{{ $label }}</option>
                         @endforeach
@@ -20,8 +21,8 @@
                             @endforeach
                         @endif
                     </x-select>
-                    <x-select name="color" label="{{ __('frontend.calculator.color') }}" wire:model.live="form.color_id"
-                        :error="$errors->first('form.color_id')">
+                    <x-select name="color" label="{{ __('frontend.calculator.color') }}"
+                        wire:model.live="form.color_id" :error="$errors->first('form.color_id')">
                         @if ($form->colors)
                             @foreach ($form->colors as $color)
                                 <option value="{{ $color->id }}">{{ $color->name }}</option>
@@ -55,7 +56,7 @@
                     <x-numeric-input name="salary" label="{{ __('frontend.calculator.salary') }}"
                         wire:model="form.salary" :error="$errors->first('form.salary')" />
                     <x-select name="license_type" label="{{ __('frontend.calculator.job_type') }}"
-                        wire:model="form.job_type" :error="$errors->first('license_type')">
+                        wire:model="form.job_type" :error="$errors->first('form.job_type')">
                         @foreach (\Panakour\FilamentFlatPage\Facades\FilamentFlatPage::get('calculator.json', 'job_types') as $type)
                             <option value="{{ $type['percentage'] }}">{{ $type['name'] }}</option>
                         @endforeach
@@ -68,6 +69,8 @@
                     <x-spinner wire:loading wire:target="calculate" />
                     {{ __('frontend.calculator.calculate') }}
                 </x-submit-button>
+                <div style="font-size: 10px">Powered by <a class="text-primary underline" href="https://balaqytech.com"
+                        target="_blank">Balaqytech</a></div>
             </form>
 
             @if ($monthlyInstallment > 0)
@@ -81,27 +84,23 @@
                                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-800">
                                                 سعر
                                                 السيارة</td>
-                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-800"
-                                                colspan="2">
-                                                {{ $price }} SAR</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-800">
+                                                {{ $price }} ريال سعودي</td>
                                         </tr>
-                                        {{-- <tr class="odd:bg-white even:bg-slate-100">
+                                        <tr class="odd:bg-white even:bg-slate-100">
                                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-800">
                                                 الدفعة
                                                 الأولى</td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-800">
-                                                {{ $downPaymentPercentage }}%</td>
-                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-800">
-                                                {{ $downPayment }}
-                                                SAR</td>
-                                        </tr> --}}
+                                                {{ $form->down_payment }}
+                                                ريال سعودي</td>
+                                        </tr>
                                         <tr class="odd:bg-white even:bg-slate-100">
                                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-slate-800">
                                                 القسط
                                                 الشهري</td>
-                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-800"
-                                                colspan="2">
-                                                {{ $monthlyInstallment }} SAR</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-slate-800">
+                                                {{ $monthlyInstallment }} ريال سعودي</td>
                                         </tr>
                                     </tbody>
                                 </table>
