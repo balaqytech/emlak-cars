@@ -51,12 +51,6 @@ class Homepage extends FlatPage
                                 ->hint(__('backend.translatable_field'))
                                 ->hintIcon('heroicon-o-language')
                                 ->schema([
-                                    Forms\Components\TextInput::make('title')
-                                        ->required()
-                                        ->label(__('backend.homepage.slider_title')),
-                                    Forms\Components\TextInput::make('subtitle')
-                                        ->required()
-                                        ->label(__('backend.homepage.slider_subtitle')),
                                     Forms\Components\FileUpload::make('laptop_image')
                                         ->required()
                                         ->image()

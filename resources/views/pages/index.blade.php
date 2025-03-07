@@ -36,10 +36,10 @@
                 @foreach ($slides as $slide)
                     <div class="swiper-slide">
                         <div
-                            class=" relative h-screen w-full before:content-[''] before:absolute before:top-0 before:start-0 before:h-full before:w-1/2 rtl:before:bg-gradient-to-l ltr:before:bg-gradient-to-r before:from-black/60 before:to-transparent before:z-10">
+                            class=" relative h-screen w-full py-24 before:content-[''] before:absolute before:top-0 before:start-0 before:h-full before:w-1/2 rtl:before:bg-gradient-to-l ltr:before:bg-gradient-to-r before:from-black/60 before:to-transparent before:z-10">
                             <div class="w-full h-full absolute top-0 left-0 overflow-hidden">
                                 <picture>
-                                    <source media="(max-width: 768px)"
+                                    <source media="(max-width: 480px)"
                                         srcset="{{ asset('storage/' . $slide['mobile_image']) }}">
                                     <img class="object-cover object-center w-full h-full"
                                         src="{{ asset('storage/' . $slide['laptop_image']) }}"
@@ -47,11 +47,8 @@
                                 </picture>
                             </div>
                             <div
-                                class="wrapper relative z-20 flex flex-col items-start justify-center h-full text-white">
+                                class="wrapper relative z-20 flex flex-col items-center justify-end h-full text-white">
                                 <div class="relative max-w-xl flex flex-col gap-4">
-                                    <span class="font-bold text-lg text-white">{{ $slide['subtitle'] }}</span>
-                                    <h2 class="inline-block rounded-lg font-bold text-4xl text-white">
-                                        {{ $slide['title'] }}</h2>
                                     <div>
                                         <x-primary-button href="{{ $slide['button_link'] }}">
                                             {{ $slide['button_text'] }}
