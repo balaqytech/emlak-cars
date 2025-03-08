@@ -6,7 +6,7 @@
             class="absolute top-4 start-4 inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-primary text-white">
             {{ $vehicle->category->name }}</div>
     </a>
-    <div class="py-8 px-8 h-full flex flex-col gap-4">
+    <div class="py-8 px-8 flex flex-col gap-4">
         <h2 class="font-bold text-2xl text-slate-800 hover:text-primary hover:underline">
             <a href="/vehicles/{{ $vehicle->slug }}">{{ $vehicle->name }}</a>
         </h2>
