@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'all' => 'الكل',
+    'price_start' => 'تبدأ الأسعار من',
     'sar' => 'ر.س',
     'currency' => 'ريال',
     'select_option' => 'اختر',

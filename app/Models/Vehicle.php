@@ -52,4 +52,11 @@ class Vehicle extends Model implements Auditable
     {
         return $this->hasMany(VehicleModel::class, 'vehicle_id');
     }
+
+    public function getLeastPriceAttribute()
+    {
+        return $this->vehicleModels()
+            ->join('colors', 'vehicle_models.id', '=', 'colors.vehicle_model_id')
+            ->min('colors.cash_price');
+    }
 }
