@@ -12,8 +12,8 @@
         {{ __('frontend.homepage.page_title') }}
     </x-slot>
 
-    <section id="slider" class="min-h-screen bg-slate-50">
-        <div class="swiper h-screen"
+    <section id="slider" class="min-h-[85dvh] bg-slate-50">
+        <div class="swiper h-[85dvh]"
             data-swiper-options="{
                 'loop': true,
                 'grabCursor': true,
@@ -29,14 +29,15 @@
                     }
                 },
                 'pagination': {
-                    'el': '.swiper-pagination'
+                    'el': '.swiper-pagination',
+                    'clickable': true
                 }
         }">
             <div class="swiper-wrapper">
                 @foreach ($slides as $slide)
                     <div class="swiper-slide">
                         <div
-                            class=" relative h-screen w-full py-24 before:content-[''] before:absolute before:top-0 before:start-0 before:h-full before:w-1/2 rtl:before:bg-gradient-to-l ltr:before:bg-gradient-to-r before:from-black/60 before:to-transparent before:z-10">
+                            class=" relative h-[85dvh] w-full py-12 before:content-[''] before:absolute before:top-0 before:start-0 before:h-full before:w-1/2 rtl:before:bg-gradient-to-l ltr:before:bg-gradient-to-r before:from-black/60 before:to-transparent before:z-10">
                             <div class="w-full h-full absolute top-0 left-0 overflow-hidden">
                                 <picture>
                                     <source media="(max-width: 480px)"
