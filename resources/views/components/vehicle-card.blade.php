@@ -1,5 +1,5 @@
 <div {{ $attributes->merge(['class' => 'flex flex-col border border-slate-100 rounded-lg overflow-hidden bg-white shadow-3xl']) }}>
-    <a href="/vehicles/{{ $vehicle->slug }}" class="relative h-full min-h-64 rounded-lg overflow-hidden">
+    <a href="/vehicles/{{ $vehicle->slug }}" class="relative h-80 min-h-64 rounded-lg overflow-hidden">
         <img class="object-cover w-full h-full hover:scale-110 hover:rotate-2 transition-all duration-500"
             src="{{ Storage::url($vehicle->image) }}" alt="{{ $vehicle->name }}">
         <div
