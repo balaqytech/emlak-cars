@@ -23,7 +23,9 @@
             </div>
         @endforelse
     </div>
+    @if ($queryType === 'paginate')
     <div class="mt-10">
         {{ $vehicles->links() }}
     </div>
+    @endif
 </div>

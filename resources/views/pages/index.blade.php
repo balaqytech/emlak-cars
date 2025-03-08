@@ -74,30 +74,11 @@
                     {{ __('frontend.homepage.featured_vehicles.description') }}
                 </p>
             </div>
-            <div class="w-full bg-white rounded-lg shadow-md">
-                <div class="swiper w-full"
-                    data-swiper-options="{
-                    'loop': true,
-                    'autoplay': {
-                        'delay': 2500,
-                        'disableOnInteraction': false
-                    },
-                    'pagination': {
-                        'el': '.swiper-pagination2'
-                    }
-                }">
-                    <div class="swiper-wrapper">
-                        @foreach (\App\Models\Vehicle::latest()->take(3)->get() as $vehicle)
-                            <x-featured-vehicle-card :vehicle="$vehicle" class="swiper-slide h-auto" />
-                        @endforeach
-                    </div>
-                    <div class="swiper-pagination2 absolute bottom-0 start-4 z-10"></div>
-                </div>
-            </div>
-            <div>
-                <x-primary-button href="/vehicles">
+            <livewire:vehicle-search queryType="take" />
+            <div class="mt-8">
+                <x-outline-button href="/vehicles">
                     {{ __('frontend.homepage.featured_vehicles.button') }}
-                </x-primary-button>
+                </x-outline-button>
             </div>
         </div>
     </section>
