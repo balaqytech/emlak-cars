@@ -199,7 +199,7 @@
                 </p>
             </div>
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full mt-12">
-                @foreach (\App\Models\Post::orderBy('is_featured', 'desc')->latest()->take(3)->get() as $post)
+                @foreach (\App\Models\Post::orderBy('is_featured', 'desc')->orderBy('published_at', 'desc')->take(3)->get() as $post)
                     <x-post-card :post="$post" />
                 @endforeach
             </div>

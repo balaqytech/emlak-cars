@@ -1,5 +1,5 @@
 @php
-    $posts = \App\Models\Post::orderBy('is_featured', 'desc')->latest()->paginate(9);
+    $posts = \App\Models\Post::orderBy('is_featured', 'desc')->orderBy('published_at', 'desc')->paginate(9);
 @endphp
 
 <x-page-layout>
