@@ -1,38 +1,6 @@
 {
-  "public/fonts/ExpoArabic-Book.svg": {
-    "file": "assets/ExpoArabic-Book-PcCOyZY4.svg",
-    "src": "public/fonts/ExpoArabic-Book.svg"
-  },
-  "public/fonts/ExpoArabic-Book.ttf": {
-    "file": "assets/ExpoArabic-Book-DG4Cu4QO.ttf",
-    "src": "public/fonts/ExpoArabic-Book.ttf"
-  },
-  "public/fonts/ExpoArabic-Book.woff": {
-    "file": "assets/ExpoArabic-Book-BhqZztTy.woff",
-    "src": "public/fonts/ExpoArabic-Book.woff"
-  },
-  "public/fonts/ExpoArabic-Book.woff2": {
-    "file": "assets/ExpoArabic-Book-CHfNb4vI.woff2",
-    "src": "public/fonts/ExpoArabic-Book.woff2"
-  },
-  "public/fonts/ExpoArabic-Medium.svg": {
-    "file": "assets/ExpoArabic-Medium-iVqH9J3b.svg",
-    "src": "public/fonts/ExpoArabic-Medium.svg"
-  },
-  "public/fonts/ExpoArabic-Medium.ttf": {
-    "file": "assets/ExpoArabic-Medium-CyWOXQTg.ttf",
-    "src": "public/fonts/ExpoArabic-Medium.ttf"
-  },
-  "public/fonts/ExpoArabic-Medium.woff": {
-    "file": "assets/ExpoArabic-Medium-DgVPdxKO.woff",
-    "src": "public/fonts/ExpoArabic-Medium.woff"
-  },
-  "public/fonts/ExpoArabic-Medium.woff2": {
-    "file": "assets/ExpoArabic-Medium-B7WliHSW.woff2",
-    "src": "public/fonts/ExpoArabic-Medium.woff2"
-  },
   "resources/css/app.css": {
-    "file": "assets/app-BvwrCewX.css",
+    "file": "assets/app-QnwvpaNM.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
