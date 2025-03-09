@@ -19,6 +19,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        \Spatie\Translatable\Facades\Translatable::fallback(
+            fallbackLocale: 'ar',
+        );
     }
 }
