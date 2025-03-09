@@ -8,8 +8,8 @@
             <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-4">
                 <div class="order-2 md:order-1 flex flex-col gap-4">
                     <x-breadcrumb :items="[
-                        ['label' => __('frontend.navigation.vehicles'), 'url' => '/vehicles'],
-                        ['label' => $vehicleModel->vehicle->name, 'url' => '/vehicles/' . $vehicleModel->vehicle->slug],
+                        ['label' => __('frontend.navigation.vehicles'), 'url' => localizedUrl('/vehicles/')],
+                        ['label' => $vehicleModel->vehicle->name, 'url' => localizedUrl('/vehicles/' . $vehicleModel->vehicle->slug)],
                         ['label' => $vehicleModel->name],
                     ]" color="slate-400" />
                     <h1 class="text-3xl font-bold text-slate-900">{{ $vehicleModel->name }}</h1>
@@ -22,7 +22,7 @@
 
                         </div>
                         <x-outline-button
-                            href="/installment-calculator?model={{ $vehicleModel->id }}">{{ __('frontend.vehicles.installment_apply') }}</x-outline-button>
+                            href="{{ localizedUrl('/installment-calculator?model=' .$vehicleModel->id) }}">{{ __('frontend.vehicles.installment_apply') }}</x-outline-button>
                     </div>
                 </div>
                 <div class="order-1 md:order-2">

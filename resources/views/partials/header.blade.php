@@ -1,20 +1,20 @@
 <header x-data="{ mobileMenuIsOpen: false }" x-on:click.away="mobileMenuIsOpen = false"
     class=" w-full bg-white text-sm py-3 border-b border-gray-200 z-50 shadow-3xl">
     <nav class="wrapper flex items-center justify-between gap-4">
-        <a class="flex-none text-xl font-semibold focus:outline-none focus:opacity-80" href="/"
+        <a class="flex-none text-xl font-semibold focus:outline-none focus:opacity-80" href="{{ localizedUrl('/') }}"
             aria-label="Brand">
             <img class="h-16" src="{{ asset('storage/' . general_settings('site_logo')) }}"
                 alt="{{ general_settings('site_name') }}">
         </a>
         <ul class="hidden items-center md:flex gap-8 justify-center">
-            <x-nav-link link="/" title="{{ __('frontend.navigation.home') }}" />
-            <x-nav-link link="/vehicles" title="{{ __('frontend.navigation.vehicles') }}" />
-            <x-nav-link link="/offers" title="{{ __('frontend.navigation.offers') }}" />
-            <x-nav-link link="/posts" title="{{ __('frontend.navigation.posts') }}" />
-            <x-nav-link link="/branches" title="{{ __('frontend.navigation.branches') }}" />
-            <x-nav-link link="/about" title="{{ __('frontend.navigation.about') }}" />
+            <x-nav-link link="{{ localizedUrl('/') }}" title="{{ __('frontend.navigation.home') }}" />
+            <x-nav-link link="{{ localizedUrl('/vehicles') }}" title="{{ __('frontend.navigation.vehicles') }}" />
+            <x-nav-link link="{{ localizedUrl('/offers') }}" title="{{ __('frontend.navigation.offers') }}" />
+            <x-nav-link link="{{ localizedUrl('/posts') }}" title="{{ __('frontend.navigation.posts') }}" />
+            <x-nav-link link="{{ localizedUrl('/branches') }}" title="{{ __('frontend.navigation.branches') }}" />
+            <x-nav-link link="{{ localizedUrl('/about') }}" title="{{ __('frontend.navigation.about') }}" />
         </ul>
-        <x-primary-button href="/contact" class="hidden md:block">{{ __('frontend.navigation.contact') }}</x-primary-button>
+        <x-primary-button href="{{ localizedUrl('/contact') }}" class="hidden md:block">{{ __('frontend.navigation.contact') }}</x-primary-button>
         <button x-on:click="mobileMenuIsOpen = !mobileMenuIsOpen" x-bind:aria-expanded="mobileMenuIsOpen"
             x-bind:class="mobileMenuIsOpen ? 'fixed top-6 right-6 z-20' : null" type="button"
             class="flex text-on-surface dark:text-on-surface-dark md:hidden" aria-label="mobile menu"
@@ -36,13 +36,13 @@
             x-transition:leave="transition motion-reduce:transition-none ease-out duration-300"
             x-transition:leave-start="translate-y-0" x-transition:leave-end="-translate-y-full" id="mobileMenu"
             class="fixed max-h-svh overflow-y-auto inset-x-0 top-0 z-10 flex flex-col bg-white divide-y divide-outline rounded-b-radius border-b border-outline bg-surface-alt px-6 pb-6 pt-20">
-            <x-nav-link link="/" title="{{ __('frontend.navigation.home') }}" />
-            <x-nav-link link="/vehicles" title="{{ __('frontend.navigation.vehicles') }}" />
-            <x-nav-link link="/offers" title="{{ __('frontend.navigation.offers') }}" />
-            <x-nav-link link="/posts" title="{{ __('frontend.navigation.posts') }}" />
-            <x-nav-link link="/branches" title="{{ __('frontend.navigation.branches') }}" />
-            <x-nav-link link="/about" title="{{ __('frontend.navigation.about') }}" />
-            <x-nav-link link="/contact" title="{{ __('frontend.navigation.contact') }}" />
+            <x-nav-link link="{{ localizedUrl('/') }}" title="{{ __('frontend.navigation.home') }}" />
+            <x-nav-link link="{{ localizedUrl('/vehicles') }}" title="{{ __('frontend.navigation.vehicles') }}" />
+            <x-nav-link link="{{ localizedUrl('/offers') }}" title="{{ __('frontend.navigation.offers') }}" />
+            <x-nav-link link="{{ localizedUrl('/posts') }}" title="{{ __('frontend.navigation.posts') }}" />
+            <x-nav-link link="{{ localizedUrl('/branches') }}" title="{{ __('frontend.navigation.branches') }}" />
+            <x-nav-link link="{{ localizedUrl('/about') }}" title="{{ __('frontend.navigation.about') }}" />
+            <x-nav-link link="{{ localizedUrl('/contact') }}" title="{{ __('frontend.navigation.contact') }}" />
         </ul>
     </nav>
 </header>

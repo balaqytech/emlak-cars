@@ -23,7 +23,7 @@
                         class="bg-primary inline-block hover:bg-slate-700 text-white rounded px-5 py-2 transition-all duration-500">{{ $vehicle->category->name }}</a>
                 </p>
                 <x-breadcrumb :items="[
-                    ['label' => __('frontend.navigation.vehicles'), 'url' => '/vehicles'],
+                    ['label' => __('frontend.navigation.vehicles'), 'url' => localizedUrl('/vehicles/')],
                     ['label' => $vehicle->name],
                 ]" color="slate-400" />
                 <h1 class="text-4xl font-bold text-slate-800">

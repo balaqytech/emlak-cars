@@ -15,7 +15,7 @@
         <div class="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-12 py-24">
             <div class="col-span-2 md:col-span-1 lg:col-span-1">
                 <a class="flex-none h-24 font-semibold text-xl text-black focus:outline-none focus:opacity-80"
-                    href="/" aria-label="Brand">
+                    href="{{ localizedUrl('/') }}" aria-label="Brand">
                     <img class="object-contain object-center"
                         src="{{ asset('storage/' . general_settings('site_logo')) }}"
                         alt="{{ general_settings('site_name') }}">
@@ -29,22 +29,22 @@
                 <h4 class="text-md font-semibold text-slate-900 uppercase">{{ __('frontend.footer.company_title') }}
                 </h4>
                 <div class="mt-3 grid space-y-3 text-sm">
-                    <x-footer-nav-link link="/about" title="{{ __('frontend.navigation.about') }}" />
-                    <x-footer-nav-link link="/vehicles" title="{{ __('frontend.navigation.vehicles') }}" />
-                    <x-footer-nav-link link="/branches" title="{{ __('frontend.navigation.branches') }}" />
-                    <x-footer-nav-link link="/offers" title="{{ __('frontend.navigation.offers') }}" />
-                    <x-footer-nav-link link="/posts" title="{{ __('frontend.navigation.posts') }}" />
-                    <x-footer-nav-link link="/contact" title="{{ __('frontend.navigation.contact') }}" />
+                    <x-footer-nav-link link="{{ localizedUrl('/about') }}" title="{{ __('frontend.navigation.about') }}" />
+                    <x-footer-nav-link link="{{ localizedUrl('/vehicles') }}" title="{{ __('frontend.navigation.vehicles') }}" />
+                    <x-footer-nav-link link="{{ localizedUrl('/branches') }}" title="{{ __('frontend.navigation.branches') }}" />
+                    <x-footer-nav-link link="{{ localizedUrl('/offers') }}" title="{{ __('frontend.navigation.offers') }}" />
+                    <x-footer-nav-link link="{{ localizedUrl('/posts') }}" title="{{ __('frontend.navigation.posts') }}" />
+                    <x-footer-nav-link link="{{ localizedUrl('/contact') }}" title="{{ __('frontend.navigation.contact') }}" />
                 </div>
             </div>
             <!-- End Col -->
             <div>
                 <h4 class="text-md font-semibold text-slate-900 uppercase">{{ __('frontend.footer.quick_links') }}</h4>
                 <div class="mt-3 grid space-y-3 text-sm">
-                    <x-footer-nav-link link="/installment-calculator" title="{{ __('frontend.navigation.installment_calculator') }}" />
-                    <x-footer-nav-link link="/faqs" title="{{ __('frontend.navigation.faqs') }}" />
+                    <x-footer-nav-link link="{{ localizedUrl('/installment-calculator') }}" title="{{ __('frontend.navigation.installment_calculator') }}" />
+                    <x-footer-nav-link link="{{ localizedUrl('/faqs') }}" title="{{ __('frontend.navigation.faqs') }}" />
                     @foreach ($pages as $page)
-                    <x-footer-nav-link link="/page/{{ $page->slug }}" title="{{ $page->title }}" />
+                    <x-footer-nav-link link="{{ localizedUrl('/page/' . $page->slug) }}" title="{{ $page->title }}" />
                     @endforeach
                 </div>
             </div>
@@ -108,4 +108,3 @@
         </div>
     </div>
 </footer>
-<!-- ========== END FOOTER ========== -->

@@ -105,7 +105,7 @@
                             <h3 class="font-semibold text-slate-800">{{ __('frontend.contact.more_info.about.heading') }}</h3>
                             <p class="mt-1 text-sm text-slate-500">{{ __('frontend.contact.more_info.about.description') }}</p>
                             <a class="mt-2 inline-flex items-center gap-x-2 text-sm font-medium  hover:text-slate-800 focus:outline-none focus:text-slate-800"
-                                href="/about">
+                                href="{{ localizedUrl('/about') }}">
                                 {{ __('frontend.contact.more_info.about.button') }}
                                 <x-icons.arrow-left class="shrink-0 size-2.5 transition ease-in-out group-hover:translate-x-1 group-focus:translate-x-1 rtl:rotate-180" />
                             </a>
@@ -120,7 +120,7 @@
                             <h3 class="font-semibold text-slate-800">{{ __('frontend.contact.more_info.faqs.heading') }}</h3>
                             <p class="mt-1 text-sm text-slate-500">{{ __('frontend.contact.more_info.faqs.description') }}</p>
                             <a class="mt-2 inline-flex items-center gap-x-2 text-sm font-medium  hover:text-slate-800 focus:outline-none focus:text-slate-800"
-                                href="/faqs">
+                                href="{{ localizedUrl('/faqs') }}">
                                 {{ __('frontend.contact.more_info.faqs.button') }}
                                 <x-icons.arrow-left class="shrink-0 size-2.5 transition ease-in-out group-hover:translate-x-1 group-focus:translate-x-1 rtl:rotate-180" />
                             </a>
@@ -135,7 +135,7 @@
                             <h3 class="font-semibold text-slate-800">{{ __('frontend.contact.more_info.branches.heading') }}</h3>
                             <p class="mt-1 text-sm text-slate-500">{{ __('frontend.contact.more_info.branches.description') }}</p>
                             <a class="mt-2 inline-flex items-center gap-x-2 text-sm font-medium  hover:text-slate-800 focus:outline-none focus:text-slate-800"
-                                href="/branches">
+                                href="{{ localizedUrl('/branches') }}">
                                 {{ __('frontend.contact.more_info.branches.button') }}
                                 <x-icons.arrow-left class="shrink-0 size-2.5 transition ease-in-out group-hover:translate-x-1 group-focus:translate-x-1 rtl:rotate-180" />
                             </a>

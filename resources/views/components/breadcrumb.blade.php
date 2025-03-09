@@ -3,7 +3,7 @@
 <ol {{ $attributes }}>
     <li class="inline-flex items-center">
         <a class="flex items-center text-xs text-{{ $color }} hover:text-primary focus:outline-hidden focus:text-primary"
-            href="/">
+            href="{{ localizedUrl('/') }}">
             {{ __('frontend.home') }}
         </a>
         @if(count($items) > 0)
