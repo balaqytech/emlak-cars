@@ -12,7 +12,7 @@
         </h2>
         <p class="text-slate-600 text-sm grow">{{ $vehicle->excerpt }}</p>
         <hr>
-        <div class="flex justify-between items-center gap-4">
+        <div class="flex flex-col md:flex-row justify-between md:items-center gap-4">
             <p class="flex gap-2 text-sm">{{ __('frontend.price_start') }}: <span class="font-bold text-primary">{{ $vehicle->least_price ?? 'NON' }}</span> <x-icons.sar class="size-4 shrink-0" /></p>
             <x-primary-button href="/vehicles/{{ $vehicle->slug }}"
                 class="text-xs font-bold text-primary hover:underline mt-2">{{ __('frontend.vehicles.view_details') }}</x-primary-button>

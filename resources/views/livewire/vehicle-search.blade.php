@@ -1,5 +1,5 @@
 <div class="wrapper" x-data="{ selectedCategory: @entangle('selectedCategory'), active: null }">
-    <nav class="-mb-0.5 flex justify-start gap-x-6">
+    <nav class="-mb-0.5 flex justify-start gap-x-6 overflow-x-auto">
         <a class="py-4 px-1 inline-flex items-center gap-2 border-b-2 text-sm whitespace-nowrap hover:text-primary focus:outline-hidden focus:text-primary"
             href="#" wire:click.prevent="selectCategory(null); active = null" x-on:click="selectedCategory = null"
             :class="active === null ? 'text-primary border-primary' : 'text-slate-500 border-transparent'">
