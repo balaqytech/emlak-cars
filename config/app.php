@@ -136,18 +136,4 @@ return [
     'locales' => [
         'ar', 'en',
     ],
-
-    'locale_config' => [
-        'ar' => [
-            'name' => 'عربي',
-            'rtl' => true,
-            'prefix' => '',
-        ],
-        'en' => [
-            'name' => 'English',
-            'rtl' => false,
-            'prefix' => 'en',
-        ],
-    ],
-
 ];

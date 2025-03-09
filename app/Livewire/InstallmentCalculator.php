@@ -61,9 +61,7 @@ class InstallmentCalculator extends Component
         return view('livewire.installment-calculator', [
             'banks' => Bank::all(),
             'vehicles' => Vehicle::all(),
-        ])
-            ->layout('layouts.page')
-            ->title(__('frontend.navigation.installment_calculator'));
+        ]);
     }
 
     public function calculate()
