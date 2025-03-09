@@ -92,9 +92,12 @@
                 <div x-cloak x-show="selectedTab === 'features'" id="tabpanelFeatures" role="tabpanel"
                     aria-label="features">
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        @foreach ($vehicle->features as $feature)
-                            <x-vehicle-feature-card :image="$feature['image']" :title="$feature['title']" :description="$feature['description']" />
-                        @endforeach
+                        @if ($vehicle->features)
+
+                            @foreach ($vehicle->features as $feature)
+                                <x-vehicle-feature-card :image="$feature['image']" :title="$feature['title']" :description="$feature['description']" />
+                            @endforeach
+                        @endif
                     </div>
                 </div>
             </div>
