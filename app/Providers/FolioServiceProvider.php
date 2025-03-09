@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Http\Middleware\LocalizationMiddleware;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Folio\Folio;
 
@@ -20,9 +21,18 @@ class FolioServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Folio::path(resource_path('views/pages'))->middleware([
+        Folio::path(resource_path('views/pages'))
+        ->uri('/ar')
+        ->middleware([
             '*' => [
-                //
+                LocalizationMiddleware::class,
+            ],
+        ]);
+        Folio::path(resource_path('views/pages'))
+        ->uri('/en')
+        ->middleware([
+            '*' => [
+                LocalizationMiddleware::class,
             ],
         ]);
     }
