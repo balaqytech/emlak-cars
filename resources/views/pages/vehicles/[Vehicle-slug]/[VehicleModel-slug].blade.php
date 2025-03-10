@@ -81,7 +81,7 @@
                                 <div x-cloak x-show="currentSlideIndex == index + 1" class="absolute inset-0"
                                     x-transition.opacity.duration.1000ms>
                                     <div
-                                        class="absolute w-full h-full inset-0 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                                        class="w-full h-full inset-0 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
                                         <div class="bg-white border border-gray-200 rounded-xl shadow-lg" role="alert"
                                             tabindex="-1">
                                             <div class="flex p-8">
@@ -108,21 +108,6 @@
                                                     <p class="text-sm text-slate-700 dark:text-neutral-400">
                                                         <span
                                                             x-text="new Intl.NumberFormat().format(slide.cash_price)"></span>
-                                                        {{ __('frontend.sar') }}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="flex p-8">
-                                                <div class="shrink-0">
-                                                    <x-icons.sar class="w-6 h-6 text-slate-700 dark:text-slate-300" />
-                                                </div>
-                                                <div class="flex flex-col ms-3 gap-2">
-                                                    <h3 class="text-slate-800 font-semibold dark:text-white">
-                                                        {{ __('frontend.vehicles.model_installment_price') }}
-                                                    </h3>
-                                                    <p class="text-sm text-slate-700 dark:text-neutral-400">
-                                                        <span
-                                                            x-text="new Intl.NumberFormat().format(slide.installment_price)"></span>
                                                         {{ __('frontend.sar') }}
                                                     </p>
                                                 </div>
