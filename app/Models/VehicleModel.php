@@ -3,11 +3,14 @@
 namespace App\Models;
 
 use App\Casts\ModelColorCast;
+use App\Models\Scopes\PublishedScope;
+use Illuminate\Database\Eloquent\Attributes\ScopedBy;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
 use Spatie\Translatable\HasTranslations;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+#[ScopedBy(PublishedScope::class)]
 class VehicleModel extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
@@ -21,6 +24,7 @@ class VehicleModel extends Model implements Auditable
         'overview',
         'specifications',
         'vehicle_id',
+        'is_active',
     ];
 
     public $translatable = [

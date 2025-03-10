@@ -51,6 +51,8 @@ class ModelsRelationManager extends RelationManager
                             Forms\Components\RichEditor::make('specifications')
                                 ->required()
                                 ->columnSpanFull(),
+                            Forms\Components\Toggle::make('is_active')
+                                ->default(true),
                         ]),
                     Forms\Components\Wizard\Step::make('Model Colors')
                         ->schema([
@@ -80,6 +82,7 @@ class ModelsRelationManager extends RelationManager
     public function table(Table $table): Table
     {
         return $table
+            ->modifyQueryUsing(fn (Builder $query) => $query->withoutGlobalScopes())
             ->recordTitleAttribute('name')
             ->columns([
                 Tables\Columns\TextColumn::make('name'),
