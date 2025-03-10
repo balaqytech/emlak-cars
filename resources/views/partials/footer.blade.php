@@ -35,6 +35,7 @@
                     <x-footer-nav-link link="{{ localizedUrl('/offers') }}" title="{{ __('frontend.navigation.offers') }}" />
                     <x-footer-nav-link link="{{ localizedUrl('/posts') }}" title="{{ __('frontend.navigation.posts') }}" />
                     <x-footer-nav-link link="{{ localizedUrl('/contact') }}" title="{{ __('frontend.navigation.contact') }}" />
+                    <x-footer-nav-link link="{{ app()->getLocale() == 'ar' ? '/en' : '/ar' }}" title="{{ app()->getLocale() == 'ar' ? 'English' : 'عربي' }}" />
                 </div>
             </div>
             <!-- End Col -->
