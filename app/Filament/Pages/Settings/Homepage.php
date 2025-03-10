@@ -4,9 +4,12 @@ namespace App\Filament\Pages\Settings;
 
 use Filament\Forms;
 use Panakour\FilamentFlatPage\Pages\FlatPage;
+use BezhanSalleh\FilamentShield\Traits\HasPageShield;
 
 class Homepage extends FlatPage
 {
+    use HasPageShield;
+
     protected static ?string $navigationIcon = 'heroicon-o-home';
     protected static ?int $navigationSort = 2;
 
