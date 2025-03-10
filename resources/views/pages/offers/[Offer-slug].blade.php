@@ -9,16 +9,16 @@
         {{ $offer->title }}
     </x-slot>
 
-    <section class="w-full h-[60vh] bg-cover bg-center bg-slate-950 relative">
+    <section class="wrapper">
         <img src="{{ asset('storage/' . $offer->image) }}" alt="{{ $offer->title }}"
         class="object-cover object-center w-full h-full">
     </section>
 
     <article class="max-w-4xl mx-auto p-6">
         <header
-            class="flex flex-col items-center justify-center gap-4 mb-24 -mt-36 relative bg-white p-20 text-center shadow-3xl rounded-lg">
+            class="flex flex-col items-center justify-center gap-4 mb-24 -mt-8 md:-mt-24 relative bg-white p-8 lg:p-20 text-center shadow-3xl rounded-lg">
             <x-breadcrumb :items="[['label' => __('frontend.navigation.offers'), 'url' => localizedUrl('/offers/')],['label' => $offer->title]]" color="slate-400" />
-            <h1 class="text-5xl font-bold text-slate-800">{{ $offer->title }}</h1>
+            <h1 class="text-3xl font-bold text-slate-800">{{ $offer->title }}</h1>
             <div class="text-sm mt-2">
                 <p class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-primary text-white ">{{ __('frontend.offers.due_date') }} <time
                         datetime="{{ $offer->due_date }}">{{ $offer->due_date->format('d/m/Y') }}</time></p>
