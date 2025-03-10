@@ -77,7 +77,7 @@
             </div>
             <livewire:vehicle-search queryType="take" />
             <div class="mt-8">
-                <x-outline-button href="/vehicles">
+                <x-outline-button href="{{ localizedUrl('/vehicles') }}">
                     {{ __('frontend.homepage.featured_vehicles.button') }}
                 </x-outline-button>
             </div>
@@ -114,7 +114,7 @@
                     @endforeach
                 </div>
                 <div class="flex items-center">
-                    <x-primary-button href="/offers">
+                    <x-primary-button href="{{ localizedUrl('/offers') }}">
                         {{ __('frontend.homepage.offers.button') }}
                     </x-primary-button>
                 </div>
@@ -126,7 +126,7 @@
         <div class="wrapper">
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 items-center gap-6">
                 <a class="group flex gap-y-6 size-full hover:bg-white focus:outline-none focus:bg-slate-100 rounded-lg p-8"
-                    href="/branches">
+                    href="{{ localizedUrl('/contact') }}">
                     <x-icons.locations class="shrink-0 size-8 text-slate-800 mt-0.5 me-6 group-hover:text-primary" />
 
                     <div>
@@ -146,7 +146,7 @@
                 </a>
 
                 <a class="group flex gap-y-6 size-full hover:bg-white focus:outline-none focus:bg-slate-100 rounded-lg p-8"
-                    href="/installment-calculator">
+                    href="{{ localizedUrl('/installment-calculator') }}">
                     <x-icons.calculator class="shrink-0 size-8 text-slate-800 mt-0.5 me-6 group-hover:text-primary" />
 
                     <div>
@@ -165,7 +165,7 @@
                     </div>
                 </a>
                 <a class="group flex gap-y-6 size-full hover:bg-white focus:outline-none focus:bg-slate-100 rounded-lg p-8"
-                    href="/contact">
+                    href="{{ localizedUrl('/contact') }}">
                     <x-icons.phone class="shrink-0 size-8 text-slate-800 mt-0.5 me-6 group-hover:text-primary" />
 
                     <div>
@@ -204,7 +204,7 @@
                 @endforeach
             </div>
             <div class="flex items-center">
-                <x-primary-button href="/posts">
+                <x-primary-button href="{{ localizedUrl('/posts') }}">
                     {{ __('frontend.homepage.news.button') }}
                 </x-primary-button>
             </div>
