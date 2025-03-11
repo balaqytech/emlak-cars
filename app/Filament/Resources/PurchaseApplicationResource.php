@@ -38,6 +38,7 @@ class PurchaseApplicationResource extends Resource implements HasShieldPermissio
     public static function table(Table $table): Table
     {
         return $table
+            ->modifyQueryUsing(fn ($query) => $query->latest())
             ->columns([
                 Tables\Columns\TextColumn::make('payment_method')
                     ->label(__('backend.purchase_applications.payment_method'))
