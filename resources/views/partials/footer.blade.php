@@ -29,23 +29,33 @@
                 <h4 class="text-md font-semibold text-slate-900 uppercase">{{ __('frontend.footer.company_title') }}
                 </h4>
                 <div class="mt-3 grid space-y-3 text-sm">
-                    <x-footer-nav-link link="{{ localizedUrl('/about') }}" title="{{ __('frontend.navigation.about') }}" />
-                    <x-footer-nav-link link="{{ localizedUrl('/vehicles') }}" title="{{ __('frontend.navigation.vehicles') }}" />
-                    <x-footer-nav-link link="{{ localizedUrl('/branches') }}" title="{{ __('frontend.navigation.branches') }}" />
-                    <x-footer-nav-link link="{{ localizedUrl('/offers') }}" title="{{ __('frontend.navigation.offers') }}" />
-                    <x-footer-nav-link link="{{ localizedUrl('/posts') }}" title="{{ __('frontend.navigation.posts') }}" />
-                    <x-footer-nav-link link="{{ localizedUrl('/contact') }}" title="{{ __('frontend.navigation.contact') }}" />
-                    <x-footer-nav-link link="{{ app()->getLocale() == 'ar' ? '/en' : '/ar' }}" title="{{ app()->getLocale() == 'ar' ? 'English' : 'عربي' }}" />
+                    <x-footer-nav-link link="{{ localizedUrl('/about') }}"
+                        title="{{ __('frontend.navigation.about') }}" />
+                    <x-footer-nav-link link="{{ localizedUrl('/vehicles') }}"
+                        title="{{ __('frontend.navigation.vehicles') }}" />
+                    <x-footer-nav-link link="{{ localizedUrl('/branches') }}"
+                        title="{{ __('frontend.navigation.branches') }}" />
+                    <x-footer-nav-link link="{{ localizedUrl('/offers') }}"
+                        title="{{ __('frontend.navigation.offers') }}" />
+                    <x-footer-nav-link link="{{ localizedUrl('/posts') }}"
+                        title="{{ __('frontend.navigation.posts') }}" />
+                    <x-footer-nav-link link="{{ localizedUrl('/contact') }}"
+                        title="{{ __('frontend.navigation.contact') }}" />
+                    <x-footer-nav-link link="{{ app()->getLocale() == 'ar' ? '/en' : '/ar' }}"
+                        title="{{ app()->getLocale() == 'ar' ? 'English' : 'عربي' }}" />
                 </div>
             </div>
             <!-- End Col -->
             <div>
                 <h4 class="text-md font-semibold text-slate-900 uppercase">{{ __('frontend.footer.quick_links') }}</h4>
                 <div class="mt-3 grid space-y-3 text-sm">
-                    <x-footer-nav-link link="{{ localizedUrl('/installment-calculator') }}" title="{{ __('frontend.navigation.installment_calculator') }}" />
-                    <x-footer-nav-link link="{{ localizedUrl('/faqs') }}" title="{{ __('frontend.navigation.faqs') }}" />
+                    <x-footer-nav-link link="{{ localizedUrl('/installment-calculator') }}"
+                        title="{{ __('frontend.navigation.installment_calculator') }}" />
+                    <x-footer-nav-link link="{{ localizedUrl('/faqs') }}"
+                        title="{{ __('frontend.navigation.faqs') }}" />
                     @foreach ($pages as $page)
-                    <x-footer-nav-link link="{{ localizedUrl('/page/' . $page->slug) }}" title="{{ $page->title }}" />
+                        <x-footer-nav-link link="{{ localizedUrl('/page/' . $page->slug) }}"
+                            title="{{ $page->title }}" />
                     @endforeach
                 </div>
             </div>
@@ -108,4 +118,8 @@
             </div>
         </div>
     </div>
+    <a href="{{ general_settings('whatsapp') }}" target="_blank"
+        class="fixed bottom-4 end-4 bg-[#25d366] hover:bg-[#128c7e] text-white font-bold p-4 rounded-full shadow-lg">
+        <x-icons.whatsapp class="size-8" />
+    </a>
 </footer>
