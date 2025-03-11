@@ -62,7 +62,9 @@
                             </div>
                         @endforeach
                     </div>
-                    <div id="map-embed" x-html="mapEmbed" class="overflow-hidden"></div>
+                    <div class="w-full">
+                        <div id="map-embed" x-html="mapEmbed" class="overflow-x-auto h-full w-full object-contain object-center"></div>
+                    </div>
                 </div>
             @else
                 <div class="mt-8">
