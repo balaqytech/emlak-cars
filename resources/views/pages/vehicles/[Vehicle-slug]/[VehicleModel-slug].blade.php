@@ -12,7 +12,7 @@
                         ['label' => $vehicleModel->vehicle->name, 'url' => localizedUrl('/vehicles/' . $vehicleModel->vehicle->slug)],
                         ['label' => $vehicleModel->name],
                     ]" color="slate-400" />
-                    <h1 class="text-3xl font-bold text-slate-900">{{ $vehicleModel->name }}</h1>
+                    <h1 class="text-3xl font-bold text-slate-900 font-arial">{{ $vehicleModel->name }}</h1>
                     <p class="mt-2 text-slate-500">{{ $vehicleModel->excerpt }}</p>
                     <div class="flex flex-col md:flex-row gap-4 items-center">
                         <div x-data="{ modalIsOpen: false }">
@@ -87,33 +87,33 @@
                                             <div class="flex p-8">
                                                 <div class="shrink-0">
                                                     <x-icons.pallete
-                                                        class="w-6 h-6 text-slate-700 dark:text-slate-300" />
+                                                        class="w-6 h-6 text-white bg-slate-800 rounded-full p-1" />
                                                 </div>
                                                 <div class="flex flex-col ms-3 gap-2">
-                                                    <h3 class="text-slate-800 font-semibold dark:text-white">
+                                                    <h3 class="text-slate-800 font-semibold">
                                                         {{ __('frontend.vehicles.model_color') }}
                                                     </h3>
                                                     <p x-text="slide.name"
-                                                        class="text-sm text-slate-700 dark:text-neutral-400"></p>
+                                                        class="text-sm text-slate-700"></p>
                                                 </div>
                                             </div>
                                             <div class="flex p-8">
                                                 <div class="shrink-0">
-                                                    <x-icons.sar class="w-6 h-6 text-slate-700 dark:text-slate-300" />
+                                                    <x-icons.sar class="w-6 h-6 text-white bg-slate-800 rounded-full p-1" />
                                                 </div>
                                                 <div class="flex flex-col ms-3 gap-2">
-                                                    <h3 class="text-slate-800 font-semibold dark:text-white">
+                                                    <h3 class="text-slate-800 font-semibold">
                                                         {{ __('frontend.vehicles.model_cash_price') }}
                                                     </h3>
-                                                    <p class="text-sm text-slate-700 dark:text-neutral-400">
+                                                    <p class="flex items-center gap-2 text-sm text-slate-700">
                                                         <span
                                                             x-text="new Intl.NumberFormat().format(slide.cash_price)"></span>
-                                                        {{ __('frontend.sar') }}
+                                                            <x-icons.sar class="w-4 h-4 text-slate-700" />
                                                     </p>
                                                 </div>
                                             </div>
                                         </div>
-                                        <img class="md:col-span-2 lg:col-span-3 object-contain text-slate-700 dark:text-slate-300"
+                                        <img class="md:col-span-2 lg:col-span-3 object-contain text-slate-700"
                                             x-bind:src="'/storage/' + slide.image" x-bind:alt="slide.name" />
                                     </div>
                                 </div>

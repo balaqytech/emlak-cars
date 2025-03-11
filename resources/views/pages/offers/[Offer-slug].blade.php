@@ -10,8 +10,10 @@
     </x-slot>
 
     <section class="wrapper">
-        <img src="{{ asset('storage/' . $offer->image) }}" alt="{{ $offer->title }}"
-        class="object-cover object-center w-full h-full">
+        <div class="max-w-5xl mx-auto">
+            <img src="{{ asset('storage/' . $offer->image) }}" alt="{{ $offer->title }}"
+            class="object-cover object-center w-full h-full">
+        </div>
     </section>
 
     <article class="max-w-4xl mx-auto p-6">

@@ -18,6 +18,7 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['expo', 'Figtree', ...defaultTheme.fontFamily.sans],
+                'arial': ['arial', 'sans-serif'],
             },
             colors: {
                 'primary': '#af1f23',
