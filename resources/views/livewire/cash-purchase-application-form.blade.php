@@ -33,6 +33,8 @@
                     wire:model="email" />
                 <x-input label="{{ __('frontend.cash_purchase_form.phone') }}" name="phone" type="text"
                     wire:model="phone" />
+                <x-input label="{{ __('frontend.cash_purchase_form.city') }}" name="city" type="text"
+                    wire:model="city" />
                 <div class="mb-4 col-span-full">
                     <label
                         class="block text-sm font-medium text-gray-700">{{ __('frontend.cash_purchase_form.contact_via') }}</label>

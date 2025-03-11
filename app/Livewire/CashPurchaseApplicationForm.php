@@ -25,6 +25,9 @@ class CashPurchaseApplicationForm extends Component
     #[Rule(['required', 'string', 'max:255'])]
     public string $phone;
 
+    #[Rule(['required', 'string', 'max:255'])]
+    public string $city;
+
     #[Rule(['required', 'array'])]
     public array $contact_methods;
 
@@ -43,14 +46,14 @@ class CashPurchaseApplicationForm extends Component
             'name' => $this->name,
             'email' => $this->email,
             'phone' => $this->phone,
-            'city' => 'test',
+            'city' => $this->city,
             'contact_via' => $this->contact_methods,
             'vehicle_details' => Color::find($this->color)->toArray(),
         ]);
 
         $this->reset('name', 'email', 'phone', 'contact_methods');
 
-        $this->dispatch('form-sent', message:  __('frontend.cash_purchase_form.form_successfully_sent') );
+        $this->dispatch('form-sent', message: __('frontend.cash_purchase_form.form_successfully_sent'));
     }
 
     public function render()

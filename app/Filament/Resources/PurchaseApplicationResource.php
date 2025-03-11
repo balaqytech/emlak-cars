@@ -99,25 +99,30 @@ class PurchaseApplicationResource extends Resource implements HasShieldPermissio
                         $color = Color::find($record->vehicle_details['id']);
                         return [
                             InfoLists\Components\TextEntry::make('vehicle')
+                                ->label(__('backend.vehicles.name'))
                                 ->state(fn() => $color->model->vehicle->name),
                             InfoLists\Components\TextEntry::make('model')
+                                ->label(__('backend.vehicles.model_name'))
                                 ->state(fn() => $color->model->name),
                             InfoLists\Components\TextEntry::make('name')
+                                ->label(__('backend.vehicles.color_name'))
                                 ->state(fn() => $color->name),
                             InfoLists\Components\TextEntry::make('price')
+                                ->label(fn() => $record->payment_method == PurchaseMethod::Cash ? __('backend.vehicles.cash_price') : __('backend.vehicles.installment_price'))
                                 ->state(fn($record) => $record->payment_method == PurchaseMethod::Cash ? $color->cash_price : $color->installment_price),
                             InfoLists\Components\ImageEntry::make('image')
+                                ->label(__('backend.vehicles.image'))
                                 ->state(fn() => $color->image),
                         ];
                     }),
-                Infolists\Components\Section::make(__('backend.purchase_applications.installment_details'))
+                Infolists\Components\Section::make(__('backend.purchase_applications.installment_details.section_title'))
                     ->columns(2)
                     ->hidden(fn($record) => $record->payment_method == PurchaseMethod::Cash)
                     ->schema(
                         fn($record) => collect($record->installment_details)
                             ->map(
                                 fn($value, $key) => Infolists\Components\TextEntry::make($key)
-                                    ->label(ucwords(str_replace('_', ' ', $key)))
+                                    ->label(__('backend.purchase_applications.installment_details.' . $key))
                                     ->state($value)
                             )
                             ->toArray()
