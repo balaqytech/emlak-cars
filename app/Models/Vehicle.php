@@ -25,6 +25,7 @@ class Vehicle extends Model implements Auditable
         'is_active',
         'vehicle_category_id',
         'vehicle_brand_id',
+        'published_at',
     ];
 
     protected $casts = [

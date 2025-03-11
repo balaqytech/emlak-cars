@@ -85,6 +85,9 @@ class VehicleResource extends Resource
                                 ->label(__('backend.vehicles.brand'))
                                 ->relationship('brand', 'name')
                                 ->required(),
+                            Forms\Components\DateTimePicker::make('published_at')
+                                ->label(__('backend.vehicles.published_at'))
+                                ->required(),
                             Forms\Components\Toggle::make('is_active')
                                 ->label(__('backend.vehicles.is_active'))
                                 ->required()

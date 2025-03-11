@@ -117,6 +117,7 @@ return [
         'feature_title' => 'عنوان الميزة',
         'feature_description' => 'وصف الميزة',
         'feature_image' => 'صورة الميزة',
+        'published_at' => 'تاريخ النشر',
     ],
     'general_settings' => [
         'general' => 'عام',

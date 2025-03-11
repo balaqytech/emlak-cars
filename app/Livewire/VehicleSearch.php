@@ -28,7 +28,8 @@ class VehicleSearch extends Component
     {
         $vehicles = Vehicle::when($this->selectedCategory, function ($query) {
             $query->where('vehicle_category_id', $this->selectedCategory);
-        });
+        })
+            ->orderBy('published_at', 'desc');
 
         if ($this->queryType === 'paginate') {
             $vehicles = $vehicles->latest()->paginate(12);
