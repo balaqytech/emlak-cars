@@ -16,7 +16,7 @@
             <div class="col-span-2 md:col-span-1 lg:col-span-1">
                 <a class="flex-none h-24 font-semibold text-xl text-black focus:outline-none focus:opacity-80"
                     href="{{ localizedUrl('/') }}" aria-label="Brand">
-                    <img class="object-contain object-center"
+                    <img loading="lazy" class="object-contain object-center"
                         src="{{ asset('storage/' . general_settings('site_logo')) }}"
                         alt="{{ general_settings('site_name') }}">
                 </a>

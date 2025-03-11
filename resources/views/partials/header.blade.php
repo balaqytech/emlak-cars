@@ -3,7 +3,7 @@
     <nav class="wrapper flex items-center justify-between gap-4">
         <a class="flex-none text-xl font-semibold focus:outline-none focus:opacity-80" href="{{ localizedUrl('/') }}"
             aria-label="Brand">
-            <img class="h-16" src="{{ asset('storage/' . general_settings('site_logo')) }}"
+            <img loading="lazy" class="h-16" src="{{ asset('storage/' . general_settings('site_logo')) }}"
                 alt="{{ general_settings('site_name') }}">
         </a>
         <ul class="hidden items-center md:flex gap-8 justify-center">

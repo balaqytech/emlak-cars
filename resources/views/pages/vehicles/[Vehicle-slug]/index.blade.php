@@ -11,7 +11,7 @@
 
     <section class="">
         <div class="max-h-[80dvh] overflow-hidden">
-            <img src="{{ asset('storage/' . $vehicle->banner) }}" alt="{{ $vehicle->name }}"
+            <img loading="lazy" src="{{ asset('storage/' . $vehicle->banner) }}" alt="{{ $vehicle->name }}"
                 class="h-full w-full object-cover object-center">
         </div>
     </section>
@@ -34,7 +34,7 @@
                 </p>
             </div>
             <div class="h-48 w-full">
-                <img class="w-full h-full object-contain object-center"
+                <img loading="lazy" class="w-full h-full object-contain object-center"
                     src="{{ asset('storage/' . $vehicle->brand->logo) }}" alt="{{ $vehicle->brand->name }}">
             </div>
 

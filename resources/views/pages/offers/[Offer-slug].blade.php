@@ -11,7 +11,7 @@
 
     <section class="wrapper">
         <div class="max-w-5xl mx-auto">
-            <img src="{{ asset('storage/' . $offer->image) }}" alt="{{ $offer->title }}"
+            <img loading="lazy" src="{{ asset('storage/' . $offer->image) }}" alt="{{ $offer->title }}"
             class="object-cover object-center w-full h-full">
         </div>
     </section>

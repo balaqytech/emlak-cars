@@ -10,7 +10,7 @@
     </x-slot>
 
     <div class="w-full h-[80dvh] overflow-hidden bg-center bg-cover">
-        <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}"
+        <img loading="lazy" src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}"
             class="w-full h-full object-cover object-center">
     </div>
 
@@ -38,7 +38,7 @@
             <section class="mt-12">
                 <div class="wrapper">
                     <div class="h-[60vh]">
-                        <iframe src="{{ str_replace('watch?v=', 'embed/', $post->video) }}" frameborder="0"
+                        <iframe loading="lazy"  src="{{ str_replace('watch?v=', 'embed/', $post->video) }}" frameborder="0"
                             allowfullscreen class="w-full h-full"></iframe>
                     </div>
                 </div>

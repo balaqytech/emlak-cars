@@ -11,7 +11,7 @@
     <section class="max-w-7xl px-4 sm:px-6 lg:px-8 py-12 lg:py-24 mx-auto">
         <div class="grid grid-cols-1 lg:grid-cols-2 lg:items-center gap-6 md:gap-8 lg:gap-12">
             <div class="aspect-w-16 aspect-h-6 lg:aspect-h-14 overflow-hidden bg-slate-100 rounded-2xl">
-                <img class="group-hover:scale-105 group-focus:scale-105 transition-transform duration-500 ease-in-out object-cover rounded-2xl"
+                <img loading="lazy" class="group-hover:scale-105 group-focus:scale-105 transition-transform duration-500 ease-in-out object-cover rounded-2xl"
                     src="{{ asset('storage/' . $settings['image']) }}" alt="Contacts Image">
             </div>
             <!-- End Col -->

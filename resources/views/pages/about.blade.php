@@ -13,7 +13,7 @@
         <div class="wrapper py-16">
             <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-14">
                 <div class="h-96 rounded-lg overflow-hidden">
-                    <img class="h-full w-full object-cover object-center"
+                    <img loading="lazy" class="h-full w-full object-cover object-center"
                         src="{{ asset('storage/' . $settings['about_image']) }}" alt="">
                 </div>
                 <div class="flex flex-col gap-2">
@@ -103,7 +103,7 @@
                     </div>
                 </div>
                 <div>
-                    <img src="{{ asset('storage/' . $settings['about_image']) }}" alt="">
+                    <img loading="lazy" src="{{ asset('storage/' . $settings['about_image']) }}" alt="">
                 </div>
             </div>
         </div>
@@ -145,7 +145,7 @@
                         <div class="swiper-slide">
                             <div
                                 class=" size-28 sm:size-36 lg:size-48 border border-gray-300 rounded-lg overflow-hidden border-dashed">
-                                <img class="h-full w-full object-contain object-center"
+                                <img loading="lazy" class="h-full w-full object-contain object-center"
                                     src="{{ asset('storage/' . $partner) }}" alt="">
                             </div>
                         </div>
@@ -202,7 +202,7 @@
     <section id="video-section">
         <div class="wrapper py-24">
             <div class="relative h-96 rounded-xl overflow-hidden">
-                <img class="h-full w-full object-cover object-center" src="{{ Storage::url($settings['image']) }}"
+                <img loading="lazy" class="h-full w-full object-cover object-center" src="{{ Storage::url($settings['image']) }}"
                     alt="">
 
                 <div class="absolute inset-0 size-full">

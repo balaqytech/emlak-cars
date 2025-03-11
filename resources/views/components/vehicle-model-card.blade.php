@@ -2,7 +2,7 @@
     <a href="{{ localizedUrl('/vehicles/' . $model->vehicle->slug. '/' . $model->slug) }}"
         class="relative w-full h-64 bg-contain bg-center bg-no-repeat rounded-xl overflow-hidden"
         style="background-image: url('{{ Storage::url($model->image) }}')">
-        <img src="{{ Storage::url($model->image) }}" alt="{{ $model->name }}"
+        <img loading="lazy" src="{{ Storage::url($model->image) }}" alt="{{ $model->name }}"
             class="w-full h-full object-contain object-center hover:scale-110 hover:rotate-2 transition-all duration-500">
         <div class="absolute start-2 bottom-2 flex justify-start gap-2">
             @foreach ($model->colors as $color)

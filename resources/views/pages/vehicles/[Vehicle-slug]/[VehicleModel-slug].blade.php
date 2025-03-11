@@ -26,7 +26,7 @@
                     </div>
                 </div>
                 <div class="order-1 md:order-2">
-                    <img class="w-full h-full object-contain object-center"
+                    <img loading="lazy" class="w-full h-full object-contain object-center"
                         src="{{ asset('storage/' . $vehicleModel->image) }}" alt="{{ $vehicleModel->name }}">
                 </div>
             </div>
@@ -113,7 +113,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <img class="md:col-span-2 lg:col-span-3 object-contain text-slate-700"
+                                        <img loading="lazy" class="md:col-span-2 lg:col-span-3 object-contain text-slate-700"
                                             x-bind:src="'/storage/' + slide.image" x-bind:alt="slide.name" />
                                     </div>
                                 </div>

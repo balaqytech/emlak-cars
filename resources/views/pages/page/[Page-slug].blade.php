@@ -4,7 +4,7 @@
     </x-slot>
 
     <div class="w-full h-[40dvh] lg:h-[80dvh] overflow-hidden bg-center bg-cover">
-        <img src="{{ asset('storage/' . $page->image) }}" alt="{{ $page->title }}"
+        <img loading="lazy" src="{{ asset('storage/' . $page->image) }}" alt="{{ $page->title }}"
             class="w-full h-full object-cover object-center">
     </div>
     

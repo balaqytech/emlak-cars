@@ -4,7 +4,7 @@
         @if ($post->is_featured)
             <x-icons.push-pin class="absolute size-8 top-4 start-4 text-white" />
         @endif
-        <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}"
+        <img loading="lazy" src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}"
             class="w-full h-full object-cover object-center">
     </a>
     <div class="p-10 flex flex-col gap-2 grow">

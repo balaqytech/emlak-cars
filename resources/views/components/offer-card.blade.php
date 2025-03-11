@@ -1,6 +1,6 @@
 <article {{ $attributes->merge(['class' => 'group flex flex-col bg-white shadow-3xl rounded-lg border border-slate-200 overflow-hidden transition-all duration-500']) }}>
     <a href="{{ localizedUrl('/offers/' . $offer->slug) }}" class="relative overflow-hidden h-80">
-        <img src="{{ asset('storage/' . $offer->image) }}" alt="{{ $offer->title }}"
+        <img loading="lazy" src="{{ asset('storage/' . $offer->image) }}" alt="{{ $offer->title }}"
             class="w-full h-full object-cover object-center hover:scale-110  transition-all duration-500">
     </a>
     <div class="p-10 flex flex-col gap-2 bg-white">

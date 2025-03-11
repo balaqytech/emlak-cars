@@ -42,7 +42,7 @@
                                 <picture>
                                     <source media="(max-width: 480px)"
                                         srcset="{{ asset('storage/' . $slide['mobile_image']) }}">
-                                    <img class="object-cover object-center w-full h-full"
+                                    <img loading="lazy" class="object-cover object-center w-full h-full"
                                         src="{{ asset('storage/' . $slide['laptop_image']) }}"
                                         alt="{{ $slide['title'] }}">
                                 </picture>
