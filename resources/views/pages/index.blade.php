@@ -44,7 +44,7 @@
                                         srcset="{{ asset('storage/' . $slide['mobile_image']) }}">
                                     <img loading="lazy" class="object-cover object-center w-full h-full"
                                         src="{{ asset('storage/' . $slide['laptop_image']) }}"
-                                        alt="{{ $slide['title'] }}">
+                                        alt="">
                                 </picture>
                             </div>
                             <div
