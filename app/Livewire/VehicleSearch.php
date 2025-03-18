@@ -32,9 +32,9 @@ class VehicleSearch extends Component
             ->orderBy('published_at', 'desc');
 
         if ($this->queryType === 'paginate') {
-            $vehicles = $vehicles->latest()->paginate(12);
+            $vehicles = $vehicles->paginate(12);
         } else {
-            $vehicles = $vehicles->latest()->take(3)->get();
+            $vehicles = $vehicles->take(3)->get();
         }
 
         return view('livewire.vehicle-search', [
