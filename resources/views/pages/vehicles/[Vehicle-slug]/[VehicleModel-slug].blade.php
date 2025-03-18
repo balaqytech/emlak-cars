@@ -21,8 +21,8 @@
                             <livewire:cash-purchase-application-form :model="$vehicleModel->id" paymentMethod="cash" />
 
                         </div>
-                        <x-outline-button
-                            href="{{ localizedUrl('/installment-calculator?model=' .$vehicleModel->id) }}">{{ __('frontend.vehicles.installment_apply') }}</x-outline-button>
+                        {{-- <x-outline-button
+                            href="{{ localizedUrl('/installment-calculator?model=' .$vehicleModel->id) }}">{{ __('frontend.vehicles.installment_apply') }}</x-outline-button> --}}
                     </div>
                 </div>
                 <div class="order-1 md:order-2">

@@ -145,7 +145,7 @@
                     </div>
                 </a>
 
-                <a class="group flex gap-y-6 size-full hover:bg-white focus:outline-none focus:bg-slate-100 rounded-lg p-8"
+                {{-- <a class="group flex gap-y-6 size-full hover:bg-white focus:outline-none focus:bg-slate-100 rounded-lg p-8"
                     href="{{ localizedUrl('/installment-calculator') }}">
                     <x-icons.calculator class="shrink-0 size-8 text-slate-800 mt-0.5 me-6 group-hover:text-primary" />
 
@@ -163,7 +163,7 @@
                                 class="shrink-0 size-4 transition ease-in-out ltr:group-hover:translate-x-1 ltr:group-focus:translate-x-1 rtl:group-hover:-translate-x-1 rtl:rotate-180" />
                         </p>
                     </div>
-                </a>
+                </a> --}}
                 <a class="group flex gap-y-6 size-full hover:bg-white focus:outline-none focus:bg-slate-100 rounded-lg p-8"
                     href="{{ localizedUrl('/contact') }}">
                     <x-icons.phone class="shrink-0 size-8 text-slate-800 mt-0.5 me-6 group-hover:text-primary" />
