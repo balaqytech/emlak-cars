@@ -31,6 +31,10 @@
                 'pagination': {
                     'el': '.swiper-pagination',
                     'clickable': true
+                },
+                'navigation': {
+                    'nextEl': '.swiper-button-next',
+                    'prevEl': '.swiper-button-prev'
                 }
         }">
             <div class="swiper-wrapper">
@@ -43,12 +47,10 @@
                                     <source media="(max-width: 480px)"
                                         srcset="{{ asset('storage/' . $slide['mobile_image']) }}">
                                     <img loading="lazy" class="object-cover object-center w-full h-full"
-                                        src="{{ asset('storage/' . $slide['laptop_image']) }}"
-                                        alt="">
+                                        src="{{ asset('storage/' . $slide['laptop_image']) }}" alt="">
                                 </picture>
                             </div>
-                            <div
-                                class="wrapper relative z-20 flex flex-col items-center justify-end h-full text-white">
+                            <div class="wrapper relative z-20 flex flex-col items-center justify-end h-full text-white">
                                 <div class="relative max-w-xl flex flex-col gap-4">
                                     <div>
                                         <x-primary-button href="{{ $slide['button_link'] }}">
@@ -62,6 +64,8 @@
                 @endforeach
             </div>
             <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
         </div>
     </section>
 
