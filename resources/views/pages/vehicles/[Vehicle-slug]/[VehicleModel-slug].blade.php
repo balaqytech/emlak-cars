@@ -128,7 +128,7 @@
                                     x-on:click="currentSlideIndex = index + 1"
                                     x-bind:style="'background-color: ' + slide.hex"
                                     x-bind:aria-label="'slide ' + (index + 1)"
-                                    x-bind:class="currentSlideIndex === index + 1 ? 'border-2 border-slate-900' : ''"></button>
+                                    x-bind:class="currentSlideIndex === index + 1 ? 'border-2 border-slate-900' : 'border border-slate-300'"></button>
                             </template>
                         </div>
                     </div>

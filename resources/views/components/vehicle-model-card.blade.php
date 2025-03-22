@@ -6,7 +6,7 @@
             class="w-full h-full object-contain object-center hover:scale-110 hover:rotate-2 transition-all duration-500">
         <div class="absolute start-2 bottom-2 flex justify-start gap-2">
             @foreach ($model->colors as $color)
-                <div class="w-4 h-4 rounded-full" style="background-color: {{ $color['hex'] }}"></div>
+                <div class="w-4 h-4 rounded-full border border-slate-300" style="background-color: {{ $color['hex'] }}"></div>
             @endforeach
         </div>
     </a>
