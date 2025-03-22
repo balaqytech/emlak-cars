@@ -117,6 +117,7 @@ return [
         'slug' => 'الرابط',
         'excerpt' => 'المقتطف',
         'image' => 'الصورة',
+        'show_least_price' => 'عرض أقل سعر',
         'banner' => 'البانر',
         'overview' => 'نظرة عامة',
         'category' => 'فئة المركبة',

@@ -19,6 +19,7 @@ class Vehicle extends Model implements Auditable
         'slug',
         'excerpt',
         'image',
+        'show_least_price',
         'banner',
         'overview',
         'features',
@@ -30,6 +31,8 @@ class Vehicle extends Model implements Auditable
 
     protected $casts = [
         'features' => 'array',
+        'is_active' => 'boolean',
+        'show_least_price' => 'boolean',
     ];
 
     public $translatable = [

@@ -97,7 +97,7 @@
                                                         class="text-sm text-slate-700"></p>
                                                 </div>
                                             </div>
-                                            {{-- <div class="flex p-8">
+                                            <div x-show="slide.show_price" class="flex p-8">
                                                 <div class="shrink-0">
                                                     <x-icons.sar class="w-6 h-6 text-white bg-slate-800 rounded-full p-1" />
                                                 </div>
@@ -111,7 +111,7 @@
                                                             <x-icons.sar class="w-4 h-4 text-slate-700" />
                                                     </p>
                                                 </div>
-                                            </div> --}}
+                                            </div>
                                         </div>
                                         <img loading="lazy" class="md:col-span-2 lg:col-span-3 object-contain text-slate-700"
                                             x-bind:src="'/storage/' + slide.image" x-bind:alt="slide.name" />

@@ -68,10 +68,14 @@ class ModelsRelationManager extends RelationManager
                                         ->required(),
                                     Forms\Components\TextInput::make('cash_price')
                                         ->numeric()
+                                        ->default(0)
                                         ->required(),
                                     Forms\Components\TextInput::make('installment_price')
                                         ->numeric()
+                                        ->default(0)
                                         ->required(),
+                                    Forms\Components\Toggle::make('show_price')
+                                        ->default(true),
                                 ]),
                         ]),
                 ])

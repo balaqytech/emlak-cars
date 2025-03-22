@@ -1,4 +1,5 @@
-<div {{ $attributes->merge(['class' => 'flex flex-col border border-slate-100 rounded-lg overflow-hidden bg-white shadow-3xl']) }}>
+<div
+    {{ $attributes->merge(['class' => 'flex flex-col border border-slate-100 rounded-lg overflow-hidden bg-white shadow-3xl']) }}>
     <a href="{{ localizedUrl('/vehicles/' . $vehicle->slug) }}" class="relative h-80 min-h-64 rounded-lg overflow-hidden">
         <img loading="lazy" class="object-cover w-full h-full hover:scale-110 hover:rotate-2 transition-all duration-500"
             src="{{ Storage::url($vehicle->image) }}" alt="{{ $vehicle->name }}">
@@ -13,7 +14,13 @@
         <p class="text-slate-600 text-sm grow">{{ $vehicle->excerpt }}</p>
         <hr>
         <div class="flex flex-col md:flex-row justify-between md:items-center gap-4">
-            {{-- <p class="flex gap-2 text-sm">{{ __('frontend.price_start') }}: <span class="font-bold text-primary">{{ $vehicle->least_price ?? 'NON' }}</span> <x-icons.sar class="size-4 shrink-0" /></p> --}}
+            <p class="flex gap-2 text-sm">
+                @if ($vehicle->show_least_price)
+                    {{ __('frontend.price_start') }}:
+                    <span class="font-bold text-primary">{{ $vehicle->least_price ?? 'NON' }}</span>
+                    <x-icons.sar class="size-4 shrink-0" />
+                @endif
+            </p>
             <x-primary-button href="{{ localizedUrl('/vehicles/' . $vehicle->slug) }}"
                 class="text-xs font-bold text-primary hover:underline mt-2">{{ __('frontend.vehicles.view_details') }}</x-primary-button>
         </div>

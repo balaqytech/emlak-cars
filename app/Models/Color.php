@@ -13,8 +13,13 @@ class Color extends Model
         'name',
         'hex',
         'image',
+        'show_price',
         'cash_price',
         'installment_price',
+    ];
+
+    protected $casts = [
+        'show_price' => 'boolean',
     ];
 
     public function model(): BelongsTo

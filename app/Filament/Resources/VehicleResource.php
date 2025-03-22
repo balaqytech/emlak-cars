@@ -92,6 +92,10 @@ class VehicleResource extends Resource
                                 ->label(__('backend.vehicles.is_active'))
                                 ->required()
                                 ->default(true),
+                            Forms\Components\Toggle::make('show_least_price')
+                                ->label(__('backend.vehicles.show_least_price'))
+                                ->required()
+                                ->default(true),
                         ]),
                     Forms\Components\Wizard\Step::make('Car Features')
                         ->label(__('backend.vehicles.features'))
