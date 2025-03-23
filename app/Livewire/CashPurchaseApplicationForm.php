@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Color;
+use App\Models\Vehicle;
 use Livewire\Component;
 use App\Models\VehicleModel;
 use Livewire\Attributes\Rule;
@@ -10,8 +11,15 @@ use App\Models\PurchaseApplication;
 
 class CashPurchaseApplicationForm extends Component
 {
+    #[Rule(['required', 'exists:vehicles,id'])]
+    public $vehicle_id;
+
+    public $vehicleModels = [];
+
+    #[Rule(['required', 'exists:vehicle_models,id'])]
+    public $model_id;
+
     public $model;
-    public $payment_method;
 
     #[Rule(['required', 'exists:colors,id'])]
     public string $color;
@@ -22,19 +30,26 @@ class CashPurchaseApplicationForm extends Component
     #[Rule(['required', 'email', 'max:255'])]
     public string $email;
 
-    #[Rule(['required', 'string', 'max:255'])]
+    #[Rule(['required', 'string', 'max:15'])]
     public string $phone;
 
-    #[Rule(['required', 'string', 'max:255'])]
+    #[Rule(['required', 'string', 'max:50'])]
     public string $city;
+
+    #[Rule(['required', 'string', 'max:50'])]
+    public string $purchase_type;
 
     #[Rule(['required', 'array'])]
     public array $contact_methods;
 
-    public function mount($model, $paymentMethod)
+    public function mount()
     {
-        $this->model = VehicleModel::find($model);
-        $this->payment_method = $paymentMethod;
+        if (request()->query('model')) {
+            $this->model = VehicleModel::find(request()->query('model'));
+            $this->model_id = $this->model->id;
+            $this->vehicle_id = $this->model->vehicle->id;
+            $this->vehicleModels = $this->model->vehicle->vehicleModels;
+        }
     }
 
     public function submit()
@@ -42,12 +57,15 @@ class CashPurchaseApplicationForm extends Component
         $this->validate();
 
         PurchaseApplication::create([
-            'payment_method' => $this->payment_method,
-            'name' => $this->name,
-            'email' => $this->email,
-            'phone' => $this->phone,
-            'city' => $this->city,
-            'contact_via' => $this->contact_methods,
+            'payment_method' => 'cash',
+            'fields' => [
+                'name' => $this->name,
+                'email' => $this->email,
+                'phone' => $this->phone,
+                'city' => $this->city,
+                'contact_via' => $this->contact_methods,
+                'purchase_type' => $this->purchase_type,
+            ],
             'vehicle_details' => Color::find($this->color)->toArray(),
         ]);
 
@@ -58,6 +76,8 @@ class CashPurchaseApplicationForm extends Component
 
     public function render()
     {
-        return view('livewire.cash-purchase-application-form');
+        return view('livewire.cash-purchase-application-form', [
+            'vehicles' => Vehicle::all(),
+        ]);
     }
 }

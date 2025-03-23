@@ -6,6 +6,10 @@ return [
         'cash' => 'نقدي',
         'installment' => 'تقسيط',
     ],
+    'purchase_types' => [
+        'individual' => 'افراد',
+        'corporate' => 'شركات',
+    ],
     'navigation_groups' => [
         'content_management' => 'إدارة المحتوى',
         'vehicles' => 'المركبات',

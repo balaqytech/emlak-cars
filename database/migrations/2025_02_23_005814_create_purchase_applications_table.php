@@ -14,11 +14,8 @@ return new class extends Migration
         Schema::create('purchase_applications', function (Blueprint $table) {
             $table->id();
             $table->string('payment_method');
-            $table->string('name');
-            $table->string('email');
-            $table->string('phone');
-            $table->string('city');
-            $table->json('contact_via');
+            $table->json('fields');
+            $table->json('attachments')->nullable();
             $table->json('vehicle_details');
             $table->json('installment_details')->nullable();
             $table->timestamps();

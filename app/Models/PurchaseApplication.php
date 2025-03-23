@@ -10,21 +10,24 @@ class PurchaseApplication extends Model
 {
     protected $fillable = [
         'payment_method',
-        'name',
-        'email',
-        'phone',
-        'city',
-        'contact_via',
+        'fields',
+        'attachments',
         'vehicle_details',
         'installment_details',
     ];
 
     protected $casts = [
         'payment_method' => PurchaseMethod::class,
-        'contact_via' => 'array',
-        'vehicle_details' => 'array',
+        'fields' => SchemalessAttributes::class,
+        'attachments' => 'array',
+        'vehicle_details' => SchemalessAttributes::class,
         'installment_details' => SchemalessAttributes::class,
     ];
+
+    public function scopeWithFields($query)
+    {
+        return $query->fields->modelScope();
+    }
 
     public function scopeWithVehicleDetails($query)
     {
