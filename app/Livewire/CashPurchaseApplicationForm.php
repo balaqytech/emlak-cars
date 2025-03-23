@@ -39,6 +39,15 @@ class CashPurchaseApplicationForm extends Component
     #[Rule(['required', 'string', 'max:50'])]
     public string $purchase_type;
 
+    #[Rule(['required', 'string', 'max:50'])]
+    public string $company_name;
+
+    #[Rule(['required', 'string', 'max:50'])]
+    public string $commercial_registration;
+
+    #[Rule(['required', 'string', 'max:50'])]
+    public string $company_phone;
+
     #[Rule(['required', 'array'])]
     public array $contact_methods;
 
@@ -56,16 +65,24 @@ class CashPurchaseApplicationForm extends Component
     {
         $this->validate();
 
+        $fields =[
+            'name' => $this->name,
+            'email' => $this->email,
+            'phone' => $this->phone,
+            'city' => $this->city,
+            'contact_via' => $this->contact_methods,
+            'purchase_type' => $this->purchase_type,
+        ];
+
+        if($fields['purchase_type'] == 'corporate'){
+            $fields['company_name'] = $this->company_name;
+            $fields['commercial_registration'] = $this->commercial_registration;
+            $fields['company_phone'] = $this->company_phone;
+        }
+
         PurchaseApplication::create([
             'payment_method' => 'cash',
-            'fields' => [
-                'name' => $this->name,
-                'email' => $this->email,
-                'phone' => $this->phone,
-                'city' => $this->city,
-                'contact_via' => $this->contact_methods,
-                'purchase_type' => $this->purchase_type,
-            ],
+            'fields' => $fields,
             'vehicle_details' => Color::find($this->color)->toArray(),
         ]);
 

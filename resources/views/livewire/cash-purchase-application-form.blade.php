@@ -39,9 +39,16 @@
                 <option value="{{ $type->value }}">{{ $type->getLabel() }}</option>
             @endforeach
         </x-select>
-        {{-- @if ($purchase_type == 'corporate')
-            hello
-        @endif --}}
+        @if ($purchase_type == 'corporate')
+            <x-input label="{{ __('frontend.cash_purchase_form.company_name') }}" name="company_name" type="text"
+                wire:model="company_name" />
+            <x-input label="{{ __('frontend.cash_purchase_form.company_name') }}" name="company_name" type="text"
+                wire:model="company_name" />
+            <x-input label="{{ __('frontend.cash_purchase_form.commercial_registration') }}"
+                name="commercial_registration" type="text" wire:model="commercial_registration" />
+            <x-input label="{{ __('frontend.cash_purchase_form.company_phone') }}" name="company_phone" type="text"
+                placeholder="7XXXXXXXX" wire:model="company_phone" />
+        @endif
         <div class="mb-4 col-span-full">
             <label
                 class="block text-sm font-medium text-gray-700">{{ __('frontend.cash_purchase_form.contact_via') }}</label>

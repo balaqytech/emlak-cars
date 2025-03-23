@@ -93,6 +93,9 @@ return [
         'email' => 'البريد الالكتروني',
         'city' => 'المدينة',
         'purchase_type' => 'نوع الشراء',
+        'company_name' => 'اسم الشركة',
+        'commercial_registration' => 'رقم السجل التجاري',
+        'company_phone' => 'رقم هاتف الشركة',
         'contact_via' => 'أوافق على تلقي اتصالات رقمية من خلال:',
         'choose_color' => 'أختر لون المركبة',
         'form_successfully_sent' => 'تم ارسال طلبك بنجاح، سيتم التواصل معك في اقرب فرصه'
