@@ -149,25 +149,30 @@
                     </div>
                 </a>
 
-                {{-- <a class="group flex gap-y-6 size-full hover:bg-white focus:outline-none focus:bg-slate-100 rounded-lg p-8"
-                    href="{{ localizedUrl('/installment-calculator') }}">
-                    <x-icons.calculator class="shrink-0 size-8 text-slate-800 mt-0.5 me-6 group-hover:text-primary" />
+                @if (\Panakour\FilamentFlatPage\Facades\FilamentFlatPage::get('calculator.json', 'activate'))
+                    <a class="group flex gap-y-6 size-full hover:bg-white focus:outline-none focus:bg-slate-100 rounded-lg p-8"
+                        href="{{ localizedUrl('/installment-calculator') }}">
+                        <x-icons.calculator
+                            class="shrink-0 size-8 text-slate-800 mt-0.5 me-6 group-hover:text-primary" />
 
-                    <div>
                         <div>
-                            <h3 class="block font-bold text-slate-800">
-                                {{ __('frontend.homepage.contact.calculator.heading') }}</h3>
-                            <p class="text-slate-600">{{ __('frontend.homepage.contact.calculator.description') }}</p>
-                        </div>
+                            <div>
+                                <h3 class="block font-bold text-slate-800">
+                                    {{ __('frontend.homepage.contact.calculator.heading') }}</h3>
+                                <p class="text-slate-600">{{ __('frontend.homepage.contact.calculator.description') }}
+                                </p>
+                            </div>
 
-                        <p
-                            class="mt-3 inline-flex items-center gap-x-1 text-sm font-semibold text-slate-800 hover:underline hover:text-primary">
-                            {{ __('frontend.homepage.contact.calculator.button') }}
-                            <x-icons.arrow-left
-                                class="shrink-0 size-4 transition ease-in-out ltr:group-hover:translate-x-1 ltr:group-focus:translate-x-1 rtl:group-hover:-translate-x-1 rtl:rotate-180" />
-                        </p>
-                    </div>
-                </a> --}}
+                            <p
+                                class="mt-3 inline-flex items-center gap-x-1 text-sm font-semibold text-slate-800 hover:underline hover:text-primary">
+                                {{ __('frontend.homepage.contact.calculator.button') }}
+                                <x-icons.arrow-left
+                                    class="shrink-0 size-4 transition ease-in-out ltr:group-hover:translate-x-1 ltr:group-focus:translate-x-1 rtl:group-hover:-translate-x-1 rtl:rotate-180" />
+                            </p>
+                        </div>
+                    </a>
+                @endif
+
                 <a class="group flex gap-y-6 size-full hover:bg-white focus:outline-none focus:bg-slate-100 rounded-lg p-8"
                     href="{{ localizedUrl('/contact') }}">
                     <x-icons.phone class="shrink-0 size-8 text-slate-800 mt-0.5 me-6 group-hover:text-primary" />

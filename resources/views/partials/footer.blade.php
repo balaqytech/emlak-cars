@@ -49,8 +49,10 @@
             <div>
                 <h4 class="text-md font-semibold text-slate-900 uppercase">{{ __('frontend.footer.quick_links') }}</h4>
                 <div class="mt-3 grid space-y-3 text-sm">
-                    {{-- <x-footer-nav-link link="{{ localizedUrl('/installment-calculator') }}"
-                        title="{{ __('frontend.navigation.installment_calculator') }}" /> --}}
+                    @if (\Panakour\FilamentFlatPage\Facades\FilamentFlatPage::get('calculator.json', 'activate'))
+                        <x-footer-nav-link link="{{ localizedUrl('/installment-calculator') }}"
+                            title="{{ __('frontend.navigation.installment_calculator') }}" />
+                    @endif
                     <x-footer-nav-link link="{{ localizedUrl('/faqs') }}"
                         title="{{ __('frontend.navigation.faqs') }}" />
                     @foreach ($pages as $page)

@@ -42,6 +42,8 @@ return [
     ],
     'calculator_settings' => [
         'title' => 'إعدادات الحاسبة',
+        'general_settings' => 'الإعدادات العامة',
+        'activate' => 'تفعيل الحاسبة',
         'license_and_job_types' => 'أنواع التراخيص والوظائف',
         'license_types' => 'أنواع التراخيص',
         'license_type_name' => 'اسم نوع الترخيص',

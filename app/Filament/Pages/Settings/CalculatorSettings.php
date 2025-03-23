@@ -44,7 +44,13 @@ class CalculatorSettings extends FlatPage
     {
         return [
             Forms\Components\Tabs::make(__('backend.calculator_settings.license_and_job_types'))
-                ->tabs([
+            ->tabs([
+                    Forms\Components\Tabs\Tab::make(__('backend.calculator_settings.general_settings'))
+                        ->schema([
+                            Forms\Components\Toggle::make('activate')
+                                ->label(__('backend.calculator_settings.activate'))
+                                ->required(),
+                        ]), 
                     Forms\Components\Tabs\Tab::make(__('backend.calculator_settings.license_types'))
                         ->schema([
                             Forms\Components\Repeater::make('license_types')
