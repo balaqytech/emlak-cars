@@ -8,9 +8,12 @@ use Livewire\Component;
 use App\Models\VehicleModel;
 use Livewire\Attributes\Rule;
 use App\Models\PurchaseApplication;
+use Livewire\WithFileUploads;
 
 class CashPurchaseApplicationForm extends Component
 {
+    use WithFileUploads;
+
     #[Rule(['required', 'exists:vehicles,id'])]
     public $vehicle_id;
 
@@ -51,6 +54,12 @@ class CashPurchaseApplicationForm extends Component
     #[Rule(['required', 'array'])]
     public array $contact_methods;
 
+    #[Rule(['nullable', 'sometimes', 'file', 'mimes:pdf,jpg,jpeg,png', 'max:5120'])]
+    public $identity;
+
+    #[Rule(['nullable', 'sometimes', 'file', 'mimes:pdf,jpg,jpeg,png', 'max:5120'])]
+    public $driving_license;
+
     public function mount()
     {
         if (request()->query('model')) {
@@ -65,7 +74,7 @@ class CashPurchaseApplicationForm extends Component
     {
         $this->validate();
 
-        $fields =[
+        $fields = [
             'name' => $this->name,
             'email' => $this->email,
             'phone' => $this->phone,
@@ -74,7 +83,17 @@ class CashPurchaseApplicationForm extends Component
             'purchase_type' => $this->purchase_type,
         ];
 
-        if($fields['purchase_type'] == 'corporate'){
+        $attachments = [];
+
+        if ($this->identity) {
+            $attachments['identity'] = $this->identity->store('purchase-application', 'public');
+        }
+
+        if ($this->driving_license) {
+            $attachments['driving_license'] = $this->driving_license->store('purchase-application', 'public');
+        }
+
+        if ($fields['purchase_type'] == 'corporate') {
             $fields['company_name'] = $this->company_name;
             $fields['commercial_registration'] = $this->commercial_registration;
             $fields['company_phone'] = $this->company_phone;
@@ -83,6 +102,7 @@ class CashPurchaseApplicationForm extends Component
         PurchaseApplication::create([
             'payment_method' => 'cash',
             'fields' => $fields,
+            'attachments' => $attachments,
             'vehicle_details' => Color::find($this->color)->toArray(),
         ]);
 

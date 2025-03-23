@@ -42,13 +42,13 @@
         @if ($purchase_type == 'corporate')
             <x-input label="{{ __('frontend.cash_purchase_form.company_name') }}" name="company_name" type="text"
                 wire:model="company_name" />
-            <x-input label="{{ __('frontend.cash_purchase_form.company_name') }}" name="company_name" type="text"
-                wire:model="company_name" />
             <x-input label="{{ __('frontend.cash_purchase_form.commercial_registration') }}"
                 name="commercial_registration" type="text" wire:model="commercial_registration" />
             <x-input label="{{ __('frontend.cash_purchase_form.company_phone') }}" name="company_phone" type="text"
                 placeholder="7XXXXXXXX" wire:model="company_phone" />
         @endif
+        <x-file-input :label="__('frontend.cash_purchase_form.identity')" name="identity" wire:model="identity"  :error="$errors->first('identity')"/>
+        <x-file-input :label="__('frontend.cash_purchase_form.driving_license')" name="driving_license" wire:model="driving_license" :error="$errors->first('driving_license')" />
         <div class="mb-4 col-span-full">
             <label
                 class="block text-sm font-medium text-gray-700">{{ __('frontend.cash_purchase_form.contact_via') }}</label>
