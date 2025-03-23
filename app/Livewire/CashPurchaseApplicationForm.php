@@ -14,6 +14,8 @@ class CashPurchaseApplicationForm extends Component
 {
     use WithFileUploads;
 
+    public string $payment_method;
+
     #[Rule(['required', 'exists:vehicles,id'])]
     public $vehicle_id;
 
@@ -26,6 +28,8 @@ class CashPurchaseApplicationForm extends Component
 
     #[Rule(['required', 'exists:colors,id'])]
     public string $color;
+
+    public $colors = [];
 
     #[Rule(['required', 'string', 'max:255'])]
     public string $name;
@@ -60,8 +64,9 @@ class CashPurchaseApplicationForm extends Component
     #[Rule(['nullable', 'sometimes', 'file', 'mimes:pdf,jpg,jpeg,png', 'max:5120'])]
     public $driving_license;
 
-    public function mount()
+    public function mount($method)
     {
+        $this->payment_method = $method;
         if (request()->query('model')) {
             $this->model = VehicleModel::find(request()->query('model'));
             $this->model_id = $this->model->id;
@@ -70,9 +75,19 @@ class CashPurchaseApplicationForm extends Component
         }
     }
 
+    public function updatedVehicleId($vehicle_id)
+    {
+        $this->vehicleModels = VehicleModel::where('vehicle_id', $vehicle_id)->get();
+    }
+
+    public function updatedModelId($model_id)
+    {
+        $this->colors = VehicleModel::find($model_id)->colors;
+    }
+
     public function submit()
     {
-        $this->validate();
+        // $this->validate();
 
         $fields = [
             'name' => $this->name,
@@ -100,7 +115,7 @@ class CashPurchaseApplicationForm extends Component
         }
 
         PurchaseApplication::create([
-            'payment_method' => 'cash',
+            'payment_method' => $this->payment_method,
             'fields' => $fields,
             'attachments' => $attachments,
             'vehicle_details' => Color::find($this->color)->toArray(),
