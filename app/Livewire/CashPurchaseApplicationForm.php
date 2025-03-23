@@ -72,6 +72,7 @@ class CashPurchaseApplicationForm extends Component
             $this->model_id = $this->model->id;
             $this->vehicle_id = $this->model->vehicle->id;
             $this->vehicleModels = $this->model->vehicle->vehicleModels;
+            $this->colors = $this->model->colors;
         }
     }
 
