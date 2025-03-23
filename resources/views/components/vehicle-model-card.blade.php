@@ -17,10 +17,9 @@
         </h3>
         <p class="text-sm text-slate-600">{{ $model->excerpt }}</p>
         <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-            {{-- <span class="text-lg font-semibold text-primary">{{ $model->price }}</span> --}}
             <x-primary-button href="{{ localizedUrl('/vehicles/' . $model->vehicle->slug. '/' . $model->slug) }}"
                 class="w-full text-sm text-primary hover:underline">{{ __('frontend.vehicles.view_details') }}</x-primary-button>
-            <x-outline-button href="{{ localizedUrl('/vehicles/' . $model->vehicle->slug. '/' . $model->slug) }}#contact"
+            <x-outline-button href="{{ localizedUrl('/cash-purchase-form') }}?model={{ $model->id }}"
                 class="w-full text-sm text-primary hover:underline">{{ __('frontend.vehicles.purchase') }}</x-outline-button>
         </div>
     </div>
