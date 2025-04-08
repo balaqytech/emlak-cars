@@ -130,7 +130,7 @@
         <div class="wrapper">
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 items-center gap-6">
                 <a class="group flex gap-y-6 size-full hover:bg-white focus:outline-none focus:bg-slate-100 rounded-lg p-8"
-                    href="{{ localizedUrl('/contact') }}">
+                    href="{{ localizedUrl('/branches') }}">
                     <x-icons.locations class="shrink-0 size-8 text-slate-800 mt-0.5 me-6 group-hover:text-primary" />
 
                     <div>

@@ -16,7 +16,7 @@ return [
         'branches' => 'الفروع',
         'faqs' => 'الأسئلة الشائعة',
         'contact' => 'تواصل معنا',
-        'installment_calculator' => 'حاسبة التقسيط',
+        'installment_calculator' => 'طلب شراء بالتقسيط',
     ],
     'footer' => [
         'copyrights_reserved' => 'جميع الحقوق محفوظة.',
@@ -45,7 +45,7 @@ return [
             'calculator' => [
                 'heading' => 'تريد شراء سيارة بالتقسيط؟',
                 'description' => 'احسب قيمة التقسيط الشهري للمنتج الذي ترغب في شرائه',
-                'button' => 'حاسبة التقسيط',
+                'button' => 'طلب شراء بالتقسيط',
             ],
             'contact' => [
                 'heading' => 'لنبقى على تواصل',
@@ -139,7 +139,7 @@ return [
         'contact_whatsapp' => 'واتساب',
     ],
     'calculator' => [
-        'page_title' => 'حاسبة التقسيط',
+        'page_title' => 'طلب شراء بالتقسيط',
         'vehicle_details' => 'تفاصيل المركبة',
         'vehicle' => 'المركبة',
         'vehicle_model' => 'الموديل',

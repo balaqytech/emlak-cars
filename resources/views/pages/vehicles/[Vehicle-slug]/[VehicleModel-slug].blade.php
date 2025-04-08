@@ -17,8 +17,8 @@
                     <div class="flex flex-col md:flex-row gap-4 items-center">
                         <x-primary-button href="{{ localizedUrl('/cash-purchase-form?model=' .$vehicleModel->id) }}"
                             class="cursor-pointer">{{ __('frontend.vehicles.cash_purchase_apply') }}</x-primary-button>
-                        <x-outline-button
-                            href="{{ localizedUrl('/installment-calculator?model=' .$vehicleModel->id) }}">{{ __('frontend.vehicles.installment_apply') }}</x-outline-button>
+                        <x-primary-button
+                            href="{{ localizedUrl('/installment-calculator?model=' .$vehicleModel->id) }}">{{ __('frontend.vehicles.installment_apply') }}</x-primary-button>
                     </div>
                 </div>
                 <div class="order-1 md:order-2">

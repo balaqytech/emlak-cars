@@ -93,7 +93,14 @@ return [
         'city' => 'City',
         'contact_via' => 'I agree to receive digital communications via:',
         'choose_color' => 'Choose Vehicle Color',
-        'form_successfully_sent' => 'Your request has been successfully sent, we will contact you as soon as possible'
+        'form_successfully_sent' => 'Your request has been successfully sent, we will contact you as soon as possible',
+        'page_title' => 'Cash Purchase Request',
+        'purchase_type' => 'Purchase Type',
+        'company_name' => 'Company Name',
+        'commercial_registration' => 'Commercial Registration Number',
+        'company_phone' => 'Company Phone Number',
+        'identity' => 'Identity Document',
+        'driving_license' => 'Driving License',
     ],
     'about' => [
         'page_title' => 'About Us',
@@ -194,5 +201,16 @@ return [
                 'button' => 'Send Email',
             ],
         ]
-    ]
+    ],
+    'errors' => [
+        'back_to_home' => 'Back to Home',
+        '404' => [
+            'title' => 'Page Not Found',
+            'message' => 'Sorry, the page you are looking for does not exist',
+        ],
+        '500' => [
+            'title' => 'Server Error',
+            'message' => 'Sorry, a server error occurred',
+        ],
+    ],
 ];
