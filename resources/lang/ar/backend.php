@@ -84,9 +84,18 @@ return [
         'phone' => 'الهاتف',
         'city' => 'المدينة',
         'contact_via' => 'التواصل عبر',
+        'purchase_type' => 'نوع الشراء',
+        'company_name' => 'اسم الشركة',
+        'company_phone' => 'هاتف الشركة',
+        'commercial_registration' => 'رقم السجل التجاري',
         'vehicle_details' => 'تفاصيل المركبة',
         'created_at' => 'تاريخ الإنشاء',
         'updated_at' => 'تاريخ التحديث',
+        'attachements' => [
+            'section_title' => 'المرفقات',
+            'identity' => 'صورة الهوية',
+            'driving_license' => 'صورة رخصة القيادة',
+        ],
         'installment_details' => [
             'section_title' => 'تفاصيل التقسيط',
             'bank' => 'البنك',

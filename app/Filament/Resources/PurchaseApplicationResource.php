@@ -38,22 +38,22 @@ class PurchaseApplicationResource extends Resource implements HasShieldPermissio
     public static function table(Table $table): Table
     {
         return $table
-            ->modifyQueryUsing(fn ($query) => $query->latest())
+            ->modifyQueryUsing(fn($query) => $query->latest())
             ->columns([
                 Tables\Columns\TextColumn::make('payment_method')
                     ->label(__('backend.purchase_applications.payment_method'))
                     ->badge()
                     ->searchable(),
-                Tables\Columns\TextColumn::make('name')
+                Tables\Columns\TextColumn::make('fields.name')
                     ->label(__('backend.purchase_applications.name'))
                     ->searchable(),
-                Tables\Columns\TextColumn::make('email')
+                Tables\Columns\TextColumn::make('fields.email')
                     ->label(__('backend.purchase_applications.email'))
                     ->searchable(),
-                Tables\Columns\TextColumn::make('phone')
+                Tables\Columns\TextColumn::make('fields.phone')
                     ->label(__('backend.purchase_applications.phone'))
                     ->searchable(),
-                Tables\Columns\TextColumn::make('city')
+                Tables\Columns\TextColumn::make('fields.city')
                     ->label(__('backend.purchase_applications.city'))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
@@ -79,21 +79,19 @@ class PurchaseApplicationResource extends Resource implements HasShieldPermissio
             ->schema([
                 Infolists\Components\Section::make(__('backend.purchase_applications.contact_details'))
                     ->columns(2)
-                    ->schema([
-                        Infolists\Components\TextEntry::make('payment_method')
-                            ->label(__('backend.purchase_applications.payment_method'))
-                            ->badge(),
-                        Infolists\Components\TextEntry::make('name')
-                            ->label(__('backend.purchase_applications.name')),
-                        Infolists\Components\TextEntry::make('email')
-                            ->label(__('backend.purchase_applications.email')),
-                        Infolists\Components\TextEntry::make('phone')
-                            ->label(__('backend.purchase_applications.phone')),
-                        Infolists\Components\TextEntry::make('city')
-                            ->label(__('backend.purchase_applications.city')),
-                        InfoLists\Components\TextEntry::make('contact_via')
-                            ->label(__('backend.purchase_applications.contact_via')),
-                    ]),
+                    ->schema(
+                        fn($record) => collect([
+                            Infolists\Components\TextEntry::make('payment_method')
+                                ->label(__('backend.purchase_applications.payment_method'))
+                                ->badge(),
+                        ])
+                            ->merge($record->fields->map(
+                                fn($value, $key) => Infolists\Components\TextEntry::make($key)
+                                    ->label(__('backend.purchase_applications.' . $key))
+                                    ->state(fn() => $key == 'purchase_type' ? __('backend.purchase_types.' . $value) : $value)
+                            ))
+                            ->toArray()
+                    ),
                 Infolists\Components\Section::make(__('backend.purchase_applications.vehicle_details'))
                     ->columns(3)
                     ->schema(function ($record) {
@@ -125,6 +123,20 @@ class PurchaseApplicationResource extends Resource implements HasShieldPermissio
                                 fn($value, $key) => Infolists\Components\TextEntry::make($key)
                                     ->label(__('backend.purchase_applications.installment_details.' . $key))
                                     ->state($value)
+                            )
+                            ->toArray()
+                    ),
+                Infolists\Components\Section::make(__('backend.purchase_applications.attachements.section_title'))
+                    ->columns(2)
+                    ->hidden(fn($record) => $record->attachments == null)
+                    ->schema(
+                        fn($record) => collect($record->attachments)
+                            ->map(
+                                fn($value, $key) => Infolists\Components\TextEntry::make($key)
+                                    ->label(__('backend.purchase_applications.attachements.' . $key))
+                                    ->state(__('backend.purchase_applications.attachements.' . $key))
+                                    ->url(asset('/storage/' . $value))
+                                    ->openUrlInNewTab()
                             )
                             ->toArray()
                     ),
