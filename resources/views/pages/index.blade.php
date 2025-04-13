@@ -19,6 +19,10 @@
                 'grabCursor': true,
                 'speed': 1000,
                 'effect': 'creative',
+                'autoplay': {
+                    'delay': 4000,
+                    'disableOnInteraction': false
+                },
                 'creativeEffect': {
                     'prev': {
                         'shadow': true,
