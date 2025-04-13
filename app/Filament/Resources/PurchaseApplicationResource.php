@@ -10,6 +10,7 @@ use App\Enums\PurchaseMethod;
 use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use App\Models\PurchaseApplication;
+use App\Enums\PurchaseApplicationStatus;
 use Illuminate\Console\View\Components\Info;
 use App\Filament\Resources\PurchaseApplicationResource\Pages;
 use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
@@ -38,7 +39,14 @@ class PurchaseApplicationResource extends Resource implements HasShieldPermissio
     public static function table(Table $table): Table
     {
         return $table
-            ->modifyQueryUsing(fn($query) => $query->latest())
+            ->modifyQueryUsing(
+                fn($query) => $query->when(
+                    !auth()->user()->hasRole('super_admin'),
+                    fn($query) => $query->where('assigned_to', auth()->user()->id)
+                )
+                    ->latest()
+                    ->with('assignedTo')
+            )
             ->columns([
                 Tables\Columns\TextColumn::make('payment_method')
                     ->label(__('backend.purchase_applications.payment_method'))
@@ -56,6 +64,13 @@ class PurchaseApplicationResource extends Resource implements HasShieldPermissio
                 Tables\Columns\TextColumn::make('fields.city')
                     ->label(__('backend.purchase_applications.city'))
                     ->searchable(),
+                Tables\Columns\TextColumn::make('status')
+                    ->label(__('backend.purchase_applications.status'))
+                    ->badge()
+                    ->color(fn($state) => $state->getColor()),
+                Tables\Columns\TextColumn::make('assignedTo.name')
+                    ->label(__('backend.purchase_applications.assigned_to'))
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->label(__('backend.purchase_applications.created_at'))
                     ->dateTime()
@@ -63,7 +78,19 @@ class PurchaseApplicationResource extends Resource implements HasShieldPermissio
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                Tables\Filters\SelectFilter::make('payment_method')
+                    ->label(__('backend.purchase_applications.payment_method'))
+                    ->options(PurchaseMethod::class),
+                Tables\Filters\SelectFilter::make('status')
+                    ->label(__('backend.purchase_applications.status'))
+                    ->multiple()
+                    ->options(PurchaseApplicationStatus::class),
+                Tables\Filters\SelectFilter::make('assigned_to')
+                    ->label(__('backend.purchase_applications.assigned_to'))
+                    ->relationship('assignedTo', 'name')
+                    ->multiple()
+                    ->searchable()
+                    ->preload(),
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
@@ -84,6 +111,10 @@ class PurchaseApplicationResource extends Resource implements HasShieldPermissio
                             Infolists\Components\TextEntry::make('payment_method')
                                 ->label(__('backend.purchase_applications.payment_method'))
                                 ->badge(),
+                            Infolists\Components\TextEntry::make('status')
+                                ->label(__('backend.purchase_applications.status'))
+                                ->badge()
+                                ->color(fn($state) => $state->getColor()),
                         ])
                             ->merge($record->fields->map(
                                 fn($value, $key) => Infolists\Components\TextEntry::make($key)

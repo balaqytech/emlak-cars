@@ -20,4 +20,14 @@ enum PurchaseApplicationStatus: string implements HasLabel
             self::Rejected => __('backend.purchase_application_status.rejected'),
         };
     }
+
+    public function getColor(): string
+    {
+        return match ($this) {
+            self::New => 'info',
+            self::Pending => 'warning',
+            self::Approved => 'success',
+            self::Rejected => 'primary',
+        };
+    }
 }
