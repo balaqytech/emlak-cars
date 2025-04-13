@@ -23,6 +23,8 @@ class PurchaseApplicationPolicy
      */
     public function view(User $user, PurchaseApplication $purchaseApplication): bool
     {
-        return $user->can('view_purchase::application');
+        return $user->can('view_purchase::application') &&
+            ($user->id === $purchaseApplication->assigned_to ||
+            $user->hasRole('super_admin'));
     }
 }
