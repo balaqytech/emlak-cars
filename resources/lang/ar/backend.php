@@ -95,7 +95,7 @@ return [
         'company_phone' => 'هاتف الشركة',
         'commercial_registration' => 'رقم السجل التجاري',
         'vehicle_details' => 'تفاصيل المركبة',
-        'created_at' => 'تاريخ الإنشاء',
+        'created_at' => 'تاريخ التقديم',
         'updated_at' => 'تاريخ التحديث',
         'attachements' => [
             'section_title' => 'المرفقات',
@@ -112,6 +112,12 @@ return [
             'license_type' => 'نوع الترخيص',
             'monthly_installment' => 'القسط الشهري',
         ],
+        'status' => 'الحالة',
+        'assign_to' => 'تعيين الى',
+        'assigned_to' => 'تم تعيينه الى',
+        'change_status' => 'تغيير حالة التقديم',
+        'assigned_successfully' => 'تم تعيين التقديم بنجاح',
+        'select_user' => 'اختر مستخدم',
     ],
     'vehicle_categories' => [
         'label' => 'فئات المركبات',
