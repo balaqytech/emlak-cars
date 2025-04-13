@@ -72,7 +72,7 @@ class CashPurchaseApplicationForm extends Component
             $this->model_id = $this->model->id;
             $this->vehicle_id = $this->model->vehicle->id;
             $this->vehicleModels = $this->model->vehicle->vehicleModels;
-            $this->colors = $this->model->colors;
+            $this->colors = $this->model->availableColors;
         }
     }
 
@@ -83,7 +83,7 @@ class CashPurchaseApplicationForm extends Component
 
     public function updatedModelId($model_id)
     {
-        $this->colors = VehicleModel::find($model_id)->colors;
+        $this->colors = VehicleModel::find($model_id)->availableColors;
     }
 
     public function submit()
