@@ -76,6 +76,8 @@ class ModelsRelationManager extends RelationManager
                                         ->required(),
                                     Forms\Components\Toggle::make('show_price')
                                         ->default(true),
+                                    Forms\Components\Toggle::make('is_available')
+                                        ->default(true),
                                 ]),
                         ]),
                 ])

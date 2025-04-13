@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\VehicleModel;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Color extends Model
@@ -16,6 +17,7 @@ class Color extends Model
         'show_price',
         'cash_price',
         'installment_price',
+        'is_available',
     ];
 
     protected $casts = [
