@@ -79,6 +79,7 @@ return [
         'model_color' => 'لون الموديل',
         'model_cash_price' => 'السعر نقداً',
         'model_installment_price' => 'السعر بالتقسيط',
+        'color_not_available' => 'هذا اللون غير متوفر حالياً',
     ],
     'contact_methods' => [
         'sms' => 'الرسائل النصية القصيرة',

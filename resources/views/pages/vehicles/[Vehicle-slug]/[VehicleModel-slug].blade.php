@@ -108,6 +108,16 @@
                                                     </p>
                                                 </div>
                                             </div>
+                                            <div x-show="!slide.is_available" class="flex items-center p-8">
+                                                <div class="shrink-0">
+                                                    <x-icons.stop class="w-8 h-8 text-red-600 bg-white rounded-full p-1" />
+                                                </div>
+                                                <div class="flex flex-col ms-3 gap-2">
+                                                    <h3 class="text-red-600 font-semibold">
+                                                        {{ __('frontend.vehicles.color_not_available') }}
+                                                    </h3>
+                                                </div>
+                                            </div>
                                         </div>
                                         <img loading="lazy" class="md:col-span-2 lg:col-span-3 object-contain text-slate-700"
                                             x-bind:src="'/storage/' + slide.image" x-bind:alt="slide.name" />
