@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\PurchaseApplicationStatus;
 use App\Enums\PurchaseMethod;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\SchemalessAttributes\Casts\SchemalessAttributes;
@@ -14,6 +15,8 @@ class PurchaseApplication extends Model
         'attachments',
         'vehicle_details',
         'installment_details',
+        'status',
+        'assigned_to',
     ];
 
     protected $casts = [
@@ -22,7 +25,13 @@ class PurchaseApplication extends Model
         'attachments' => 'array',
         'vehicle_details' => SchemalessAttributes::class,
         'installment_details' => SchemalessAttributes::class,
+        'status' => PurchaseApplicationStatus::class,
     ];
+
+    public function assignedTo()
+    {
+        return $this->belongsTo(User::class, 'assigned_to');
+    }
 
     public function scopeWithFields($query)
     {

@@ -10,6 +10,12 @@ return [
         'individual' => 'افراد',
         'corporate' => 'شركات',
     ],
+    'purchase_application_status' => [
+        'new' => 'جديد',
+        'pending' => 'قيد التواصل',
+        'approved' => 'موافق عليه',
+        'rejected' => 'تم رفضه',
+    ],
     'navigation_groups' => [
         'content_management' => 'إدارة المحتوى',
         'vehicles' => 'المركبات',
