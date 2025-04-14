@@ -131,7 +131,7 @@ class VehicleResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
-            ->modifyQueryUsing(fn(Builder $query) => $query->orderBy('published_at', 'desc'))
+            ->modifyQueryUsing(fn(Builder $query) => $query->orderBy('order', 'asc'))
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->label(__('backend.vehicles.name'))
