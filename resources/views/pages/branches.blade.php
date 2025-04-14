@@ -9,7 +9,7 @@
         {{ __('frontend.branches.page_title') }}
     </x-slot>
 
-    <section x-data="{ mapEmbed : '{{ $branches->first()->map_embed }}' }">
+    <section x-data="{ mapEmbed: '{{ $branches->first()->map_embed }}' }">
         <div class="wrapper py-24">
             <h2 class="text-3xl font-bold text-center text-slate-800">{{ __('frontend.branches.heading') }}</h2>
             <p class="text-center mt-4 text-slate-600">{{ __('frontend.branches.subheading') }}</p>
@@ -28,7 +28,8 @@
                                             <x-icons.map-pin class="size-4" />
                                         </span>
                                         <span class="text-slate-800 dark:text-neutral-400">
-                                            {{ __('frontend.branches.address') }}: {{ $branch->address }}
+                                            <b class="mb-1 block">{{ __('frontend.branches.address') }}:</b>
+                                            {{ $branch->address }}
                                         </span>
                                     </li>
                                     <li class="flex gap-x-3">
@@ -36,8 +37,10 @@
                                             class="size-8 flex justify-center items-center rounded-full bg-slate-50 text-primary border border-slate-200 dark:bg-blue-800/30 dark:text-blue-500">
                                             <x-icons.phone class="size-4" />
                                         </span>
-                                        <a href="tel:{{ $branch->contact_mobile }}" class="text-slate-800 hover:underline">
-                                            {{ __('frontend.branches.contact_mobile') }}: <span dir="ltr">{{ $branch->contact_mobile }}</span>
+                                        <a href="tel:{{ $branch->contact_mobile }}"
+                                            class="text-slate-800 hover:underline">
+                                            <b class="mb-1 block">{{ __('frontend.branches.contact_mobile') }}:</b>
+                                            <span dir="ltr">{{ $branch->contact_mobile }}</span>
                                         </a>
                                     </li>
                                     <li class="flex gap-x-3">
@@ -45,8 +48,10 @@
                                             class="size-8 flex justify-center items-center rounded-full bg-slate-50 text-primary border border-slate-200 dark:bg-blue-800/30 dark:text-blue-500">
                                             <x-icons.whatsapp class="size-4" />
                                         </span>
-                                        <a href="https://wa.me/{{ $branch->contact_whatsapp }}" target="_blank" class="text-slate-800 hover:underline">
-                                            {{ __('frontend.branches.contact_whatsapp') }}: {{ $branch->contact_whatsapp }}
+                                        <a href="https://wa.me/{{ $branch->contact_whatsapp }}" target="_blank"
+                                            class="text-slate-800 hover:underline">
+                                            <b class="mb-1 block">{{ __('frontend.branches.contact_whatsapp') }}:</b>
+                                            {{ $branch->contact_whatsapp }}
                                         </a>
                                     </li>
                                     <li class="flex gap-x-3">
@@ -55,7 +60,8 @@
                                             <x-icons.clock class="size-4" />
                                         </span>
                                         <span class="text-slate-800 dark:text-neutral-400">
-                                            {{ __('frontend.branches.working_hours') }}: {{ $branch->working_hours }}
+                                            <b class="mb-1 block">{{ __('frontend.branches.working_hours') }}:</b>
+                                            <span>{{ $branch->working_hours }}</span>
                                         </span>
                                     </li>
                                 </ul>
@@ -63,7 +69,8 @@
                         @endforeach
                     </div>
                     <div class="w-full">
-                        <div id="map-embed" x-html="mapEmbed" class="overflow-x-auto h-full w-full object-contain object-center"></div>
+                        <div id="map-embed" x-html="mapEmbed"
+                            class="overflow-x-auto h-full w-full object-contain object-center"></div>
                     </div>
                 </div>
             @else

@@ -45,7 +45,7 @@
             <x-input label="{{ __('frontend.cash_purchase_form.commercial_registration') }}"
                 name="commercial_registration" type="text" wire:model="commercial_registration" />
             <x-input label="{{ __('frontend.cash_purchase_form.company_phone') }}" name="company_phone" type="text"
-                placeholder="7XXXXXXXX" wire:model="company_phone" />
+                placeholder="01XXXXXXXX" wire:model="company_phone" />
         @endif
         <x-file-input :label="__('frontend.cash_purchase_form.identity')" name="identity" wire:model="identity" :error="$errors->first('identity')" />
         <x-file-input :label="__('frontend.cash_purchase_form.driving_license')" name="driving_license" wire:model="driving_license" :error="$errors->first('driving_license')" />
