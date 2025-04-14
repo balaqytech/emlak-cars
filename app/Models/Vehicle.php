@@ -26,13 +26,15 @@ class Vehicle extends Model implements Auditable
         'is_active',
         'vehicle_category_id',
         'vehicle_brand_id',
-        'published_at',
+        'order',
+        'is_featured',
     ];
 
     protected $casts = [
         'features' => 'array',
         'is_active' => 'boolean',
         'show_least_price' => 'boolean',
+        'is_featured' => 'boolean',
     ];
 
     public $translatable = [

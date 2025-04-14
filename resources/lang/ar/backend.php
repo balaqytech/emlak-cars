@@ -155,6 +155,8 @@ return [
         'feature_description' => 'وصف الميزة',
         'feature_image' => 'صورة الميزة',
         'published_at' => 'تاريخ النشر',
+        'order' => 'الترتيب',
+        'is_featured' => 'مميز',
         'model_name' => 'اسم الموديل',
         'color_name' => 'اسم اللون',
         'cash_price' => 'السعر النقدي',

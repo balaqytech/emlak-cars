@@ -85,9 +85,13 @@ class VehicleResource extends Resource
                                 ->label(__('backend.vehicles.brand'))
                                 ->relationship('brand', 'name')
                                 ->required(),
-                            Forms\Components\DateTimePicker::make('published_at')
-                                ->label(__('backend.vehicles.published_at'))
-                                ->required(),
+                            Forms\Components\TextInput::make('order')
+                                ->label(__('backend.vehicles.order'))
+                                ->required()
+                                ->default(10)
+                                ->numeric()
+                                ->minValue(1)
+                                ->maxValue(100),
                             Forms\Components\Toggle::make('is_active')
                                 ->label(__('backend.vehicles.is_active'))
                                 ->required()
@@ -96,6 +100,10 @@ class VehicleResource extends Resource
                                 ->label(__('backend.vehicles.show_least_price'))
                                 ->required()
                                 ->default(true),
+                            Forms\Components\Toggle::make('is_featured')
+                                ->label(__('backend.vehicles.is_featured'))
+                                ->required()
+                                ->default(false),
                         ]),
                     Forms\Components\Wizard\Step::make('Car Features')
                         ->label(__('backend.vehicles.features'))
@@ -123,7 +131,7 @@ class VehicleResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
-            ->modifyQueryUsing(fn (Builder $query) => $query->orderBy('published_at', 'desc'))
+            ->modifyQueryUsing(fn(Builder $query) => $query->orderBy('published_at', 'desc'))
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->label(__('backend.vehicles.name'))
