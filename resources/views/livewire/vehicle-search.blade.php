@@ -12,7 +12,7 @@
                 class="pt-2 sm:pt-0 sm:ps-3 border-t border-gray-200 sm:border-t-0 sm:border-s w-full">
                 <select wire:model="selectedCategory"
                     class="py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-primary focus:ring-primary disabled:opacity-50 disabled:pointer-events-none">
-                    <option selected="">{{ __('frontend.vehicles.select_category') }}</option>
+                    <option selected="" value="">{{ __('frontend.vehicles.select_category') }}</option>
                     @foreach ($categories as $category)
                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                     @endforeach
@@ -22,7 +22,7 @@
                 class="pt-2 sm:pt-0 sm:ps-3 border-t border-gray-200 sm:border-t-0 sm:border-s w-full">
                 <select wire:model="selectedBrand"
                     class="py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-primary focus:ring-primary disabled:opacity-50 disabled:pointer-events-none">
-                    <option selected="">{{ __('frontend.vehicles.select_brand') }}</option>
+                    <option selected="" value="">{{ __('frontend.vehicles.select_brand') }}</option>
                     @foreach ($brands as $brand)
                         <option value="{{ $brand->id }}">{{ $brand->name }}</option>
                     @endforeach
