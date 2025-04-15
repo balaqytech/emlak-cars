@@ -1,5 +1,7 @@
 @php
     use Panakour\FilamentFlatPage\Facades\FilamentFlatPage;
+
+    $featured_vehicles = \App\Models\Vehicle::featured()->get();
     $settings = FilamentFlatPage::all('homepage.json');
     $slides = $settings['slider'][app()->getLocale()];
     $banner_image = asset('storage/' . $settings['banner']);
@@ -83,7 +85,33 @@
                     {{ __('frontend.homepage.featured_vehicles.description') }}
                 </p>
             </div>
-            <livewire:vehicle-search queryType="take" />
+            <div class="swiper h-auto w-full"
+                data-swiper-options="{
+                        'autoHeight': true,
+                        'spaceBetween': 20,                        
+                        'grabCursor': true,
+                        'slidesPerView': 1,
+                        'pagination': { 'el': '.swiper-pagination' , 'clickable': true },
+                        'breakpoints': {
+                            '640': {      
+                                'slidesPerView': 2,
+                                'spaceBetween': 20
+                            },
+                            '768': {
+                                'slidesPerView': 3,
+                                'spaceBetween': 30
+                            }
+                        }
+                }">
+                <div class="swiper-wrapper py-12">
+                    @foreach ($featured_vehicles as $vehicle)
+                        <div class="swiper-slide">
+                            <x-vehicle-card :vehicle="$vehicle" />
+                        </div>
+                    @endforeach
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
             <div class="mt-8">
                 <x-outline-button href="{{ localizedUrl('/vehicles') }}">
                     {{ __('frontend.homepage.featured_vehicles.button') }}

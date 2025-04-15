@@ -65,4 +65,9 @@ class Vehicle extends Model implements Auditable
             ->join('colors', 'vehicle_models.id', '=', 'colors.vehicle_model_id')
             ->min('colors.cash_price');
     }
+
+    public function scopeFeatured($query)
+    {
+        return $query->where('is_featured', true);
+    }
 }

@@ -144,8 +144,13 @@ class VehicleResource extends Resource
                 Tables\Columns\ImageColumn::make('brand.logo')
                     ->label(__('backend.vehicles.brand'))
                     ->sortable(),
+                Tables\Columns\IconColumn::make('is_featured')
+                    ->label(__('backend.vehicles.is_featured'))
+                    ->sortable()
+                    ->boolean(),
                 Tables\Columns\IconColumn::make('is_active')
                     ->label(__('backend.vehicles.is_active'))
+                    ->sortable()
                     ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
