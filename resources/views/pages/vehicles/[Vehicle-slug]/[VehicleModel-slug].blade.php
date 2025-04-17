@@ -15,10 +15,9 @@
                     <h1 class="text-3xl font-bold text-slate-900 font-arial">{{ $vehicleModel->name }}</h1>
                     <p class="mt-2 text-slate-500">{{ $vehicleModel->excerpt }}</p>
                     <div class="flex flex-col md:flex-row gap-4 items-center">
-                        <x-primary-button href="{{ localizedUrl('/cash-purchase-form?model=' .$vehicleModel->id) }}"
-                            class="cursor-pointer">{{ __('frontend.vehicles.cash_purchase_apply') }}</x-primary-button>
-                        <x-primary-button
-                            href="{{ localizedUrl('/installment-calculator?model=' .$vehicleModel->id) }}">{{ __('frontend.vehicles.installment_apply') }}</x-primary-button>
+                        <x-purchase-application-modal :model="$vehicleModel->id">
+                            {{ __('frontend.vehicles.purchase') }}
+                        </x-purchase-application-modal>
                     </div>
                 </div>
                 <div class="order-1 md:order-2">

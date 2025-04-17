@@ -19,8 +19,7 @@
         <div class="flex flex-col md:flex-row justify-between items-center gap-4">
             <x-primary-button href="{{ localizedUrl('/vehicles/' . $model->vehicle->slug. '/' . $model->slug) }}"
                 class="w-full text-sm text-primary hover:underline">{{ __('frontend.vehicles.view_details') }}</x-primary-button>
-            <x-outline-button href="{{ localizedUrl('/cash-purchase-form') }}?model={{ $model->id }}"
-                class="w-full text-sm text-primary hover:underline">{{ __('frontend.vehicles.purchase') }}</x-outline-button>
+            <x-purchase-application-modal :model="$model->id">{{ __('frontend.vehicles.purchase') }}</x-purchase-application-modal>
         </div>
     </div>
 </div>
