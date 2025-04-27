@@ -1,19 +1,19 @@
 <div class="h-auto w-full">
     <div class="flex items-center justify-center gap-8 overflow-x-auto mb-6">
         @foreach ($brands as $brand)
-            <div class="flex items-center h-32 w-32 cursor-pointer rounded-lg overflow-hidden @if($selectedBrand == $brand->id)border border-2 border-slate-500 @endif" wire:click="filterByBrand({{ $brand->id }})" wire:key="brand-{{ $brand->id }}">
+            <div class="flex items-center shrink-0 h-32 w-32 p-1 cursor-pointer rounded-lg overflow-hidden @if($selectedBrand == $brand->id)border border-2 border-slate-500 @endif" wire:click="filterByBrand({{ $brand->id }})" wire:key="brand-{{ $brand->id }}">
                 <img src="{{ asset('/storage/' . $brand->logo) }}" alt="{{ $brand->name }}"
-                    class="w-full h-full object-cover object-center ">
+                    class="w-full h-full object-cover object-center rounded-lg">
             </div>
         @endforeach
     </div>
-    <div class="flex items-center justify-start gap-8 overflow-x-auto mb-6">
-        <div class="flex items-center cursor-pointer overflow-hidden @if($selectedCategory == null) border-b-2 border-slate-500 @endif" wire:click="filterByCategory('')">
-            <span class="text-center text-sm text-gray-700">{{ __('frontend.all') }}</span>
+    <div class="flex flex-nowrap items-center justify-start gap-8 overflow-x-auto mb-6">
+        <div class="cursor-pointer shrink-0 @if($selectedCategory == null) border-b-2 border-slate-500 @endif" wire:click="filterByCategory('')">
+            {{ __('frontend.all') }}
         </div>            
         @foreach ($categories as $category)
-            <div class="flex items-center cursor-pointer overflow-hidden @if($selectedCategory == $category->id)border-b-2 border-slate-500 @endif" wire:click="filterByCategory({{ $category->id }})" wire:key="category-{{ $category->id }}">
-                <span class="text-center text-sm text-gray-700">{{ $category->name }}</span>
+            <div class="cursor-pointer shrink-0 @if($selectedCategory == $category->id)border-b-2 border-slate-500 @endif" wire:click="filterByCategory({{ $category->id }})" wire:key="category-{{ $category->id }}">
+                {{ $category->name }}
             </div>            
         @endforeach    
     </div>
@@ -45,9 +45,15 @@
         <div class="swiper-pagination"></div>
     </div> --}}
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        @foreach ($featuredVehicles as $vehicle)
+        @forelse ($featuredVehicles as $vehicle)
             <div wire:key="vehicle-{{ $vehicle->id }}">
                 <x-vehicle-card :vehicle="$vehicle" />
             </div>
-        @endforeach
+        @empty
+        <div class="mt-8 col-span-3">
+            <x-icons.question class="block mx-auto size-24 text-primary" />
+            <p class="text-center">{{ __('frontend.vehicles.no_vehicles') }}</p>
+        </div>
+        @endforelse
+    </div>
 </div>
