@@ -8,8 +8,11 @@
         @endforeach
     </div>
     <div class="flex items-center justify-start gap-8 overflow-x-auto mb-6">
+        <div class="flex items-center cursor-pointer overflow-hidden @if($selectedCategory == null) border-b-2 border-slate-500 @endif" wire:click="filterByCategory('')">
+            <span class="text-center text-sm text-gray-700">{{ __('frontend.all') }}</span>
+        </div>            
         @foreach ($categories as $category)
-            <div class="flex items-center cursor-pointer rounded-lg overflow-hidden @if($selectedCategory == $category->id)border border-2 border-slate-500 @endif" wire:click="filterByCategory({{ $category->id }})" wire:key="category-{{ $category->id }}">
+            <div class="flex items-center cursor-pointer overflow-hidden @if($selectedCategory == $category->id)border-b-2 border-slate-500 @endif" wire:click="filterByCategory({{ $category->id }})" wire:key="category-{{ $category->id }}">
                 <span class="text-center text-sm text-gray-700">{{ $category->name }}</span>
             </div>            
         @endforeach    
