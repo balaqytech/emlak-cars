@@ -59,7 +59,6 @@ return [
             'button' => 'Browse News',
         ],
     ],
-    'search_result_for' => 'Search results for :s',
     'vehicles' => [
         'page_title' => 'Vehicles',
         'heading' => 'Vehicles',
@@ -80,11 +79,6 @@ return [
         'model_color' => 'Model Color',
         'model_cash_price' => 'Cash Price',
         'model_installment_price' => 'Installment Price',
-        'vehicle_search' => 'Search by vehicle name',
-        'select_category' => 'Select Category',
-        'select_brand' => 'Search by Brand',
-        'search' => 'Search',
-        'color_not_available' => 'This color is currently unavailable',
     ],
     'contact_methods' => [
         'sms' => 'SMS',
@@ -141,7 +135,7 @@ return [
         'no_branches' => 'No branches currently available',
         'address' => 'Address',
         'working_hours' => 'Working Hours',
-        'contact_mobile' => 'Mobile Number',
+        'contact_mobile' => 'Phone Number',
         'contact_whatsapp' => 'WhatsApp',
     ],
     'calculator' => [
@@ -208,6 +202,15 @@ return [
             ],
         ]
     ],
+    'search_result_for' => 'Search results for :s',
+    'search_placeholder' => 'Type what you want to search for',
+    'search_no_results' => 'No matching search results found',
+    'vehicle_search' => 'Search by vehicle name',
+    'select_category' => 'Select Category',
+    'select_brand' => 'Search for a brand',
+    'search' => 'Search',
+    'color_not_available' => 'This color is currently unavailable',
+    'form_successfully_sent' => 'Your request has been successfully sent, we will contact you as soon as possible',
     'errors' => [
         'back_to_home' => 'Back to Home',
         '404' => [

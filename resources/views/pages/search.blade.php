@@ -57,7 +57,10 @@
                 @forelse ($results as $result)
                     <x-search-card :post="$result" />
                 @empty
-                    nothing
+                    <div class="mt-8 col-span-3">
+                        <x-icons.question class="block mx-auto size-24 text-primary" />
+                        <p class="text-center">{{ __('frontend.search_no_results') }}</p>
+                    </div>
                 @endforelse
             </div>
         </div>

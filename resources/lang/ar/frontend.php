@@ -4,6 +4,7 @@ return [
     'all' => 'الكل',
     'search_result_for' => 'نتائج البحث عن :s',
     'search_placeholder' => 'اكتب ما تريد البحث عنه',
+    'search_no_results' => 'لا توجد نتائج مطابقة للبحث',
     'price_start' => 'تبدأ الأسعار من',
     'sar' => 'ر.س',
     'currency' => 'ريال',
