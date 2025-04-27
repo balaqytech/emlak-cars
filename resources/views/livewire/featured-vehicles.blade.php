@@ -1,7 +1,7 @@
 <div class="h-auto w-full">
     <div class="flex items-center justify-center gap-8 overflow-x-auto mb-6">
         @foreach ($brands as $brand)
-            <div class="flex items-center shrink-0 h-32 w-32 p-1 cursor-pointer rounded-lg overflow-hidden @if($selectedBrand == $brand->id)border border-2 border-slate-500 @endif" wire:click="filterByBrand({{ $brand->id }})" wire:key="brand-{{ $brand->id }}">
+            <div class="flex items-center shrink-0 h-32 w-32 p-1 cursor-pointer rounded-lg shadow-lg border-2 @if($selectedBrand == $brand->id) border-primary @else border-slate-500 @endif" wire:click="filterByBrand({{ $brand->id }})" wire:key="brand-{{ $brand->id }}">
                 <img src="{{ asset('/storage/' . $brand->logo) }}" alt="{{ $brand->name }}"
                     class="w-full h-full object-cover object-center rounded-lg">
             </div>

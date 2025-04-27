@@ -15,7 +15,10 @@
             <x-nav-link link="{{ localizedUrl('/about') }}" title="{{ __('frontend.navigation.about') }}" />
             <x-nav-link link="{{ app()->getLocale() == 'ar' ? '/en' : '/ar' }}" title="{{ app()->getLocale() == 'ar' ? 'English' : 'عربي' }}" />
         </ul>
-        <x-primary-button href="{{ localizedUrl('/contact') }}" class="hidden md:block">{{ __('frontend.navigation.contact') }}</x-primary-button>
+        <div class="flex items-center gap-4">
+            <x-primary-button href="{{ localizedUrl('/contact') }}" class="hidden md:block">{{ __('frontend.navigation.contact') }}</x-primary-button>
+            <x-search-modal />
+        </div>
         <button x-on:click="mobileMenuIsOpen = !mobileMenuIsOpen" x-bind:aria-expanded="mobileMenuIsOpen"
             x-bind:class="mobileMenuIsOpen ? 'fixed top-6 right-6 z-20' : null" type="button"
             class="flex text-on-surface dark:text-on-surface-dark md:hidden" aria-label="mobile menu"
