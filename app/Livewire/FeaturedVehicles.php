@@ -26,7 +26,7 @@ class FeaturedVehicles extends Component
                 $query->where('vehicle_category_id', $this->selectedCategory);
             })
             ->get();
-            $this->dispatch('refreshFeaturedVehicles');
+            $this->dispatch('swiperReinit');
     }
 
     public function filterByCategory($categoryId)
@@ -41,6 +41,8 @@ class FeaturedVehicles extends Component
                 $query->where('vehicle_category_id', $this->selectedCategory);
             })
             ->get();
+
+            $this->dispatch('swiperReinit');
     }
 
     public function render()

@@ -27,13 +27,13 @@
             </div>
         @endforeach
     </div>
-    {{-- <div class="swiper h-auto w-full"
+    <div class="swiper h-auto w-full"
         data-swiper-options="{
             'autoHeight': true,
             'spaceBetween': 20,
             'grabCursor': true,
             'slidesPerView': 1,
-            'pagination': { 'el': '.swiper-pagination' , 'clickable': true },
+            'pagination': { 'el': '.featured-pagination' , 'clickable': true },
             'breakpoints': {
                 '640': {
                     'slidesPerView': 2,
@@ -52,18 +52,6 @@
                 </div>
             @endforeach
         </div>
-        <div class="swiper-pagination"></div>
-    </div> --}}
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        @forelse ($featuredVehicles as $vehicle)
-            <div wire:key="vehicle-{{ $vehicle->id }}">
-                <x-vehicle-card :vehicle="$vehicle" />
-            </div>
-        @empty
-            <div class="mt-8 col-span-3">
-                <x-icons.question class="block mx-auto size-24 text-primary" />
-                <p class="text-center">{{ __('frontend.vehicles.no_vehicles') }}</p>
-            </div>
-        @endforelse
+        <div class="featured-pagination flex items-center justify-center"></div>
     </div>
 </div>
