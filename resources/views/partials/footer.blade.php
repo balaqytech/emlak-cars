@@ -121,7 +121,7 @@
         </div>
     </div>
     <a href="{{ general_settings('whatsapp') }}" target="_blank"
-        class="fixed bottom-4 end-4 bg-[#25d366] hover:bg-[#128c7e] text-white font-bold p-4 rounded-full shadow-lg">
+        class="fixed bottom-4 end-4 bg-[#25d366] hover:bg-[#128c7e] text-white font-bold p-4 rounded-full shadow-lg z-50">
         <x-icons.whatsapp class="size-8" />
     </a>
 </footer>
