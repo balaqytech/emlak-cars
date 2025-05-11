@@ -24,6 +24,10 @@ class Color extends Model
         'show_price' => 'boolean',
     ];
 
+    public $translatable = [
+        'name',
+    ];
+
     public function model(): BelongsTo
     {
         return $this->belongsTo(VehicleModel::class, 'vehicle_model_id');

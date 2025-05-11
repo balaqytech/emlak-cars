@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('colors', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(VehicleModel::class)->constrained()->cascadeOnDelete();
-            $table->string('name');
+            $table->json('name');
             $table->string('hex');
             $table->string('image');
             $table->string('cash_price');
