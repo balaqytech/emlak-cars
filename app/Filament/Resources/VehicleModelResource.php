@@ -112,7 +112,11 @@ class VehicleModelResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                Tables\Filters\SelectFilter::make('vehicle')
+                    ->relationship('vehicle', 'name')
+                    ->label(__('backend.vehicle_models.vehicle'))
+                    ->multiple()
+                    ->preload(),
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
