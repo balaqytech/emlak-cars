@@ -88,8 +88,7 @@
                                                     <h3 class="text-slate-800 font-semibold">
                                                         {{ __('frontend.vehicles.model_color') }}
                                                     </h3>
-                                                    <p x-text="slide.name"
-                                                        class="text-sm text-slate-700"></p>
+                                                    <p x-text="slide.name.{{ app()->getLocale() }}" class="text-sm text-slate-700"></p>
                                                 </div>
                                             </div>
                                             <div x-show="slide.show_price" class="flex p-8">
