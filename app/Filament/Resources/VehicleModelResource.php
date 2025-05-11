@@ -128,7 +128,7 @@ class VehicleModelResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\ColorsRelationManager::class,
         ];
     }
 

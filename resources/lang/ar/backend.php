@@ -178,6 +178,18 @@ return [
         'vehicle_brand' => 'ماركة المركبة',
         'vehicle_category' => 'صنف المركبة',
     ],
+    'colors' => [
+        'label' => 'الألوان',
+        'singular_label' => 'لون',
+        'vehicle_model' => 'فئة المركبة',
+        'name' => 'اسم اللون',
+        'hex' => 'كود اللون',
+        'image' => 'الصورة',
+        'show_price' => 'عرض السعر',
+        'cash_price' => 'السعر النقدي',
+        'installment_price' => 'سعر التقسيط',
+        'is_available' => 'متاح',
+    ],
     'general_settings' => [
         'general' => 'عام',
         'title' => 'إعدادات عامة',
