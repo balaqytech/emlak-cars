@@ -1,3 +1,6 @@
+@php
+    $image = is_array($image) ? array_values($image)[0] : $image;
+@endphp
 <div class="flex flex-col bg-white border shadow-sm rounded-xl">
     <div class="w-full h-96">
         <img loading="lazy" class="w-full h-full object-cover object-center rounded-t-xl" src="{{ asset('storage/' . $image) }}">
