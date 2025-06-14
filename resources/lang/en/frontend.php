@@ -107,6 +107,10 @@ return [
         'identity' => 'Identity Document',
         'driving_license' => 'Driving License',
     ],
+    'purchase_types' => [
+        'individual' => 'Individual',
+        'corporate' => 'Corporate',
+    ],
     'about' => [
         'page_title' => 'About Us',
         'vision' => 'Our Vision',

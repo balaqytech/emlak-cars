@@ -11,8 +11,8 @@ enum PurchaseType: string implements HasLabel {
     public function getLabel(): ?string
     {
         return match ($this){
-            self::Individual => __('backend.purchase_types.individual'),
-            self::Corporate => __('backend.purchase_types.corporate'),
+            self::Individual => __('frontend.purchase_types.individual'),
+            self::Corporate => __('frontend.purchase_types.corporate'),
         };
     }
 }
