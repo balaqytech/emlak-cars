@@ -13,7 +13,7 @@
         <div class="wrapper py-16">
             <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-14">
                 <div class="h-96 rounded-lg overflow-hidden">
-                    <img loading="lazy" class="h-full w-full object-cover object-center"
+                    <img loading="lazy" class="h-full w-full object-contain object-center"
                         src="{{ asset('storage/' . $settings['about_image']) }}" alt="">
                 </div>
                 <div class="flex flex-col gap-2">
@@ -61,12 +61,11 @@
                             data-swiper-options="{
                                         'loop': true,
                                         'autoplay': {
-                                            'delay': 2500,
+                                            'delay': 5000,
                                             'disableOnInteraction': false
                                         },
-                                        'navigation': {
-                                            'nextEl': '.swiper-button-next2',
-                                            'prevEl': '.swiper-button-prev2'
+                                        'pagination': {
+                                            'el': '.swiper-pagination'
                                         }
                                     }">
                             <!-- Additional required wrapper -->
@@ -99,6 +98,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="swiper-pagination"></div>
                         </div>
                     </div>
                 </div>
@@ -120,7 +120,7 @@
             <div class="swiper flex flex-col gap-4 h-auto overflow-hidden mt-12"
                 data-swiper-options="{
                 'loop': true,
-                'slidesPerView': 2,
+                'slidesPerView': 3,
                 'spaceBetween': 10,
                 'autoplay': {
                     'delay': 2500
@@ -165,7 +165,8 @@
                     {!! str($settings['history_description'][$locale])->sanitizeHtml() !!}
                 </div>
             </div>
-            <div  class="swiper w-full" data-swiper-options="{
+            <div class="swiper w-full"
+                data-swiper-options="{
                 'loop': true,
                 'slidesPerView': 1,
                 'autoplay': {
@@ -202,8 +203,8 @@
     <section id="video-section">
         <div class="wrapper py-24">
             <div class="relative h-96 rounded-xl overflow-hidden">
-                <img loading="lazy" class="h-full w-full object-cover object-center" src="{{ Storage::url($settings['image']) }}"
-                    alt="">
+                <img loading="lazy" class="h-full w-full object-cover object-center"
+                    src="{{ Storage::url($settings['image']) }}" alt="">
 
                 <div class="absolute inset-0 size-full">
                     <div class="flex flex-col justify-center items-center size-full">
