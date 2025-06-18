@@ -55,17 +55,17 @@ class EditVehicle extends EditRecord
                 ...$localeData,
             ];
 
-            try {
-                $this->form->validate();
-            } catch (ValidationException $exception) {
-                if (! array_key_exists($locale, $existingLocales)) {
-                    continue;
-                }
+            // try {
+            //     $this->form->validate();
+            // } catch (ValidationException $exception) {
+            //     if (! array_key_exists($locale, $existingLocales)) {
+            //         continue;
+            //     }
 
-                $this->setActiveLocale($locale);
+            //     $this->setActiveLocale($locale);
 
-                throw $exception;
-            }
+            //     throw $exception;
+            // }
 
             $localeData = $this->mutateFormDataBeforeSave($localeData);
 
