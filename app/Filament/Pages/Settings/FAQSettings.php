@@ -63,7 +63,7 @@ class FAQSettings extends FlatPage
                                         ->label(__('backend.faqs_page.group'))
                                         ->required()
                                         ->options(
-                                            fn() => collect(FilamentFlatPage::get('faqs.json', 'groups'))->pluck('name', 'name')
+                                            fn() => collect(FilamentFlatPage::get('faqs.json', 'groups', $this->activeLocale))->pluck('name', 'name')
                                         ),
                                 ])
                         ]),
