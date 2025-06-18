@@ -109,6 +109,10 @@ return [
         'contact_via' => 'أوافق على تلقي اتصالات رقمية من خلال:',
         'choose_color' => 'أختر لون المركبة',
         'form_successfully_sent' => 'تم ارسال طلبك بنجاح، سيتم التواصل معك في اقرب فرصه'
+    ],    
+    'purchase_types' => [
+        'individual' => 'افراد',
+        'corporate' => 'شركات',
     ],
     'about' => [
         'page_title' => 'نبذة عنا',

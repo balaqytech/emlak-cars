@@ -15,53 +15,28 @@ class CashPurchaseApplicationForm extends Component
     use WithFileUploads;
 
     public string $payment_method;
-
-    #[Rule(['required', 'exists:vehicles,id'])]
     public $vehicle_id;
 
     public $vehicleModels = [];
-
-    #[Rule(['required', 'exists:vehicle_models,id'])]
     public $model_id;
 
     public $model;
-
-    #[Rule(['required', 'exists:colors,id'])]
     public string $color;
 
     public $colors = [];
-
-    #[Rule(['required', 'string', 'max:255'])]
     public string $name;
-
-    #[Rule(['required', 'email', 'max:255'])]
     public string $email;
-
-    #[Rule(['required', 'string', 'max:15'])]
     public string $phone;
-
-    #[Rule(['required', 'string', 'max:50'])]
     public string $city;
-
-    #[Rule(['required', 'string', 'max:50'])]
     public string $purchase_type;
 
-    #[Rule(['required', 'string', 'max:50'])]
-    public string $company_name;
+    public string $company_name = '';
 
-    #[Rule(['required', 'string', 'max:50'])]
-    public string $commercial_registration;
+    public string $commercial_registration = '';
 
-    #[Rule(['required', 'string', 'max:50'])]
-    public string $company_phone;
-
-    #[Rule(['required', 'array'])]
+    public string $company_phone = '';
     public array $contact_methods;
-
-    #[Rule(['nullable', 'sometimes', 'file', 'mimes:pdf,jpg,jpeg,png', 'max:5120'])]
     public $identity;
-
-    #[Rule(['nullable', 'sometimes', 'file', 'mimes:pdf,jpg,jpeg,png', 'max:5120'])]
     public $driving_license;
 
     public function mount($method)
@@ -88,7 +63,7 @@ class CashPurchaseApplicationForm extends Component
 
     public function submit()
     {
-        // $this->validate();
+        $this->validate();
 
         $fields = [
             'name' => $this->name,
@@ -122,9 +97,29 @@ class CashPurchaseApplicationForm extends Component
             'vehicle_details' => Color::find($this->color)->toArray(),
         ]);
 
-        $this->reset('name', 'email', 'phone', 'contact_methods');
+        $this->reset();
 
         $this->dispatch('form-sent', message: __('frontend.cash_purchase_form.form_successfully_sent'));
+    }
+
+    public function rules()
+    {
+        return [
+            'vehicle_id' => ['required', 'exists:vehicles,id'],
+            'model_id' => ['required', 'exists:vehicle_models,id'],
+            'color' => ['required', 'exists:colors,id'],
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email', 'max:255'],
+            'phone' => ['required', 'string', 'max:15'],
+            'city' => ['required', 'string', 'max:50'],
+            'purchase_type' => ['required', 'string', 'max:50'],
+            'company_name' => ['required_if:purchase_type,corporate', 'string', 'max:50'],
+            'commercial_registration' => ['required_if:purchase_type,corporate', 'string', 'max:50'],
+            'company_phone' => ['required_if:purchase_type,corporate', 'string', 'max:50'],
+            'contact_methods' => ['required', 'array'],
+            'identity' => ['nullable', 'file', 'mimes:pdf,jpg,jpeg,png', 'max:5120'],
+            'driving_license' => ['nullable', 'file', 'mimes:pdf,jpg,jpeg,png', 'max:5120'],
+        ];
     }
 
     public function render()
