@@ -21,6 +21,11 @@ class VehicleFeaturesRelationManager extends RelationManager
         return __('backend.vehicles.features');
     }
 
+    public static function getModelLabel(): string
+    {
+        return __('backend.vehicles.feature_label');
+    }
+
     public function form(Form $form): Form
     {
         return $form

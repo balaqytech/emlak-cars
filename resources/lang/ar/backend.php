@@ -151,6 +151,8 @@ return [
         'brand' => 'ماركة المركبة',
         'is_active' => 'نشط',
         'features' => 'المميزات',
+        'feature' => 'الميزة',
+        'feature_label' => 'ميزة المركبة',
         'feature_title' => 'عنوان الميزة',
         'feature_description' => 'وصف الميزة',
         'feature_image' => 'صورة الميزة',
