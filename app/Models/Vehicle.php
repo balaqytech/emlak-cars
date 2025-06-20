@@ -22,7 +22,7 @@ class Vehicle extends Model implements Auditable
         'show_least_price',
         'banner',
         'overview',
-        'features',
+        // 'features',
         'is_active',
         'vehicle_category_id',
         'vehicle_brand_id',
@@ -31,7 +31,7 @@ class Vehicle extends Model implements Auditable
     ];
 
     protected $casts = [
-        'features' => 'array',
+        // 'features' => 'array',
         'is_active' => 'boolean',
         'show_least_price' => 'boolean',
         'is_featured' => 'boolean',
@@ -41,8 +41,13 @@ class Vehicle extends Model implements Auditable
         'name',
         'excerpt',
         'overview',
-        'features',
+        // 'features',
     ];
+
+    public function vehicleFeatures()
+    {
+        return $this->hasMany(VehicleFeature::class, 'vehicle_id');
+    }
 
     public function category()
     {
