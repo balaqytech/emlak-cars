@@ -62,7 +62,14 @@ class VehicleModelResource extends Resource
                         Forms\Components\TextInput::make('slug')
                             ->label(__('backend.vehicle_models.slug'))
                             ->required()
-                            ->unique(ignoreRecord: true)
+                            ->unique(
+                                table: 'vehicle_models',
+                                column: 'slug',
+                                ignoreRecord: true,
+                                modifyRuleUsing: function (\Illuminate\Validation\Rules\Unique $rule, callable $get) {
+                                    return $rule->where('vehicle_id', $get('vehicle_id'));
+                                }
+                            )
                             ->maxLength(255),
                         Forms\Components\FileUpload::make('image')
                             ->label(__('backend.vehicle_models.image'))
