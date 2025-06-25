@@ -174,6 +174,13 @@ class PurchaseApplicationResource extends Resource implements HasShieldPermissio
             ]);
     }
 
+    public static function getRelations(): array
+    {
+        return [
+            \Tapp\FilamentAuditing\RelationManagers\AuditsRelationManager::class,
+        ];
+    }
+
     public static function getPages(): array
     {
         return [

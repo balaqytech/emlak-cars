@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "81bb3ec1baede497e55dd2866d22a8f2",
+    "content-hash": "a044c7021017317cbf33c0aa348b1ad8",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -7861,6 +7861,83 @@
                 }
             ],
             "time": "2025-04-27T18:39:23+00:00"
+        },
+        {
+            "name": "tapp/filament-auditing",
+            "version": "v3.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/TappNetwork/filament-auditing.git",
+                "reference": "1471b4906fc61d954cf349e2161b801fe28d61c0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/TappNetwork/filament-auditing/zipball/1471b4906fc61d954cf349e2161b801fe28d61c0",
+                "reference": "1471b4906fc61d954cf349e2161b801fe28d61c0",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^3.0-stable",
+                "owen-it/laravel-auditing": "^14.0||^13.0",
+                "php": "^8.2",
+                "spatie/laravel-package-tools": "^1.16"
+            },
+            "require-dev": {
+                "larastan/larastan": "^2.9||^3.0",
+                "laravel/pint": "^1.14",
+                "nunomaduro/collision": "^8.1.1||^7.10.0",
+                "orchestra/testbench": "^10.0.0||^9.0.0||^8.22.0",
+                "pestphp/pest": "^3.0||^2.34",
+                "pestphp/pest-plugin-arch": "^3.0||^2.7",
+                "pestphp/pest-plugin-laravel": "^3.0||^2.3",
+                "phpstan/extension-installer": "^1.3||^2.0",
+                "phpstan/phpstan-deprecation-rules": "^1.1||^2.0",
+                "phpstan/phpstan-phpunit": "^1.3||^2.0",
+                "spatie/laravel-ray": "^1.35"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Tapp\\FilamentAuditing\\FilamentAuditingServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Tapp\\FilamentAuditing\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tapp Network",
+                    "email": "steve@tappnetwork.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Tapp Network",
+                    "email": "andreia.bohner@tappnetwork.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Filament Laravel Auditing plugin.",
+            "homepage": "https://github.com/TappNetwork/filament-auditing",
+            "keywords": [
+                "Audit",
+                "auditing",
+                "filament",
+                "laravel",
+                "tapp network"
+            ],
+            "support": {
+                "issues": "https://github.com/TappNetwork/filament-auditing/issues",
+                "source": "https://github.com/TappNetwork/filament-auditing"
+            },
+            "time": "2025-06-04T16:52:10+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",

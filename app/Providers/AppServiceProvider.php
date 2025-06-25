@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -22,5 +23,14 @@ class AppServiceProvider extends ServiceProvider
         \Spatie\Translatable\Facades\Translatable::fallback(
             fallbackLocale: 'ar',
         );
+
+        // override the default audit policy to disable restore
+        Gate::define('audit', function ($user, $resource) {
+            return $user->hasRole('super_admin');
+        });
+
+        Gate::define('restoreAudit', function ($user, $resource) {
+            return false;
+        });
     }
 }

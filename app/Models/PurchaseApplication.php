@@ -49,4 +49,25 @@ class PurchaseApplication extends Model implements \OwenIt\Auditing\Contracts\Au
     {
         return $query->installment_details->modelScope();
     }
+
+    public function formatAuditFieldsForPresentation($field, \OwenIt\Auditing\Contracts\Audit $record)
+    {
+        $fields = \Illuminate\Support\Arr::wrap($record->{$field});
+
+        $formattedResult = '<ul>';
+
+        foreach ($fields as $key => $value) {
+            $formattedResult .= '<li>';
+            $formattedResult .= match ($key) {
+                'status' => __('backend.purchase_applications.status') . ': ' . \App\Enums\PurchaseApplicationStatus::from($value)->getLabel(),
+                'assigned_to' => __('backend.purchase_applications.assigned_to') . ': ' . \App\Models\User::find($value)?->name ?? __('backend.purchase_applications.unassigned'),
+                default => ' - ',
+            };
+            $formattedResult .= '</li>';
+        }
+
+        $formattedResult .= '</ul>';
+
+        return new \Illuminate\Support\HtmlString($formattedResult);
+    }
 }
