@@ -7,8 +7,10 @@ use App\Enums\PurchaseMethod;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\SchemalessAttributes\Casts\SchemalessAttributes;
 
-class PurchaseApplication extends Model
+class PurchaseApplication extends Model implements \OwenIt\Auditing\Contracts\Auditable
 {
+    use \OwenIt\Auditing\Auditable;
+
     protected $fillable = [
         'payment_method',
         'fields',
