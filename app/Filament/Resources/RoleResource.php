@@ -38,6 +38,41 @@ class RoleResource extends Resource implements HasShieldPermissions
 
     public static function form(Form $form): Form
     {
+        // Match the navigation group order as defined in AdminPanelProvider
+        $groupOrder = [
+            __('backend.navigation_groups.content_management'),
+            __('backend.navigation_groups.vehicles'),
+            __('backend.navigation_groups.submissions'),
+            __('backend.navigation_groups.installment_calculator'),
+            __('backend.navigation_groups.roles_and_permissions'),
+            __('backend.navigation_groups.settings'),
+        ];
+
+        // Group resources and pages by navigation group
+        $resourceGroups = static::getGroupedResourceEntitiesSchema();
+        $pageGroups = static::getGroupedPageEntitiesSchema();
+
+        // Merge resource and page groups
+        $allGroups = array_merge_recursive($resourceGroups, $pageGroups);
+
+        // Sort groups by the navigation group order
+        uksort($allGroups, function ($a, $b) use ($groupOrder) {
+            $posA = array_search($a, $groupOrder);
+            $posB = array_search($b, $groupOrder);
+            if ($posA === false) $posA = PHP_INT_MAX;
+            if ($posB === false) $posB = PHP_INT_MAX;
+            return $posA <=> $posB;
+        });
+
+        // Build tabs for each navigation group
+        $tabs = [];
+        foreach ($allGroups as $group => $schemas) {
+            $tabs[] = Forms\Components\Tabs\Tab::make($group)
+                ->label($group)
+                ->schema($schemas)
+                ->columnSpan('full');
+        }
+
         return $form
             ->schema([
                 Forms\Components\Grid::make()
@@ -65,14 +100,62 @@ class RoleResource extends Resource implements HasShieldPermissions
                     ]),
                 Forms\Components\Tabs::make('Permissions')
                     ->contained()
-                    ->tabs([
-                        static::getTabFormComponentForResources(),
-                        static::getTabFormComponentForPage(),
-                        static::getTabFormComponentForWidget(),
-                        static::getTabFormComponentForCustomPermissions(),
-                    ])
+                    ->tabs($tabs)
                     ->columnSpan('full'),
             ]);
+    }
+
+    /**
+     * Group resources by navigation group and return tab schemas
+     */
+    protected static function getGroupedResourceEntitiesSchema(): array
+    {
+        $resources = collect(FilamentShield::getResources());
+        $grouped = $resources->groupBy(function ($entity) {
+            $fqcn = $entity['fqcn'];
+            return method_exists($fqcn, 'getNavigationGroup') ? $fqcn::getNavigationGroup() : __('filament-shield::filament-shield.resources');
+        });
+
+        $result = [];
+        foreach ($grouped as $group => $entities) {
+            $sections = $entities->sortBy('fqcn')->map(function ($entity) {
+                $sectionLabel = strval($entity['fqcn']::getNavigationLabel());
+                return Forms\Components\Section::make($sectionLabel)
+                    ->compact()
+                    ->schema([
+                        static::getCheckBoxListComponentForResource($entity),
+                    ])
+                    ->columnSpan(static::shield()->getSectionColumnSpan())
+                    ->collapsible();
+            })->toArray();
+            $result[$group] = $sections;
+        }
+        return $result;
+    }
+
+    /**
+     * Group pages by navigation group and return tab schemas
+     */
+    protected static function getGroupedPageEntitiesSchema(): array
+    {
+        $pages = collect(FilamentShield::getPages());
+        $grouped = $pages->groupBy(function ($page) {
+            $class = $page['class'];
+            return method_exists($class, 'getNavigationGroup') ? $class::getNavigationGroup() : __('filament-shield::filament-shield.pages');
+        });
+
+        $result = [];
+        foreach ($grouped as $group => $pagesInGroup) {
+            $options = $pagesInGroup->flatMap(fn ($page) => [
+                $page['permission'] => static::shield()->hasLocalizedPermissionLabels()
+                    ? FilamentShield::getLocalizedPageLabel($page['class'])
+                    : $page['permission'],
+            ])->toArray();
+            if (!empty($options)) {
+                $result[$group][] = static::getCheckboxListFormComponent('pages_tab_' . md5($group), $options);
+            }
+        }
+        return $result;
     }
 
     public static function table(Table $table): Table
