@@ -29,4 +29,9 @@ class VehicleCategory extends Model implements Auditable
         'name',
         'description',
     ];
+
+    public function vehicles()
+    {
+        return $this->hasMany(Vehicle::class, 'vehicle_category_id');
+    }
 }

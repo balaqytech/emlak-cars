@@ -6,6 +6,7 @@ use Livewire\Component;
 
 class FeaturedVehicles extends Component
 {
+    public $categories;
     public $featuredVehicles;
     public $selectedBrand;
     public $selectedCategory;
@@ -26,7 +27,14 @@ class FeaturedVehicles extends Component
                 $query->where('vehicle_category_id', $this->selectedCategory);
             })
             ->get();
-            $this->dispatch('swiperReinit');
+        // Update categories to only non-empty ones for the selected brand
+        $this->categories = \App\Models\VehicleCategory::whereHas('vehicles', function ($query) {
+            $query->featured();
+            if ($this->selectedBrand) {
+                $query->where('vehicle_brand_id', $this->selectedBrand);
+            }
+        })->get();
+        $this->dispatch('swiperReinit');
     }
 
     public function filterByCategory($categoryId)
@@ -57,11 +65,13 @@ class FeaturedVehicles extends Component
             })
             ->get();
         $brands = \App\Models\VehicleBrand::all();
-        $categories = \App\Models\VehicleCategory::all();
+        // Only set categories to all if not filtered by brand
+        if (!$this->selectedBrand) {
+            $this->categories = \App\Models\VehicleCategory::all();
+        }
         return view('livewire.featured-vehicles', [
             'featuredVehicles' => $this->featuredVehicles,
             'brands' => $brands,
-            'categories' => $categories,
         ]);
     }
 }
