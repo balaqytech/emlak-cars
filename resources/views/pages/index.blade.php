@@ -4,7 +4,8 @@
     $featured_vehicles = \App\Models\Vehicle::featured()->get();
     $settings = FilamentFlatPage::all('homepage.json');
     $slides = $settings['slider'][app()->getLocale()];
-    $banner_image = asset('storage/' . $settings['banner']);
+    $banner_laptop_image = asset('storage/' . $settings['banner_laptop']);
+    $banner_mobile_image = asset('storage/' . $settings['banner_mobile']);
     $banner_title = $settings['banner_title'][app()->getLocale()];
     $banner_subtitle = $settings['banner_subtitle'][app()->getLocale()];
 @endphp
@@ -46,8 +47,7 @@
             <div class="swiper-wrapper">
                 @foreach ($slides as $slide)
                     <div class="swiper-slide">
-                        <div
-                            class=" relative h-[90dvh] w-full py-12">
+                        <div class=" relative h-[90dvh] w-full py-12">
                             <div class="w-full h-full absolute top-0 left-0 overflow-hidden">
                                 <picture>
                                     <source media="(max-width: 480px)"
@@ -95,8 +95,12 @@
     </section>
 
     <section id="banner"
-        class="h-screen relative flex items-end bg-slate-50 bg-cover bg-center bg-fixed py-24 before:content[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-1/2 before:bg-gradient-to-b before:from-white before:to-transparent"
-        style="background-image: url('{{ $banner_image }}');">
+        class="h-screen relative flex items-end bg-slate-50 bg-cover bg-center bg-fixed py-24 before:content[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-1/2 before:bg-gradient-to-b before:from-white before:to-transparent">
+        <picture>
+            <source media="(max-width: 480px)" srcset="{{ $banner_mobile_image }}">
+            <img loading="lazy" class="absolute inset-0 w-full h-full object-cover object-center"
+                src="{{ $banner_laptop_image }}" alt="{{ $banner_title }}">
+        </picture>
         <div class="wrapper relative">
             <div class="max-w-xl flex flex-col items-start gap-1">
                 <h2 class="bg-black/20 p-4 inline-block rounded-lg backdrop-blur-sm font-bold text-4xl text-white">

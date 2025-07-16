@@ -78,18 +78,26 @@ class Homepage extends FlatPage
                         ]),
                     Forms\Components\Tabs\Tab::make(__('backend.homepage.banner'))
                         ->schema([
-                            Forms\Components\FileUpload::make('banner')
+                            Forms\Components\FileUpload::make('banner_laptop')
                                 ->required()
                                 ->image()
                                 ->maxSize(1 * 1024)
-                                ->label(__('backend.homepage.banner_image')),
+                                ->label(__('backend.homepage.banner_laptop_image')),
+                            Forms\Components\FileUpload::make('banner_mobile')
+                                ->required()
+                                ->image()
+                                ->maxSize(1 * 1024)
+                                ->label(__('backend.homepage.banner_mobile_image')),
                             Forms\Components\TextInput::make('banner_title')
                                 ->required()
+                                ->maxLength(50)
                                 ->label(__('backend.homepage.banner_title')),
                             Forms\Components\TextInput::make('banner_subtitle')
                                 ->required()
+                                ->maxLength(100)
                                 ->label(__('backend.homepage.banner_subtitle')),
-                        ]),
+                        ])
+                        ->columns(2),
                 ]),
         ];
     }

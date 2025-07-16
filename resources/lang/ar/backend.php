@@ -36,7 +36,8 @@ return [
         'banner' => 'البانر',
         'banner_title' => 'عنوان البانر',
         'banner_subtitle' => 'عنوان فرعي البانر',
-        'banner_image' => 'صورة البانر',
+        'banner_laptop_image' => 'صورة اللابتوب للبانر',
+        'banner_mobile_image' => 'صورة الجوال للبانر',
     ],
     'banks' => [
         'label' => 'البنوك',
