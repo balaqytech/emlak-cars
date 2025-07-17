@@ -1,4 +1,14 @@
-<div class="h-auto w-full">
+<div class="h-auto w-full relative">
+    <!-- Loading Spinner -->
+    <div class="absolute inset-0 flex items-center justify-center bg-white/70 z-20" wire:loading.flex
+        wire:target="filterByBrand,filterByCategory">
+        <svg class="animate-spin h-10 w-10 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none"
+            viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+            </circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+        </svg>
+    </div>
     <div class="flex justify-center gap-4 overflow-x-auto mb-6 py-2">
         @foreach ($brands as $brand)
             <div class="py-4 px-6 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border-2 border-primary disabled:opacity-50 disabled:pointer-events-none cursor-pointer @if ($selectedBrand == $brand->id) bg-primary text-white @else bg-white text-primary @endif hover:-translate-y-1 transition-all duration-300 ease-in-out"
