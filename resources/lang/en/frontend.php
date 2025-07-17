@@ -52,7 +52,7 @@ return [
                 'description' => 'We are here to help you anytime you need',
                 'button' => 'Contact Us',
             ],
-        ],        
+        ],
         'news' => [
             'heading' => 'Latest News and Articles',
             'description' => 'Learn about the latest news and articles that interest you',
@@ -220,6 +220,11 @@ return [
         '404' => [
             'title' => 'Page Not Found',
             'message' => 'Sorry, the page you are looking for does not exist',
+        ],
+        '419' => [
+            'title' => 'Session Expired',
+            'message' => 'It seems that your session has expired. Please refresh the page or return to the homepage.',
+            'back_to_home' => 'Back to Home',
         ],
         '500' => [
             'title' => 'Server Error',
