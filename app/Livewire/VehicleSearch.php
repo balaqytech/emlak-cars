@@ -30,11 +30,6 @@ class VehicleSearch extends Component
         $this->brands = VehicleBrand::all();
     }
 
-    public function updatedSelectedBrand($value)
-    {
-        $this->updateCategories($value);
-    }
-
     public function render()
     {
         $query = Vehicle::query();
