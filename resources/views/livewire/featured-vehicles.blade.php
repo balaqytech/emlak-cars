@@ -19,12 +19,12 @@
         @endforeach
     </div>
     <div class="flex flex-nowrap items-center justify-center gap-4 overflow-x-auto mb-6 py-1">
-        <div class="py-1 px-2 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-primary disabled:opacity-50 disabled:pointer-events-none cursor-pointer @if ($selectedCategory == null) bg-primary text-white @else bg-white text-primary @endif hover:-translate-y-1 transition-all duration-300 ease-in-out"
+        <div class="py-1 px-2 inline-flex items-center gap-x-2 shrink-0 text-sm font-medium rounded-lg border border-primary disabled:opacity-50 disabled:pointer-events-none cursor-pointer @if ($selectedCategory == null) bg-primary text-white @else bg-white text-primary @endif hover:-translate-y-1 transition-all duration-300 ease-in-out"
             wire:click="filterByCategory('')">
             {{ __('frontend.all') }}
         </div>
         @foreach ($categories as $category)
-            <div class="py-1 px-2 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-primary disabled:opacity-50 disabled:pointer-events-none cursor-pointer @if ($selectedCategory == $category->id) bg-primary text-white @else bg-white text-primary @endif hover:-translate-y-1 transition-all duration-300 ease-in-out"
+            <div class="py-1 px-2 inline-flex items-center gap-x-2 shrink-0 text-sm font-medium rounded-lg border border-primary disabled:opacity-50 disabled:pointer-events-none cursor-pointer @if ($selectedCategory == $category->id) bg-primary text-white @else bg-white text-primary @endif hover:-translate-y-1 transition-all duration-300 ease-in-out"
                 wire:click="filterByCategory({{ $category->id }})" wire:key="category-{{ $category->id }}"
                 wire:loading.attr="disabled">
                 {{ $category->name }}
