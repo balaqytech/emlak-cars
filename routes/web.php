@@ -2,4 +2,4 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::redirect('/', '/ar');
+Route::redirect('/', '/ar', 301);
