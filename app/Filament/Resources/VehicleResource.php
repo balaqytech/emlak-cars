@@ -90,6 +90,12 @@ class VehicleResource extends Resource
                             ->numeric()
                             ->minValue(1)
                             ->maxValue(100),
+                        Forms\Components\TextInput::make('year')
+                            ->label(__('backend.vehicles.year'))
+                            ->required()
+                            ->numeric()
+                            ->minValue(1900)
+                            ->maxValue(date('Y') + 1),
                         Forms\Components\Toggle::make('is_active')
                             ->label(__('backend.vehicles.is_active'))
                             ->required()

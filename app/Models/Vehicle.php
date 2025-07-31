@@ -18,6 +18,7 @@ class Vehicle extends Model implements Auditable
         'name',
         'slug',
         'excerpt',
+        'year',
         'image',
         'show_least_price',
         'banner',

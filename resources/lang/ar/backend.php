@@ -151,6 +151,7 @@ return [
         'category' => 'فئة المركبة',
         'brand' => 'ماركة المركبة',
         'is_active' => 'نشط',
+        'year' => 'سنة الصنع',
         'features' => 'المميزات',
         'feature' => 'الميزة',
         'feature_label' => 'ميزة المركبة',
