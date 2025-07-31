@@ -45,6 +45,6 @@
         @endforelse
     </div>
     <div class="mt-10">
-        {{ $vehicles->links() }}
+        {{ $vehicles->links('components.pagination') }}
     </div>
 </div>

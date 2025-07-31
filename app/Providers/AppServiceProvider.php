@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
@@ -32,5 +33,8 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('restoreAudit', function ($user, $resource) {
             return false;
         });
+
+        Paginator::defaultView('components.pagination');
+        Paginator::defaultSimpleView('components.pagination');
     }
 }

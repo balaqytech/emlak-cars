@@ -22,7 +22,7 @@
                 </div>
             @endif
             <div class="mt-10">
-                {{ $posts->links() }}
+                {{ $posts->links('components.pagination') }}
             </div>
         </div>
     </section>
