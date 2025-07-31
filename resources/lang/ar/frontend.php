@@ -23,6 +23,7 @@ return [
     ],
     'footer' => [
         'copyrights_reserved' => 'جميع الحقوق محفوظة.',
+        'balaqy' => 'تطوير <a href="https://balaqytech.com" target="_blank" class="hover:underline">بلاقي تك</a>',
         'company_title' => 'عن الشركة',
         'quick_links' => 'روابط هامة',
         'contact_us' => 'تواصل معنا',

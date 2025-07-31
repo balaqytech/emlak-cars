@@ -20,6 +20,7 @@ return [
     ],
     'footer' => [
         'copyrights_reserved' => 'All rights reserved.',
+        'balaqy' => 'Developed by <a href="https://balaqytech.com" target="_blank" class="hover:underline">Balaqy Tech</a>',
         'company_title' => 'About Us',
         'quick_links' => 'Quick Links',
         'contact_us' => 'Contact Us',

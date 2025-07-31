@@ -91,6 +91,7 @@
             <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© {{ date('Y') }} <a
                     href="{{ url('/') }}" class="hover:underline">{{ general_settings('site_name') }}™</a>.
                 {{ __('frontend.footer.copyrights_reserved') }}
+                {!! __('frontend.footer.balaqy') !!}
             </span>
             <div class="flex mt-4 gap-4 sm:justify-center sm:mt-0">
                 <a href="{{ general_settings('facebook') }}" target="_blank"
