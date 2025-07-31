@@ -19,15 +19,18 @@
     <section>
         <div class="wrapper grid grid-cols-1 lg:grid-cols-2 gap-4 my-24">
             <div class="flex flex-col gap-4">
-                <p><a href="#"
-                        class="bg-primary inline-block hover:bg-slate-700 text-white rounded px-5 py-2 transition-all duration-500">{{ $vehicle->category->name }}</a>
+                <p>
+                    <span
+                        class="bg-primary inline-block hover:bg-slate-700 text-white rounded px-5 py-2 transition-all duration-500">{{ $vehicle->category->name }}
+                    </span>
                 </p>
                 <x-breadcrumb :items="[
                     ['label' => __('frontend.navigation.vehicles'), 'url' => localizedUrl('/vehicles/')],
                     ['label' => $vehicle->name],
                 ]" color="slate-400" />
-                <h1 class="text-4xl font-bold text-slate-800">
-                    {{ $vehicle->name }}
+                <h1 class="flex items-baseline gap-2 text-4xl font-bold text-slate-800">
+                    <span>{{ $vehicle->name }}</span>
+                    <span class="text-primary text-base font-bold">({{ $vehicle->year }})</span>
                 </h1>
                 <p class="text-slate-600 max-w-lg">
                     {{ $vehicle->excerpt }}

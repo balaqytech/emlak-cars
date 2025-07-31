@@ -33,7 +33,6 @@
     </div>
     <div class="swiper h-auto w-full"
         data-swiper-options="{
-            'autoHeight': true,
             'spaceBetween': 20,
             'grabCursor': true,
             'slidesPerView': 1,
@@ -51,7 +50,7 @@
     }">
         <div class="swiper-wrapper py-12">
             @foreach ($featuredVehicles as $vehicle)
-                <div class="swiper-slide" wire:key="vehicle-{{ $vehicle->id }}">
+                <div class="swiper-slide h-auto" wire:key="vehicle-{{ $vehicle->id }}">
                     <x-vehicle-card :vehicle="$vehicle" />
                 </div>
             @endforeach
