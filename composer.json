@@ -16,6 +16,7 @@
         "owen-it/laravel-auditing": "^13.7",
         "panakour/filament-flat-page": "^0.0.2",
         "spatie/laravel-schemaless-attributes": "^2.5",
+        "spatie/laravel-sitemap": "^7.3",
         "tapp/filament-auditing": "^3.0"
     },
     "require-dev": {
