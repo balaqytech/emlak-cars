@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="title">
-        {{ $page->title }}
+        {!! seo()->for($page ?? null) !!}
     </x-slot>
 
     <div class="w-full h-[40dvh] lg:h-[80dvh] overflow-hidden bg-center bg-cover">
