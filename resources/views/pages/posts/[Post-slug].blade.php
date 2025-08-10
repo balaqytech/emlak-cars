@@ -6,7 +6,7 @@
 
 <x-app-layout>
     <x-slot name="title">
-        {{ $post->title }}
+        {!! seo()->for($post ?? null) !!}
     </x-slot>
 
     <div class="w-full h-[80dvh] overflow-hidden bg-center bg-cover">

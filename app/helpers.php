@@ -10,8 +10,8 @@ if (! function_exists('general_settings')) {
 }
 
 if (! function_exists('localizedUrl')) {
-    function localizedUrl($path = '')
+    function localizedUrl($path = '', $locale = null)
     {
-        return url(app()->getLocale() . '/' . ltrim($path, '/'));
+        return url(($locale ?? app()->getLocale()) . '/' . ltrim($path, '/'));
     }
 }

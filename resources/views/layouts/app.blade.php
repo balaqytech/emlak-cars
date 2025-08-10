@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" href="{{ asset('storage/' . general_settings('site_favicon')) }}" type="image/x-icon">
 
-    <title>{{ $title ?? config('app.name', 'Laravel') }} - {{ general_settings('site_name') }}</title>
+    {!! $title ?? null !!}
 
     <x-json-ld />
 
