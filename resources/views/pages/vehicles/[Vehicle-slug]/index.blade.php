@@ -6,7 +6,7 @@
 
 <x-app-layout>
     <x-slot name="title">
-        {{ $vehicle->name }}
+        {!! seo()->for($vehicle ?? null) !!}
     </x-slot>
 
     <section class="">
