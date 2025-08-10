@@ -10,6 +10,8 @@
 
     <title>{{ $title ?? config('app.name', 'Laravel') }} - {{ general_settings('site_name') }}</title>
 
+    <x-json-ld />
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     @livewireStyles
     @vite(['resources/css/app.css'])
@@ -17,13 +19,13 @@
 
 <body class="font-sans antialiased min-h-screen text-slate-600">
     @include('partials.header')
-    
+
     <main>
         {{ $slot }}
     </main>
-    
+
     @include('partials.footer')
-    
+
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     @livewireScripts
     @vite('resources/js/app.js')
