@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="title">
-        {{ $vehicleModel->vehicle->name }} - {{ $vehicleModel->name }}
+        {!! seo()->for($vehicleModel ?? null) !!}
     </x-slot>
 
     <section class="py-24 bg-white">
