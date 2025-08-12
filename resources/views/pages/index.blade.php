@@ -1,5 +1,7 @@
 @php
     use Panakour\FilamentFlatPage\Facades\FilamentFlatPage;
+    use RalphJSmit\Laravel\SEO\Support\SEOData;
+    use RalphJSmit\Laravel\SEO\SchemaCollection;
 
     $featured_vehicles = \App\Models\Vehicle::featured()->get();
     $settings = FilamentFlatPage::all('homepage.json');
@@ -8,11 +10,32 @@
     $banner_mobile_image = asset('storage/' . $settings['banner_mobile']);
     $banner_title = $settings['banner_title'][app()->getLocale()];
     $banner_subtitle = $settings['banner_subtitle'][app()->getLocale()];
+
+    $SEO = new SEOData(
+        title: general_settings('site_name') . ' - ' . general_settings('site_tagline'),
+        description: str(FilamentFlatPage::get('about.json', 'about_description'))->stripTags()->limit(155)->toString(),
+        url: localizedUrl('/'),
+        image: asset('storage/' . general_settings('site_banner')),
+        schema: SchemaCollection::make()->add(
+            fn() => [
+                '@context' => 'https://schema.org',
+                '@type' => 'WebPage',
+                'name' => general_settings('site_name'),
+                'url' => localizedUrl('/'),
+                'inLanguage' => app()->getLocale(),
+                'description' => str(FilamentFlatPage::get('about.json', 'about_description'))
+                    ->stripTags()
+                    ->limit(155)
+                    ->toString(),
+                'image' => asset('storage/' . general_settings('site_banner')),
+            ],
+        ),
+    );
 @endphp
 
 <x-app-layout>
     <x-slot name="title">
-        {{ __('frontend.homepage.page_title') }}
+        {!! seo($SEO) !!}
     </x-slot>
 
     <section id="slider" class="min-h-[90dvh] bg-slate-50">

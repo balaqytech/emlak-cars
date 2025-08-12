@@ -1,10 +1,40 @@
 @php
+    use RalphJSmit\Laravel\SEO\Support\SEOData;
+    use RalphJSmit\Laravel\SEO\SchemaCollection;
+
     $settings = FilamentFlatPage::all('about.json');
     $locale = app()->getLocale();
+
+    $SEO = new SEOData(
+        title: $settings['about_heading'][$locale],
+        description: str($settings['about_description'][$locale])->stripTags()->limit(155)->toString(),
+        url: localizedUrl('/'),
+        image: asset('storage/' . $settings['about_image']),
+        schema: SchemaCollection::make()->add(
+            fn() => [
+                '@context' => 'https://schema.org',
+                '@type' => 'AboutPage',
+                'name' => $settings['about_heading'][$locale],
+                'url' => localizedUrl('/'),
+                'inLanguage' => app()->getLocale(),
+                'description' => str($settings['about_description'][$locale])->stripTags()->limit(155)->toString(),
+                'image' => asset('storage/' . $settings['about_image']),
+                'isPartOf' => [
+                    '@type' => 'WebSite',
+                    'name' => general_settings('site_name'),
+                    'url' => localizedUrl('/'),
+                ],
+            ],
+        ),
+    );
 @endphp
 
 <x-page-layout>
     <x-slot name="title">
+        {!! seo($SEO) !!}
+    </x-slot>
+
+    <x-slot name="pageTitle">
         {{ __('frontend.about.page_title') }}
     </x-slot>
 

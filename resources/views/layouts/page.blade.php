@@ -8,8 +8,8 @@
         style="background-image: url({{ asset('storage/' . general_settings('site_banner')) }});">
 
         <div class="wrapper relative z-10 flex flex-col gap-4 justify-center items-center">
-            <x-breadcrumb :items="[['label' => $title]]" color="white" />
-            <h1 class="text-5xl font-bold text-center">{{ $title }}</h1>
+            <x-breadcrumb :items="[['label' => $pageTitle]]" color="white" />
+            <h1 class="text-5xl font-bold text-center">{{ $pageTitle }}</h1>
             <p class="text-center mt-4">{{ $excerpt ?? '' }}</p>
         </div>
     </section>
