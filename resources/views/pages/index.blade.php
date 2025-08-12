@@ -16,6 +16,7 @@
         description: str(FilamentFlatPage::get('about.json', 'about_description'))->stripTags()->limit(155)->toString(),
         url: localizedUrl('/'),
         image: asset('storage/' . general_settings('site_banner')),
+        enableTitleSuffix: false,
         schema: SchemaCollection::make()->add(
             fn() => [
                 '@context' => 'https://schema.org',
