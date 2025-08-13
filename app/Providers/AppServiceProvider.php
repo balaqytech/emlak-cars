@@ -42,10 +42,10 @@ class AppServiceProvider extends ServiceProvider
         $description = str(FilamentFlatPage::get('about.json', 'about_description'))->stripTags()->limit(155)->toString();
 
         Config::set('seo.site_name', general_settings('site_name'));
-        Config::set('seo.favicon', public_path('storage/' . general_settings('site_favicon')));
+        Config::set('seo.favicon', asset('storage/' . general_settings('site_favicon')));
         Config::set('seo.title.suffix', ' - ' . general_settings('site_name'));
         Config::set('seo.title.homepage_title', general_settings('site_name') . ' - ' . general_settings('site_tagline'));
         Config::set('seo.description.fallback', $description);
-        Config::set('seo.image.fallback', public_path('storage/' . general_settings('site_banner')));
+        Config::set('seo.image.fallback', asset('storage/' . general_settings('site_banner')));
     }
 }
