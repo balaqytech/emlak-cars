@@ -1,11 +1,87 @@
 @php
     use App\Models\Branch;
+    use RalphJSmit\Laravel\SEO\SchemaCollection;
+    use RalphJSmit\Laravel\SEO\Support\SEOData;
 
     $branches = Branch::all();
+
+    $SEO = new SEOData(
+        title: __('frontend.branches.page_title'),
+        description: __('frontend.branches.subheading'),
+        image: asset('storage/' . general_settings('site_banner')),
+        url: localizedUrl('/branches'),
+        schema: SchemaCollection::make()
+            ->add(
+                fn() => [
+                    '@context' => 'https://schema.org',
+                    '@type' => 'WebPage',
+                    'name' => __('frontend.branches.page_title'),
+                    'description' => __('frontend.branches.subheading'),
+                    'url' => localizedUrl('/branches'),
+                    'inLanguage' => app()->getLocale(),
+                    'isPartOf' => [
+                        '@type' => 'WebSite',
+                        'name' => general_settings('site_name'),
+                        'url' => localizedUrl('/'),
+                    ],
+                ],
+            )
+            ->add(function () use ($branches) {
+                return [
+                    '@context' => 'https://schema.org',
+                    '@type' => 'ItemList',
+                    'name' => __('frontend.branches.page_title'),
+                    'itemListElement' => $branches
+                        ->values()
+                        ->map(
+                            fn($branch, $index) => [
+                                '@type' => 'ListItem',
+                                'position' => $index + 1,
+                                'name' => $branch->name,
+                            ],
+                        )
+                        ->all(),
+                ];
+            })
+
+            ->add(function () use ($branches) {
+                return $branches
+                    ->map(
+                        fn($branch) => [
+                            '@type' => 'AutoDealer',
+                            'name' => $branch->name,
+                            'telephone' => $branch->telephone,
+                            'address' => [
+                                '@type' => 'PostalAddress',
+                                'streetAddress' => $branch->address,
+                                'addressLocality' => $branch->address,
+                            ],
+                            'openingHoursSpecification' => str($branch->working_hours)->stripTags()->toString(),
+                            'sameAs' => $branch->contact_whatsapp ? ['https://wa.me/' . $branch->contact_whatsapp] : [],
+                            'parentOrganization' => [
+                                '@type' => 'Organization',
+                                'name' => general_settings('site_name'),
+                                'url' => localizedUrl('/'),
+                            ],
+                            'contactPoint' => [
+                                '@type' => 'ContactPoint',
+                                'telephone' => $branch->telephone,
+                                'contactType' => 'Customer Service',
+                                'url' => 'https://wa.me/' . $branch->contact_whatsapp,
+                            ],
+                        ],
+                    )
+                    ->all();
+            }),
+    );
 @endphp
 
 <x-page-layout>
     <x-slot name="title">
+        {!! seo($SEO) !!}
+    </x-slot>
+
+    <x-slot name="pageTitle">
         {{ __('frontend.branches.page_title') }}
     </x-slot>
 
