@@ -1,4 +1,7 @@
 @php
+    use RalphJSmit\Laravel\SEO\Support\SEOData;
+    use RalphJSmit\Laravel\SEO\SchemaCollection;
+    use RalphJSmit\Laravel\SEO\Support\AlternateTag;
     use App\Models\Page;
     use App\Models\Post;
     use App\Models\Offer;
@@ -43,11 +46,42 @@
         });
 
     $results = $postResults->merge($pageResults)->merge($offerResults)->merge($vehicleResults);
-    // dd($results->first()->title);
+
+    $SEO = new SEOData(
+        title: __('frontend.search_result_for', ['s' => $search]),
+        description: __('frontend.search_result_description', ['s' => $search]),
+        image: asset('storage/' . general_settings('site_banner')),
+        url: localizedUrl('/search'),
+        robots: 'index, follow',
+        alternates: collect(config('app.locales'))
+            ->map(function ($locale) {
+                return new AlternateTag($locale, localizedUrl('/search'));
+            })
+            ->all(),
+        schema: SchemaCollection::make()->add(
+            fn() => [
+                '@context' => 'https://schema.org',
+                '@type' => 'WebPage',
+                'name' => __('frontend.search_result_for', ['s' => $search]),
+                'description' => __('frontend.search_result_description', ['s' => $search]),
+                'image' => asset('storage/' . general_settings('site_banner')),
+                'url' => localizedUrl('search'),
+                'isPartOf' => [
+                    '@type' => 'WebSite',
+                    'name' => general_settings('site_name'),
+                    'url' => localizedUrl('/'),
+                ],
+            ],
+        ),
+    );
 @endphp
 
 <x-page-layout>
     <x-slot name="title">
+        {!! seo($SEO) !!}
+    </x-slot>
+
+    <x-slot name="pageTitle">
         {{ __('frontend.search_result_for', ['s' => $search]) }}
     </x-slot>
 
