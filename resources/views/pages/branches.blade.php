@@ -48,7 +48,7 @@
                 return $branches
                     ->map(
                         fn($branch) => [
-                            '@type' => 'AutoDealer',
+                            '@type' => 'https://schema.org/AutoDealer',
                             'name' => $branch->name,
                             'telephone' => $branch->telephone,
                             'address' => [
