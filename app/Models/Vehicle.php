@@ -83,7 +83,7 @@ class Vehicle extends Model implements Auditable
 
     public function getDynamicSEOData(): SEOData
     {
-        $title = $this->getTranslation('name', app()->getLocale()) . ' - ' . $this->brand->name . ' - ' . $this->year;
+        $title = $this->brand->name . ' ' . $this->getTranslation('name', app()->getLocale()) . ' ' . $this->year;
         $description = $this->getTranslation('excerpt', app()->getLocale()) ?? str($this->getTranslation('overview', app()->getLocale()))->stripTags()->limit(155)->toString();
         $image = asset('storage/' . $this->image);
         $url = localizedUrl('vehicles/' . $this->slug);
