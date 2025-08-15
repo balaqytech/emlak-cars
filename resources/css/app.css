@@ -4,18 +4,39 @@
 
 @font-face {
     font-family: 'expo';
-    src: url('https://www.fontstatic.com/fonts/flat-jooza/flat-jooza-regular.eot?#iefix');
-    src: local('جذور مسطح'), local('flat-jooza'), url('https://www.fontstatic.com/fonts/flat-jooza/flat-jooza-regular.woff') format('woff');
+    src: url("https://db.onlinewebfonts.com/t/d78f5d2c76185fa07aaf8dd729eef33e.eot");
+    src: url("https://db.onlinewebfonts.com/t/d78f5d2c76185fa07aaf8dd729eef33e.eot?#iefix")format("embedded-opentype"),
+        url("https://db.onlinewebfonts.com/t/d78f5d2c76185fa07aaf8dd729eef33e.woff2")format("woff2"),
+        url("https://db.onlinewebfonts.com/t/d78f5d2c76185fa07aaf8dd729eef33e.woff")format("woff"),
+        url("https://db.onlinewebfonts.com/t/d78f5d2c76185fa07aaf8dd729eef33e.ttf")format("truetype"),
+        url("https://db.onlinewebfonts.com/t/d78f5d2c76185fa07aaf8dd729eef33e.svg#DIN Next LT Arabic Light")format("svg");
+    font-weight: 400;
+    letter-spacing: 0;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'expo';
+    src: url("https://db.onlinewebfonts.com/t/aba1a083bf50980a05f0265179103a09.eot");
+    src: url("https://db.onlinewebfonts.com/t/aba1a083bf50980a05f0265179103a09.eot?#iefix")format("embedded-opentype"),
+        url("https://db.onlinewebfonts.com/t/aba1a083bf50980a05f0265179103a09.woff2")format("woff2"),
+        url("https://db.onlinewebfonts.com/t/aba1a083bf50980a05f0265179103a09.woff")format("woff"),
+        url("https://db.onlinewebfonts.com/t/aba1a083bf50980a05f0265179103a09.ttf")format("truetype"),
+        url("https://db.onlinewebfonts.com/t/aba1a083bf50980a05f0265179103a09.svg#DIN Next LT Arabic Medium")format("svg");
+    font-weight: 600;
+    letter-spacing: 0;
+    font-display: swap;
 }
 
 .wrapper {
     @apply container max-w-7xl mx-auto px-4;
 }
 
-.swiper-pagination-bullet{
+.swiper-pagination-bullet {
     @apply bg-primary;
 }
 
-.swiper-button-next, .swiper-button-prev{
+.swiper-button-next,
+.swiper-button-prev {
     @apply text-primary;
 }

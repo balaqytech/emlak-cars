@@ -17,7 +17,7 @@
     @vite(['resources/css/app.css'])
 </head>
 
-<body class="font-sans antialiased min-h-screen text-slate-600">
+<body class="font-sans antialiased min-h-screen text-slate-800 text-lg">
     @include('partials.header')
 
     <main>
