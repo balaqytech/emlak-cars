@@ -10,7 +10,7 @@
     <div class="py-8 px-8 flex flex-col gap-4 grow">
         <h2 class="flex items-center gap-2 font-bold text-2xl text-slate-800 hover:text-primary hover:underline">
             <a href="{{ localizedUrl('/vehicles/' . $vehicle->slug) }}">{{ $vehicle->name }}</a>
-            <sub class="text-slate-500 text-xs font-normal">({{ $vehicle->year }})</sub>
+            {{-- <sub class="text-slate-500 text-xs font-normal">({{ $vehicle->year }})</sub> --}}
         </h2>
         <p class="text-slate-600 text-sm grow">{{ $vehicle->excerpt }}</p>
         <hr>

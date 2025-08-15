@@ -30,7 +30,7 @@
                 ]" color="slate-400" />
                 <h1 class="flex items-baseline gap-2 text-4xl font-bold text-slate-800">
                     <span>{{ $vehicle->name }}</span>
-                    <span class="text-primary text-base font-bold">({{ $vehicle->year }})</span>
+                    {{-- <span class="text-primary text-base font-bold">({{ $vehicle->year }})</span> --}}
                 </h1>
                 <p class="text-slate-600 max-w-lg">
                     {{ $vehicle->excerpt }}
