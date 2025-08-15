@@ -6,7 +6,7 @@
             <img loading="lazy" class="h-16" src="{{ asset('storage/' . general_settings('site_logo')) }}"
                 alt="{{ general_settings('site_name') }}">
         </a>
-        <ul class="hidden items-center md:flex gap-8 justify-center">
+        <ul class="hidden items-center md:flex gap-8 justify-center font-bold">
             <x-nav-link link="{{ localizedUrl('/') }}" title="{{ __('frontend.navigation.home') }}" />
             <x-nav-link link="{{ localizedUrl('/vehicles') }}" title="{{ __('frontend.navigation.vehicles') }}" />
             <x-nav-link link="{{ localizedUrl('/offers') }}" title="{{ __('frontend.navigation.offers') }}" />
