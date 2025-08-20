@@ -127,7 +127,7 @@ class VehicleModel extends Model implements Auditable
                                 'isVariantOf' => [
                                     '@type' => 'ProductModel',
                                     'name' => $title,
-                                    'url' => localizedUrl('vehicles/' . $this->vehicle->slug . '/' . $this->slug),
+                                    'sameAs' => localizedUrl('vehicles/' . $this->vehicle->slug . '/' . $this->slug),
                                 ],
                                 'offers' => [
                                     '@type' => 'Offer',
