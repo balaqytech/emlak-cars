@@ -94,7 +94,8 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 my-8">
                     <div class="h-[70vh] overflow-y-scroll mt-8 p-4 space-y-8">
                         @foreach ($branches as $branch)
-                            <div id="branch-details" class="bg-white shadow-lg rounded-lg p-8 cursor-pointer"
+                            <div id="branch-details"
+                                class="bg-white shadow-lg rounded-lg p-8 cursor-pointer border border-slate-200 hover:-translate-y-1 hover:shadow-xl transition-transform duration-200"
                                 @click="mapEmbed = '{{ $branch->map_embed }}'">
                                 <h3 class="text-xl font-bold text-slate-800">{{ $branch->name }}</h3>
                                 <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 text-sm text-slate-600">
