@@ -59,6 +59,11 @@ class VehicleModel extends Model implements Auditable
         return $this->colors()->min('cash_price');
     }
 
+    public function hightestPrice()
+    {
+        return $this->colors()->max('cash_price');
+    }
+
     public function getDynamicSEOData(): SEOData
     {
         $title = $this->vehicle->brand->name . ' ' . $this->vehicle->name . ' ' . $this->getTranslation('name', app()->getLocale()) . ' ' . $this->vehicle->year;
@@ -101,9 +106,10 @@ class VehicleModel extends Model implements Auditable
                         'url' => localizedUrl('vehicles/' . $this->vehicle->slug),
                     ],
                     'offers' => [
+                        '@context' => 'https://schema.org',
                         '@type' => 'OfferAggregate',
                         'lowPrice' => $this->lowestPrice(),
-                        'highPrice' => $this->lowestPrice(),
+                        'highPrice' => $this->hightestPrice(),
                     ]
                 ])
                 ->add(function () use ($title, $description, $image) {
@@ -118,6 +124,7 @@ class VehicleModel extends Model implements Auditable
                                 '@type' => 'Product',
                                 'name' => $color->name,
                                 'color' => $color->hex,
+                                'image' => $color->image ? asset('storage/' . $color->image) : asset('storage/' . $this->image),
                                 'isVariantOf' => [
                                     '@type' => 'ProductModel',
                                     'name' => $title,

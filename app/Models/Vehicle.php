@@ -76,6 +76,13 @@ class Vehicle extends Model implements Auditable
             ->min('colors.cash_price');
     }
 
+    public function getHighestPriceAttribute()
+    {
+        return $this->vehicleModels()
+            ->join('colors', 'vehicle_models.id', '=', 'colors.vehicle_model_id')
+            ->max('colors.cash_price');
+    }
+
     public function scopeFeatured($query)
     {
         return $query->where('is_featured', true);
@@ -117,8 +124,13 @@ class Vehicle extends Model implements Auditable
                     'offers' => [
                         '@type' => 'AggregateOffer',
                         'lowPrice' => $this->least_price,
+                        'highPrice' => $this->highest_price,
                         'priceCurrency' => 'SAR',
                         'availability' => 'https://schema.org/InStock',
+                        'offerCount' => $this->vehicleModels()
+                            ->join('colors', 'vehicle_models.id', '=', 'colors.vehicle_model_id')
+                            ->where('colors.is_available', true)
+                            ->count(),
                     ],
                     'vehicleModelDate' => $this->year,
                     'vehicleCategory' => $this->category->name,

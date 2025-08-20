@@ -107,7 +107,7 @@ class Offer extends Model implements Auditable
                     'validThrough' => optional($this->due_date)->toIso8601String(),
                     'category' => 'Automotive',
                 ])
-                ->add(fn() => [
+                ->when(count($faqs) > 0, fn($collection) => $collection->add(fn() => [
                     '@context' => 'https://schema.org',
                     '@type' => 'FAQPage',
                     'mainEntity' => collect($faqs)->map(function ($faq) {
@@ -120,7 +120,7 @@ class Offer extends Model implements Auditable
                             ],
                         ];
                     })->all(),
-                ])
+                ]))
         );
     }
 }
