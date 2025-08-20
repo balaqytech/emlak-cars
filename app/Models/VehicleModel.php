@@ -106,8 +106,7 @@ class VehicleModel extends Model implements Auditable
                         'url' => localizedUrl('vehicles/' . $this->vehicle->slug),
                     ],
                     'offers' => [
-                        '@context' => 'https://schema.org',
-                        '@type' => 'OfferAggregate',
+                        '@type' => 'AggregateOffer',
                         'lowPrice' => $this->lowestPrice(),
                         'highPrice' => $this->hightestPrice(),
                     ]
