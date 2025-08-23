@@ -107,8 +107,11 @@ class VehicleModel extends Model implements Auditable
                     ],
                     'offers' => [
                         '@type' => 'Offer',
+                        'priceCurrency' => 'SAR',
+                        'price' => $this->lowestPrice(),
                         'lowPrice' => $this->lowestPrice(),
                         'highPrice' => $this->hightestPrice(),
+                        'availability' => ($this->availableColors()->count() > 0) ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
                     ]
                 ])
                 ->add(function () use ($title, $description, $image) {
@@ -122,18 +125,21 @@ class VehicleModel extends Model implements Auditable
                             return [
                                 '@type' => 'Product',
                                 'name' => $color->name,
+                                'description' => $title . ' - ' . $color->name,
                                 'color' => $color->hex,
                                 'image' => $color->image ? asset('storage/' . $color->image) : asset('storage/' . $this->image),
-                                'isVariantOf' => [
-                                    '@type' => 'ProductModel',
-                                    'name' => $title,
-                                    'sameAs' => localizedUrl('vehicles/' . $this->vehicle->slug . '/' . $this->slug),
-                                ],
+                                'productGroupID' => $this->id, // Added for rich results
                                 'offers' => [
                                     '@type' => 'Offer',
                                     'price' => $color->cash_price,
-                                    'priceCurrency' => 'SAR',
-                                    'availability' => $color->is_available ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
+                                    'priceSpecification' => [
+                                        '@type' => 'PriceSpecification',
+                                        'price' => $color->cash_price,
+                                        'lowPrice' => $color->cash_price,
+                                        'highPrice' => $color->installment_price,
+                                        'priceCurrency' => 'SAR',
+                                        'availability' => $color->is_available ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
+                                    ],
                                 ],
                             ];
                         })->all(),
