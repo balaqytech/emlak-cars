@@ -16,8 +16,7 @@
         ,{
             "@type": "ListItem",
             "position": {{ $loop->iteration + 1 }},
-            "name": "{{ $item['label'] }}",
-            @if(!empty($item['url']))
+            "name": "{{ $item['label'] }}" @if(!empty($item['url'])) ,            
                 "item": "{{ $item['url'] }}"
             @endif
         }
