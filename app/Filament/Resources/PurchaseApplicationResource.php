@@ -43,6 +43,7 @@ class PurchaseApplicationResource extends Resource implements HasShieldPermissio
                 fn($query) => $query->when(
                     !auth()->user()->hasRole('super_admin'),
                     fn($query) => $query->where('assigned_to', auth()->user()->id)
+                        ->orWhereNull('assigned_to')
                 )
                     ->latest()
                     ->with('assignedTo')

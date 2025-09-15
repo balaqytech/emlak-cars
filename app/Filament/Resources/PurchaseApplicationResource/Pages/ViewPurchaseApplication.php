@@ -21,7 +21,7 @@ class ViewPurchaseApplication extends ViewRecord
                 ->color('success')
                 ->icon('heroicon-o-user-plus')
                 ->modalWidth('lg')
-                ->visible(fn () => auth()->user()->hasRole('super_admin'))
+                ->visible(fn() => auth()->user()->hasRole('super_admin'))
                 ->form([
                     Select::make('assigned_to')
                         ->label(__('backend.purchase_applications.assign_to'))
@@ -43,6 +43,7 @@ class ViewPurchaseApplication extends ViewRecord
                 ->color('info')
                 ->icon('heroicon-o-arrow-path')
                 ->modalWidth('lg')
+                ->visible(fn() => auth()->user()->hasRole('super_admin') || $this->record->assigned_to === auth()->user()->id)
                 ->form([
                     Select::make('status')
                         ->label(__('backend.purchase_applications.status'))
