@@ -37,7 +37,7 @@
             )
             ->add(function () use ($offers) {
                 if ($offers->isEmpty()) {
-                    return null;
+                    return [];
                 }
 
                 return [
