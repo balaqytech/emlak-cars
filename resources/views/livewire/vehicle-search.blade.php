@@ -1,4 +1,15 @@
-<div class="wrapper relative">
+<div id="vehicle-search" class="wrapper relative">
+    <!-- Loading Spinner -->
+    <div class="absolute inset-0 flex items-center justify-center bg-white/70 z-20" wire:loading.flex
+        wire:target="search,updateCategories,selectedBrand,selectedCategory,previousPage,nextPage,gotoPage">
+        <svg class="animate-spin h-10 w-10 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none"
+            viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+            </circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+        </svg>
+    </div>
+
     <form wire:submit.prevent="search"
         class="w-full  p-8 -mt-36 bg-white rounded-lg shadow-3xl shadow-slate-300 border border-slate-200">
         <div class="sm:flex sm:space-x-3 p-3 rounded-lg border border-slate-200">
@@ -48,3 +59,26 @@
         {{ $vehicles->links('components.pagination') }}
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const container = document.getElementById('vehicle-search');
+        if (!container) return;
+
+        // Delegate clicks inside the component. If a pagination link is clicked,
+        // wait briefly for Livewire to process the request, then scroll the
+        // component into view so users return to the top of the list.
+        container.addEventListener('click', function(e) {
+            const link = e.target.closest(
+                'a[wire\\:click], a[rel="next"], a[rel="prev"], a[href*="page="]');
+            if (link) {
+                setTimeout(function() {
+                    container.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }, 50);
+            }
+        });
+    });
+</script>
