@@ -52,6 +52,7 @@ class FeaturedVehicles extends Component
             ->when($this->selectedCategory, function ($query) {
                 $query->where('vehicle_category_id', $this->selectedCategory);
             })
+            ->orderBy('order', 'asc')
             ->get();
     }
 
