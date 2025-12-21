@@ -131,7 +131,7 @@ class PurchaseApplicationResource extends Resource implements HasShieldPermissio
                         return [
                             InfoLists\Components\TextEntry::make('vehicle')
                                 ->label(__('backend.vehicles.name'))
-                                ->state(fn() => $color->model->vehicle->name),
+                                ->state(fn() => $color->model->vehicle->name . ' - ' . $color->model->vehicle->excerpt),
                             InfoLists\Components\TextEntry::make('model')
                                 ->label(__('backend.vehicles.model_name'))
                                 ->state(fn() => $color->model->name),
