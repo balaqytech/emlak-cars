@@ -16,12 +16,12 @@
             <div class="w-full pb-2 sm:pb-0">
                 <label for="vehicle_search" class="block text-sm font-medium"><span
                         class="sr-only">{{ __('frontend.vehicles.vehicle_search') }}</span></label>
-                <input type="text" id="vehicle_search" wire:model="vehicle_search"
+                <input type="text" id="vehicle_search" wire:model.live.debounce.500ms="vehicle_search"
                     class="py-2.5 sm:py-3 px-4 block w-full border-transparent rounded-lg sm:text-sm focus:border-primary focus:ring-primary"
                     placeholder="{{ __('frontend.vehicles.vehicle_search') }}">
             </div>
             <div class="pt-2 sm:pt-0 sm:ps-3 border-t border-gray-200 sm:border-t-0 sm:border-s w-full">
-                <select wire:model="selectedBrand"
+                <select wire:model.live="selectedBrand"
                     class="py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-primary focus:ring-primary disabled:opacity-50 disabled:pointer-events-none">
                     <option selected="" value="">{{ __('frontend.vehicles.select_brand') }}</option>
                     @foreach ($brands as $brand)
@@ -30,7 +30,7 @@
                 </select>
             </div>
             <div class="pt-2 sm:pt-0 sm:ps-3 border-t border-gray-200 sm:border-t-0 sm:border-s w-full">
-                <select wire:model="selectedCategory"
+                <select wire:model.live="selectedCategory"
                     class="py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-primary focus:ring-primary disabled:opacity-50 disabled:pointer-events-none">
                     <option selected="" value="">{{ __('frontend.vehicles.select_category') }}</option>
                     @foreach ($categories as $category)

@@ -3,10 +3,10 @@
 namespace App\Livewire;
 
 use App\Models\Vehicle;
-use App\Models\VehicleBrand;
-use App\Models\VehicleCategory;
 use Livewire\Component;
+use App\Models\VehicleBrand;
 use Livewire\WithPagination;
+use App\Models\VehicleCategory;
 use Illuminate\Support\Collection;
 
 class VehicleSearch extends Component
@@ -30,7 +30,6 @@ class VehicleSearch extends Component
 
     public function search()
     {
-        // Reset pagination when searching
         $this->resetPage();
     }
 
@@ -38,6 +37,12 @@ class VehicleSearch extends Component
     {
         $this->categories = VehicleCategory::all();
         $this->brands = VehicleBrand::all();
+
+        // If a brand is pre-selected from the query string, make sure
+        // categories are filtered accordingly on initial load.
+        if (! empty($this->selectedBrand)) {
+            $this->updateCategories($this->selectedBrand);
+        }
     }
 
     /**
@@ -49,12 +54,13 @@ class VehicleSearch extends Component
     }
 
     /**
-     * When brand changes, update available categories and reset pagination.
+     * When brand changes, update available categories based on the new brand
+     * value and reset pagination.
      */
-    public function updatingSelectedBrand(): void
+    public function updatingSelectedBrand($value): void
     {
         $this->resetPage();
-        $this->updateCategories($this->selectedBrand);
+        $this->updateCategories($value);
     }
 
     public function render()
