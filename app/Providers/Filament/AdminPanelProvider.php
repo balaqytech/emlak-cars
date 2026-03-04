@@ -28,7 +28,7 @@ class AdminPanelProvider extends PanelProvider
         return $panel
             ->default()
             ->id('admin')
-            ->path('admin')
+            ->path('emlaq-admin')
             ->login()
             ->colors([
                 'primary' => Color::Rose,
