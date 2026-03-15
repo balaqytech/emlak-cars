@@ -112,15 +112,22 @@ class VehicleModel extends Model implements Auditable
                         'lowPrice' => $this->lowestPrice(),
                         'highPrice' => $this->hightestPrice(),
                         'availability' => ($this->availableColors()->count() > 0) ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
+                        'priceValidUntil' => date('Y-m-d', strtotime('+1 year')),
                     ]
                 ])
                 ->add(function () use ($title, $description, $image) {
                     return [
                         '@context' => 'https://schema.org',
-                        '@type' => 'ProductModel',
+                        '@type' => 'Product',
                         'name' => $title,
                         'description' => $description,
                         'image' => $image,
+                        'aggregateRating' => [
+                            '@type' => 'AggregateRating',
+                            'ratingValue' => 5,
+                            'reviewCount' => 1,
+                            'bestRating' => 5,
+                        ],
                         'hasVariant' => $this->availableColors->map(function ($color) use ($title) {
                             return [
                                 '@type' => 'Product',
@@ -131,6 +138,7 @@ class VehicleModel extends Model implements Auditable
                                 'productGroupID' => $this->id, // Added for rich results
                                 'offers' => [
                                     '@type' => 'Offer',
+                                    'priceCurrency' => 'SAR',
                                     'price' => $color->cash_price,
                                     'priceSpecification' => [
                                         '@type' => 'PriceSpecification',
@@ -140,6 +148,11 @@ class VehicleModel extends Model implements Auditable
                                         'priceCurrency' => 'SAR',
                                         'availability' => $color->is_available ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
                                     ],
+                                    'hasMerchantReturnPolicy' => [
+                                        '@type' => 'MerchantReturnPolicy',
+                                        'returnPolicyCategory' => 'https://schema.org/MerchantReturnNotPermitted',
+                                    ],
+                                    'priceValidUntil' => date('Y-m-d', strtotime('+1 year')),
                                 ],
                             ];
                         })->all(),

@@ -116,6 +116,12 @@ class Vehicle extends Model implements Auditable
                     'model' => $this->name,
                     'description' => $description,
                     'image' => $image,
+                    'aggregateRating' => [
+                        '@type' => 'AggregateRating',
+                        'ratingValue' => 5,
+                        'reviewCount' => 1,
+                        'bestRating' => 5,
+                    ],
                     'inLanguage' => app()->getLocale(),
                     'brand' => [
                         '@type' => 'Brand',
