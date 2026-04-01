@@ -56,7 +56,8 @@ class ContactSubmissionResource extends Resource implements HasShieldPermissions
             ])
             ->filters([
                 //
-            ]);
+            ])
+            ->defaultSort('created_at', 'desc');
     }
 
     public static function infolist(Infolist $infolist): Infolist
