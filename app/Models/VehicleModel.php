@@ -51,7 +51,7 @@ class VehicleModel extends Model implements Auditable
 
     public function availableColors(): HasMany
     {
-        return $this->hasMany(Color::class)->where('is_available', true)->where('cash_price', '>', 0);
+        return $this->hasMany(Color::class)->where('is_available', true);
     }
 
     public function lowestPrice()
